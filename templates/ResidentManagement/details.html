@@ -1,0 +1,89 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid bg-white rounded">
+
+    <div class="row p-2">
+        <nav>
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-info-tab" data-bs-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Resident Info</a>
+            <a class="nav-link" id="nav-requested-document-tab" data-bs-toggle="tab" href="#nav-requested-document" role="tab" aria-controls="nav-requested-document" aria-selected="false">Requested Document</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                <div class="row p-3">
+                    <div class="col-lg-3 pt-3 px-5">
+                        <img src="/media/{{profile.image}}" class="img-thumbnail" height="40">
+                    </div>
+
+                    <div class="col-lg-6 pt-5">
+                        <p class="h4">Name: {{profile.first_name}} {{profile.lastname}} {{profile.middlename}} {{profile.suffix}}</p>
+                        <p class="h5">Resident's ID: {{profile.res_id}}</p>
+                        <p class="h6">Sex: {{profile.sex}}</p>
+                        <p class="h6">From: {{profile.purok}}</p>
+                        <p class="h6">Occupation: {{profile.occupation}}</p>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-dark float-end">Edit Profile</button>
+                    </div>
+
+                    <div class="px-5"><hr></div>
+
+                    <div class="col-lg-6 pt-3 px-5 border-end">
+                        <p class="h6 text-muted">Personal Details</p>
+                        <p class="h6">Birthdate: {{profile.birthdate}}</p>
+                        <p class="h6">Birthplace: {{profile.birthplace}}</p>
+                        <p class="h6">Citizenship: {{profile.citizenship}}</p>
+                        <p class="h6">Single Parent: {{profile.single_parent}}</p>
+                        <p class="h6">Civil Status: {{profile.civil_status}}</p>
+                        <p class="h6">Educational Attainment: {{profile.educ_attainment}}</p>
+                        <p class="h6">Status: {{profile.status}}</p>
+                    </div>
+
+                    <div class="col-lg-6 pt-3 px-5">
+                        <p class="h6 text-muted">Contact Informaton</p>
+                        <p class="h6">Phone: {{profile.phone}}</p>
+                        <p class="h6">Email: {{profile.email}}</p>
+                        <p class="h6">Address: {{profile.address}}</p>
+                    </div>
+            
+                </div>
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="nav-requested-document" role="tabpanel" aria-labelledby="nav-requested-document-tab">
+
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+
+
+<p id="last_face" class="d-none">{{last_face}}</p>
+
+<script>
+    setInterval(function () {
+        var url = 'http://127.0.0.1:8000/Masili/ajax/';
+        var last_face = document.getElementById('last_face').innerHTML;
+        $.ajax({
+            url: url,
+            success: function (data) {
+                if (data != last_face) {
+                    location.reload()
+                }
+            }
+        })
+    }, 3000);
+
+</script>
+
+{% endblock content %}

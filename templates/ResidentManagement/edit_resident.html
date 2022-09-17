@@ -1,0 +1,157 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div class="container bg-white">
+    <form action="." method="POST" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        <div class="row p-4">
+            <div class="col-12 mb-3">
+                <p class="h4">Edit Resident</p>
+                <p>Edit Residents Here</p>
+            </div>
+
+            <hr>
+
+            <div class="col-lg-12 col-12 py-5">
+                
+                <div class="row ">
+                    <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-center mb-2">
+                        <label class="col-form-label">Upload Image (Click to browse)</label>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-center mb-2">
+                        <div class="form-element-upload"> 
+                                    {{ form.image }}
+                                    <label for="file" id="file-preview">
+                                        <img src="/media/{{ prev_img }}">
+                                        <div>
+                                            <span>+</span>
+                                        </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <hr>
+            <div class="col-lg-10 mb-3">
+                <p class="h6">Name</p>
+                <div class="row">
+                    <div class="col-lg-3 pb-2">{{ form.firstname }}</div>
+
+                    <div class="col-lg-3 pb-2">{{ form.middlename }}</div>
+
+                    <div class="col-lg-3 pb-2">{{ form.lastname }}</div>
+
+                    <div class="col-lg-3 pb-2">{{ form.suffix }}</div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 mb-3">
+                <p class="h6">Sex</p>
+                {{ form.sex }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Contact</p>
+                {{ form.phone }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Email</p>
+                {{ form.email }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Birthdate</p>
+                <div class="input-group input-group-sm mb-3 date" id="datepicker">
+                    {{ form.birthdate }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Birthplace</p>
+                {{ form.birthplace }}
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <p class="h6">Civil Status</p>
+                {{ form.civil_status }}
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <p class="h6">Citizenship</p>
+                {{ form.citizenship }}
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <p class="h6">Purok</p>
+                {{ form.purok }}
+            </div>
+
+            <div class="col-lg-12 mb-3">
+                <p class="h6">Address</p>
+                {{ form.address }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Occupation</p>
+                {{ form.occupation }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Educational Attainment</p>
+                {{ form.educ_attainment }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Single Parent?</p>
+                {{ form.single_parent }}
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <p class="h6">Status</p>
+                {{ form.status }}
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <hr>
+
+            <br>
+            <br>
+
+            <div class="col-lg-12 col-md-12 col-12 ">
+                <div class="float-end">
+                    <button type="button" class="btn bg-danger bg-gradient mt-2">
+                        <i class="las la-times fs-4 text-white" style="vertical-align: middle;"></i>
+                        <span class="h6 text-white" style="vertical-align: middle;">Cancel</span>
+                    </button>
+                    &nbsp;
+                    &nbsp;
+                    <button type="submit" class="btn btn-success bg-gradient mt-2">
+                        <i class="las la-check fs-4" style="vertical-align: middle;"></i>
+                        <span class="h6" style="vertical-align: middle;">Update a Record</span>
+                    </button>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </form>
+</div>
+
+{% endblock content %} 
