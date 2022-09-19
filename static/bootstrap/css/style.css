@@ -76,3 +76,127 @@ hr.h-color{
 .modal-backdrop+.modal-backdrop {
     opacity : 0;
 }
+
+.btn-theme{
+    font-family: arial;
+    font-size: 14px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 36px;
+    font-weight: bold;
+
+
+}
+
+
+.btn-theme:hover{
+    transition: all 150ms linear;
+    opacity: .85;
+}
+
+.btn-theme:active {
+    transition: all 150ms linear;
+    opacity: .85;
+}
+.btn-theme.-btn1{
+    background: #F98724;
+}
+.btn-theme.-btn2{
+    background: #60ade9;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-theme-outline{
+    background-color: white; 
+    color: #355389; 
+    border: 2px solid #355389;
+    border-radius: 36px;
+    text-decoration: none !important;
+    font-size: 1em;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+  }
+
+  .btn-theme-outline:hover {
+    transition-duration: 0.4s;
+    background-color:#355389;
+    color: white;
+  }
+
+
+  .vl {
+    border-left: 3px solid #F98724;
+    height: 500px;
+
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+  }
+  .link-freepick{
+    text-decoration: none; 
+    font-size: 12px; 
+    margin-top:-20px; 
+    position: absolute; 
+    color:#355389
+  }
+
+  video {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    filter: brightness(80%)
+  }
+
+  .imageheader {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .video-wrapper {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+  }
+  .header{
+    position: relative;
+    color: white;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+  }
+
+  li.borderless { border: 0px; }
+
+  .map-container{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+  }
+  .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }

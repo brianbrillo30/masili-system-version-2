@@ -1,5 +1,9 @@
+from dataclasses import field
+from pyexpat import model
 from django import forms
 from .models import *
+
+from django.contrib.auth.models import User
 
 # class DateInput(forms.DateInput):
 #     input_type = 'date'
@@ -8,7 +12,7 @@ from .models import *
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = ResidentsInfo
-        fields = ('image', 'firstname','middlename','lastname','suffix','sex','phone','email','birthdate','birthplace','civil_status',
+        fields = ('image', 'firstname','middlename','lastname','suffix','sex','phone','birthdate','birthplace','civil_status',
         'citizenship','purok','address','occupation','educ_attainment','single_parent','status')
 
 
@@ -27,7 +31,7 @@ class ProfileForm(forms.ModelForm):
             'sex' : forms.Select(attrs={'class':'form-select form-select-sm'}),
 
             'phone' : forms.NumberInput(attrs={'class':'form-control form-control-sm', 'placeholder':'+63'}),
-            'email' : forms.EmailInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Email'}),
+            
 
             'birthdate' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Select a date'}),
             'birthplace' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Birthplace'}),
@@ -53,3 +57,12 @@ class ProfileForm(forms.ModelForm):
         self.fields['educ_attainment'].empty_label = "Select"
         self.fields['status'].empty_label = "Select"
         self.fields['suffix'].required = False
+
+
+class UserAccountForm (forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)
+        widgets = {
+            'email' : forms.EmailInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Email'}),
+        }

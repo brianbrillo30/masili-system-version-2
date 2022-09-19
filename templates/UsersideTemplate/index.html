@@ -1,46 +1,132 @@
+{% extends "UsersideTemplate/base.html" %}
 {% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
+<section>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
-    <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
 
-    <title>Barangay Masili</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#"><img src="{%static 'img/nav_masili_logo.png' %}" height="70"></a>   
-          
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
-            </ul>
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="container-fluid">
+
+          <div class="row p-5">
+        
+            <div class="col-lg-7 col-md-12 col-12 my-auto p-5">
+              <div ><img src="{% static 'img/index_bg.png'%}" class="img-fluid"></div>
+              <a class="link-freepick" href="http://www.freepik.com">Designed by pch.vector / Freepik</a>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-12 my-auto p-5">
+              <div><h2 style="font-weight: 400; color: #355389;">WELCOME TO</h2></div>
+              <div><h1 class="display-3" style="font-weight: 600; color: #355389">BARANGAY MASILI</h1></div>
+              <div>
+                <blockquote class="blockquote" style="color: #355389">
+                  <p>Bgy.Masili Street, Purok 5, Calamba City, Laguna<br>
+                    Open Hours of Barangay : Monday to Friday (8:00 AM - 5:00 PM)<br>
+                    (049) 502-9459
+                  </p>
+                </blockquote>
+              </div>
+              <div>
+                <a type="button" class="btn-theme-outline">About Us</a>
+              </div>
+            </div>
+
+            <div class="col-lg-12 d-flex justify-content-end">
+              <img src="{% static 'img/masili-logo.svg'%}" width="70">
+              <img src="{% static 'img/sklogo.png'%}" width="70">
+              <img src="{% static 'img/calambalogo.png'%}" width="70">
+            </div>
+
+            <div class="col-lg-12 d-flex justify-content-center pt-5">
+                  <figure class="text-end pt-5">
+                    <blockquote class="blockquote">
+                      <p><em>"Loyalty to country ALWAYS. Loyalty to government, when it deserves it."</em></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      <cite title="Source Title">Mark Twain</cite>
+                    </figcaption>
+                  </figure>
+            </div>
+
           </div>
         </div>
-      </nav>
-</body>
-</html>
+      </div>
+
+      <div class="carousel-item ">
+        <div class="video-wrapper">
+          <video playsinline autoplay muted loop poster="cake.jpg" >
+            <source src="{% static 'img/masili.mp4'%}" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        
+          <div class="header">
+            <h1 class="display-1"><b>THE BEAUTY OF MASILI</b></h1>
+            <h1 class="display-6">ALONG WITH THE ALLIGATOR LAKE</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next text-dark" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section>
+  <div class="container">
+    <div class="row h-100">
+      <div class="col-lg-6 borderless ">
+        <ul class="list-group float-end border-0 borderless">
+          <li class="list-group-item float-end border-0"><img class="" src="{% static 'img/emergency.jpg'%}" width="400"></li>
+          <li class="list-group-item float-end border-0">Image by <a class="" href="https://www.freepik.com/free-vector/modern-emergency-word-concept-with-flat-design_3099289.htm#query=emergency%20hotline&position=8&from_view=search">Freepik</a></li>
+
+        </ul>
+        </div>
+
+      <div class="col-lg-6 my-auto">
+        <h1 class="display-6"><b>Barangay Quick Response Team</b></h1>
+        <p class="h1 text-danger">CALL: 09510089218</p>
+        <p class="h1 text-danger"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section>
+  <div class="container">
+    <div class="row">
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+{% endblock content %}

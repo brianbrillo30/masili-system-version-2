@@ -1,4 +1,135 @@
-{% extends "base.html" %}
+{% load static %}
 
-{% block content %}
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
+
+    <title>Barangay Masili</title>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="{%static 'img/nav_masili_logo@2x.png' %}" height="70"></a>   
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}" style="font-weight: 600; color:black">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}" style="font-weight: 600; color:black">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-weight: 600; color:black">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-weight: 600; color:black">Announcement</a>
+        </li>
+
+        <li class="nav-item me-2 input-sm">
+          <a type="button" class="btn-theme -btn1" href="Login">Services Portal</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body class="bg-white">
+
+
+        {% block content %}
+        {% endblock content %}
+        
+
+<section>
+          <!-- Footer -->
+        <footer class="bg-dark text-center text-white">
+          <!-- Grid container -->
+          <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+              <!-- Facebook -->
+              <a target="_blank" style="text-decoration: none; color: white;" href="https://www.facebook.com/SBMASILI">
+                <i class="lab la-facebook" style="font-size: 40px;"></i>
+              </a>
+        
+              <!-- Instagram -->
+              <a target="_blank" style="text-decoration: none; color: white;" href="">
+                <i class="lab la-instagram" style="font-size: 40px;"></i>
+              </a>
+            </section>
+            <!-- Section: Social media -->
+            <hr>
+            <!-- Section: Links -->
+            <section class="">
+              <!--Grid row-->
+              <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Government Website</h5>
+        
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a target="_blank" href="https://www.calambacity.gov.ph/" class="text-white">The Official Website of the City Government of Calamba.</a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://laguna.gov.ph/" class="text-white">The official website of the Provincial Government of Laguna (PGL)</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
+        
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase"></h5>
+        
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white">Link 1</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white">Link 2</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white">Link 3</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white">Link 4</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+          </div>
+          <!-- Grid container -->
+        
+          <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright: By Barangay Masili
+          </div>
+          <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+        </section>
+</body>
+</html>

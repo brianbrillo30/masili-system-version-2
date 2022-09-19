@@ -2,7 +2,7 @@ import datetime
 from time import time
 import random
 from django.db import models
-
+from django.contrib.auth.models import User
 
 def random_string():
     return str(random.randint(10000, 99999))
@@ -39,6 +39,8 @@ class Status(models.Model):
 
 class ResidentsInfo(models.Model):
     res_id = models.CharField(default= random_string, unique=True, max_length=5)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True,)
+
     firstname = models.CharField(max_length=70)
     middlename = models.CharField (max_length=70)
     lastname = models.CharField(max_length=70)
@@ -46,7 +48,7 @@ class ResidentsInfo(models.Model):
     sex = models.ForeignKey (Sex, on_delete=models.CASCADE)
 
     phone = models.BigIntegerField()
-    email = models.EmailField()
+
     birthdate = models.DateField ()
     birthplace = models.CharField (max_length=255)
     civil_status = models.ForeignKey (CivilStatus, on_delete=models.CASCADE)

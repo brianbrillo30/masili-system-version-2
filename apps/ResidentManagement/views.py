@@ -1,3 +1,4 @@
+import email
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from .forms import *
@@ -7,6 +8,7 @@ import numpy as np
 import winsound
 from django.db.models import Q
 from playsound import playsound
+from django.contrib.auth.models import User
 import os
 
 
@@ -18,7 +20,7 @@ sound = os.path.join(sound_folder, 'beep.wav')
 
 
 def resident_list(request):
-    context = {'resident_list' : ResidentsInfo.objects.all()}
+    context = {'resident_list' : User.objects.filter(is_superuser=0)}
     return render(request, "ResidentManagement/residents_list.html", context)
 
 
@@ -140,31 +142,67 @@ def details(request):
 
 def add_profile(request):
     form = ProfileForm
+    accountForm = UserAccountForm
+
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        accountForm = UserAccountForm(request.POST)
+        email = request.POST.get('email')
+
+        filename = firstname+" "+lastname
+
+        if form.is_valid() and accountForm.is_valid():
+
+            randomNum = User.objects.make_random_password(length=2, allowed_chars="01234567889")
+            random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
+            username = lastname+randomNum
+
+            user = User.objects.create(email = email, username = username, password=random_password)
+
+
+            resident = form.save(commit=False)
+            resident.image.name = filename+".jpg"
+            resident.user = user
+            resident.save()
+
             return redirect('resident_list')
-    context={'form':form}
+
+    context={'form':form, 'userform':accountForm}
     return render(request,'ResidentManagement/add_resident.html',context)
 
 
-def edit_profile(request,id):
-    profile = ResidentsInfo.objects.get(id=id)
+def edit_profile(request, id):
+    profile = ResidentsInfo.objects.get(user=id)
     form = ProfileForm(instance=profile)
+
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES,instance=profile)
+        img = request.POST.get('image')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        filename = firstname+" "+lastname
+
         if form.is_valid():
+            if img == None:
+                userupdate = form.save(commit=False)
+                userupdate.image.name = filename+".jpg"
+                userupdate.save()
+            
             form.save()
+            
             return redirect('resident_list')
     context={'form':form, 'prev_img':profile.image}
     return render(request,'ResidentManagement/edit_resident.html',context)
 
 
-# def delete_profile(request,id):
-#     profile = ResidentsInfo.objects.get(id=id)
-#     profile.delete()
-#     return redirect('profiles')
+def delete_profile(request,id):
+    profile = User.objects.get(id=id)
+    if len(profile.residentsinfo.image) > 0:
+        os.remove(profile.residentsinfo.image.path)
+    profile.delete()
+    return redirect('resident_list')
 
 
 # def clear_history(request):
