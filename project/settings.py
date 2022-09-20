@@ -70,7 +70,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_masili',
         'USER': 'postgres',
-        'PASSWORD': 'petermamaril',
+        'PASSWORD': 'admin',
         'HOST': 'localhost'
     }
 }
