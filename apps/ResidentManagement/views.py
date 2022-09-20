@@ -17,6 +17,8 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.urls import reverse
 from django.views.decorators.cache import cache_control
+from django.conf import settings
+from django.core.mail import send_mail
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -177,13 +179,18 @@ def add_profile(request):
             random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
             username = lastname+randomNum
 
-            user = User.objects.create(email = email, username = username, password=random_password)
-
+            user = User.objects.create_user(email = email, username = username, password=random_password)
 
             resident = form.save(commit=False)
             resident.image.name = filename+".jpg"
             resident.user = user
             resident.save()
+
+            subject = 'Welcome to Barangay Masili'
+            message = f'Heres your %0A Username: {user.username} %0A Password: {user.password}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [user.email, ]
+            send_mail( subject, message, email_from, recipient_list )
 
             return redirect('resident_list')
 
