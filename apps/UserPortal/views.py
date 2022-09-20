@@ -7,3 +7,6 @@ def index(request):
 
 def about(request):
     return render(request, "UsersideTemplate/about.html")
+
+def ServicesPortal(request):
+    return render(request, "UsersideTemplate/service_portal.html")
