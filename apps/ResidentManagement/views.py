@@ -1,3 +1,4 @@
+from audioop import reverse
 import email
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
@@ -10,19 +11,33 @@ from django.db.models import Q
 from playsound import playsound
 from django.contrib.auth.models import User
 import os
-
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.contrib import messages
+from django.urls import reverse
+from django.views.decorators.cache import cache_control
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
 sound_folder = os.path.join(current_path, 'sound/')
 face_list_file = os.path.join(current_path, 'face_list.txt')
 sound = os.path.join(sound_folder, 'beep.wav')
 
-
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="adminLogin")
 def resident_list(request):
-    context = {'resident_list' : User.objects.filter(is_superuser=0)}
-    return render(request, "ResidentManagement/residents_list.html", context)
+    if request.user.is_authenticated:
+        context = {'resident_list' : User.objects.filter(is_superuser=0)}
+        return render(request, "ResidentManagement/residents_list.html", context)
+    else:
+        return redirect('adminLogin')
 
+def adminLogout(request):
+    logout(request)
+    messages.add_message(request, messages.SUCCESS, 'Succefull logout')
+    return redirect(reverse('adminLogin'))
+# def adminLogout(request):
+#     del request.session['adminLogin']
+#     return redirect('adminLogin')
 
 def ajax(request):
     last_face = LastFace.objects.last()
@@ -124,7 +139,7 @@ def scan(request):
 #     }
 #     return render(request, 'core/profiles.html', context)
 
-
+@login_required(login_url="adminLogin")
 def details(request):
     try:
         last_face = LastFace.objects.last()
@@ -139,7 +154,7 @@ def details(request):
     }
     return render(request, 'ResidentManagement/details.html', context)
 
-
+@login_required(login_url="adminLogin")
 def add_profile(request):
     form = ProfileForm
     accountForm = UserAccountForm
@@ -172,7 +187,7 @@ def add_profile(request):
     context={'form':form, 'userform':accountForm}
     return render(request,'ResidentManagement/add_resident.html',context)
 
-
+@login_required(login_url="adminLogin")
 def edit_profile(request, id):
     profile = ResidentsInfo.objects.get(user=id)
     form = ProfileForm(instance=profile)
@@ -196,7 +211,7 @@ def edit_profile(request, id):
     context={'form':form, 'prev_img':profile.image}
     return render(request,'ResidentManagement/edit_resident.html',context)
 
-
+@login_required(login_url="adminLogin")
 def delete_profile(request,id):
     profile = User.objects.get(id=id)
     if len(profile.residentsinfo.image) > 0:

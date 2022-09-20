@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.ResidentManagement',
     'apps.UserPortal',
+    'apps.AdminLogin',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +70,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_masili',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'petermamaril',
         'HOST': 'localhost'
     }
 }
@@ -122,3 +123,4 @@ STATICFILES_DIRS = (
   
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL ='/media/'
+

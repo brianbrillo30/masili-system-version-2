@@ -2,8 +2,11 @@ from django.urls import path,include
 from .views import *
 
 
+
+
 urlpatterns = [
     path('resident/', resident_list, name= 'resident_list'),
+    path('Admin Logout/', adminLogout, name='adminLogout'),
     path('ajax/', ajax, name= 'ajax'),
     path('scan/',scan,name='scan'),
     # path('profiles/', profiles, name= 'profiles'),
