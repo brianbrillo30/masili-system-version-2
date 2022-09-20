@@ -1,6 +1,7 @@
 from audioop import reverse
 import email
 from django.shortcuts import render, HttpResponse, redirect
+from .decorators import admin_only
 from .models import *
 from .forms import *
 import face_recognition
@@ -16,6 +17,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.urls import reverse
 from django.views.decorators.cache import cache_control
+
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
 sound_folder = os.path.join(current_path, 'sound/')
@@ -24,6 +26,7 @@ sound = os.path.join(sound_folder, 'beep.wav')
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="adminLogin")
+@admin_only
 def resident_list(request):
     if request.user.is_authenticated:
         context = {'resident_list' : User.objects.filter(is_superuser=0)}

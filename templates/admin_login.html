@@ -62,7 +62,7 @@
                                 <p style="color: red">{{ message }}</p>
                                 {% endfor %}
                                 <br>
-                
+                                {% csrf_token %}
                                 <input type="submit" name="btnLogin" class="btn-theme -btn2 col-12 col-md-5" value="Log In">
                                 <br>
                                 <br>
