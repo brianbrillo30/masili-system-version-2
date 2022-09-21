@@ -1,5 +1,6 @@
 from audioop import reverse
 import email
+from tokenize import group
 from django.shortcuts import render, HttpResponse, redirect
 from .decorators import admin_only
 from .models import *
@@ -10,7 +11,7 @@ import numpy as np
 import winsound
 from django.db.models import Q
 from playsound import playsound
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -180,17 +181,19 @@ def add_profile(request):
             username = lastname+randomNum
 
             user = User.objects.create_user(email = email, username = username, password=random_password)
+            group = Group.objects.get(name='resident')
+            user.groups.add(group)
+            
+            subject = 'Welcome to Barangay Masili'
+            message = f'Heres your\nUsername: {user.username}\nPassword: {random_password}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [user.email]
+            send_mail( subject, message, email_from, recipient_list )
 
             resident = form.save(commit=False)
             resident.image.name = filename+".jpg"
             resident.user = user
             resident.save()
-
-            subject = 'Welcome to Barangay Masili'
-            message = f'Heres your %0A Username: {user.username} %0A Password: {user.password}'
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [user.email, ]
-            send_mail( subject, message, email_from, recipient_list )
 
             return redirect('resident_list')
 

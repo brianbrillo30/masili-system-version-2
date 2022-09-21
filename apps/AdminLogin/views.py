@@ -27,6 +27,7 @@ def adminLogin(request):
         return redirect(reverse('resident_list'))
 
     return render(request, "admin_login.html")
+    
 # def adminLogin(request):
     
 #     if request.method == 'POST':

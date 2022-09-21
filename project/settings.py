@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.UserPortal.context_processors.add_variable_to_context',
             ],
         },
     },
@@ -70,7 +71,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_masili',
         'USER': 'postgres',
-        'PASSWORD': 'petermamaril',
+        'PASSWORD': 'admin',
         'HOST': 'localhost'
     }
 }
@@ -126,7 +127,7 @@ MEDIA_URL ='/media/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'barangaymasili@gmail.com'

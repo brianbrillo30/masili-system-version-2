@@ -47,7 +47,7 @@
           <a type="button" class="btn-theme -btn1" href="{% url 'service_portal' %}">Services Portal</a>
         </li>
 
-        <a class="nav-link active" aria-current="page" href="{% url 'userLogout' %}">Logout</a>
+        
 
       </ul>
     </div>
@@ -59,15 +59,18 @@
         <div class="sidebar" id="side_nav" style="background-color: #355389;">
             <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
 
+
+              <div class="container">
                 <div class="row">
-                    <div class="col-2">
-                        <div><img class="rounded-circle" src="{%static 'img/default_profile_pic.jpg' %}" height="50"></div>
-                    </div>
-                    <div class="col-10 px-4 pt-1">
-                        <div class=""><h5 class="" style="color: #ffff;">Firstname Lastname</h5></div>
-                        <div class="" style="margin-top: -15px;"><p class="text-white"><small>Resident</small></p></div>
-                    </div>
+                  <div class="col-2">
+                    <img class="rounded-circle" src="media/{{userinfo.residentsinfo.image}}" height="50">
+                  </div>
+                  <div class="col-10 pt-2 ps-3">
+                    <div class=""><h5 class="" style="color: #ffff;"> {{userinfo.residentsinfo.firstname}} {{userinfo.residentsinfo.lastname}}</h5></div>
+                    <div class="" style="margin-top: -15px;"><p class="text-white"><small>Resident</small></p></div>
+                  </div>
                 </div>
+              </div>
 
                 <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="las la-bars fs-5"></i></button>
 
@@ -78,6 +81,12 @@
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-barcode fs-5"></i> Document Status</a></li>
             </ul>
             <hr class="h-color mx-3">
+
+            <ul class="list-unstyled px-2" >
+              <li class="" >
+                <a href="{% url 'userLogout' %}" class="text-decoration-none px-3 py-2 d-block" ><i class="las la-sign-out-alt fs-4" style="vertical-align: middle;"></i> Logout</a></li>
+              
+            </ul>
         </div>
 
         <div class="content">
