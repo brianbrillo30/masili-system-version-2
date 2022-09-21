@@ -146,6 +146,7 @@ def scan(request):
 #     return render(request, 'core/profiles.html', context)
 
 @login_required(login_url="adminLogin")
+@admin_only
 def details(request):
     try:
         last_face = LastFace.objects.last()
@@ -160,25 +161,30 @@ def details(request):
     }
     return render(request, 'ResidentManagement/details.html', context)
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="adminLogin")
+@admin_only
 def add_profile(request):
-    form = ProfileForm
-    accountForm = UserAccountForm
+    if request.user.is_authenticated:
+        form = ProfileForm
+        accountForm = UserAccountForm
 
-    if request.method == 'POST':
-        form = ProfileForm(request.POST,request.FILES)
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        accountForm = UserAccountForm(request.POST)
-        email = request.POST.get('email')
+        if request.method == 'POST':
+            form = ProfileForm(request.POST,request.FILES)
+            firstname = request.POST.get('firstname')
+            lastname = request.POST.get('lastname')
+            accountForm = UserAccountForm(request.POST)
+            email = request.POST.get('email')
 
-        filename = firstname+" "+lastname
+            filename = firstname+" "+lastname
 
-        if form.is_valid() and accountForm.is_valid():
+            if form.is_valid() and accountForm.is_valid():
 
-            randomNum = User.objects.make_random_password(length=2, allowed_chars="01234567889")
-            random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
-            username = lastname+randomNum
+                randomNum = User.objects.make_random_password(length=2, allowed_chars="01234567889")
+                random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
+                username = lastname+randomNum
+
+                user = User.objects.create(email = email, username = username, password=random_password)
 
             user = User.objects.create_user(email = email, username = username, password=random_password)
             group = Group.objects.get(name='resident')
@@ -197,34 +203,44 @@ def add_profile(request):
 
             return redirect('resident_list')
 
-    context={'form':form, 'userform':accountForm}
-    return render(request,'ResidentManagement/add_resident.html',context)
+        context={'form':form, 'userform':accountForm}
+        return render(request,'ResidentManagement/add_resident.html',context)
 
+    else:
+        return redirect('adminLogin')
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="adminLogin")
+@admin_only
 def edit_profile(request, id):
-    profile = ResidentsInfo.objects.get(user=id)
-    form = ProfileForm(instance=profile)
+    if request.user.is_authenticated:
+        profile = ResidentsInfo.objects.get(user=id)
+        form = ProfileForm(instance=profile)
 
-    if request.method == 'POST':
-        form = ProfileForm(request.POST,request.FILES,instance=profile)
-        img = request.POST.get('image')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        filename = firstname+" "+lastname
+        if request.method == 'POST':
+            form = ProfileForm(request.POST,request.FILES,instance=profile)
+            img = request.POST.get('image')
+            firstname = request.POST.get('firstname')
+            lastname = request.POST.get('lastname')
+            filename = firstname+" "+lastname
 
-        if form.is_valid():
-            if img == None:
-                userupdate = form.save(commit=False)
-                userupdate.image.name = filename+".jpg"
-                userupdate.save()
-            
-            form.save()
-            
-            return redirect('resident_list')
-    context={'form':form, 'prev_img':profile.image}
-    return render(request,'ResidentManagement/edit_resident.html',context)
+            if form.is_valid():
+                if img == None:
+                    userupdate = form.save(commit=False)
+                    userupdate.image.name = filename+".jpg"
+                    userupdate.save()
+                
+                form.save()
+                
+                return redirect('resident_list')
+        context={'form':form, 'prev_img':profile.image}
+        return render(request,'ResidentManagement/edit_resident.html',context)
+    
+    else:
+        return redirect('adminLogin')
 
 @login_required(login_url="adminLogin")
+@admin_only
 def delete_profile(request,id):
     profile = User.objects.get(id=id)
     if len(profile.residentsinfo.image) > 0:

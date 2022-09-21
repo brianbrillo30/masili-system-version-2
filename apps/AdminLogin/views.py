@@ -4,12 +4,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.db.models import Count
 from django.contrib import messages
+<<<<<<< HEAD
+from .decorators import unauthenticated_user, admin_only
+=======
 from .decorators import unauthenticated_user
 
+>>>>>>> c8e1884ff511babedb562ee10f11eb97c911d8c8
 # Create your views here.
 
 
 @unauthenticated_user
+#@admin_only
 def adminLogin(request):
    
     if request.method == 'POST':

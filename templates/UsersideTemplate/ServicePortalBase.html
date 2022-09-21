@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="" style="font-weight: 600; color:black">About</a>
+          <a class="nav-link" href="{% url 'about' %}" style="font-weight: 600; color:black">About</a>
         </li>
 
         <li class="nav-item">
@@ -47,6 +47,9 @@
           <a type="button" class="btn-theme -btn1" href="{% url 'service_portal' %}">Services Portal</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'userLogout' %}" style="font-weight: 600; color:black">Logout</a>
+        </li>
         
 
       </ul>
