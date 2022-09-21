@@ -11,72 +11,83 @@
 </head>
 
 <body class="bg-white">
+    <div class="container-fluid vertical-center">
+        <div class="row">
+            <div class="col-lg-12 position-relative">
+                <div class="position-absolute top-0 start-0"><button type="button" class="btn btn-link">Link</button></div>
+            </div>
 
-    <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row">
-    
-                <div class="col-sm-6 col-md-6 col-lg-7 px-0 d-none d-sm-block d-m-block">
+            <div class="col-lg-6 col-md-6 col-12 my-auto">
+                <div class="row">
+                    
+                    <div class="col-lg-6 d-none d-md-none d-lg-block">
+                        <div><img src="{% static 'img/bg_user_login.jpg'%}" class="img-fluid"></div>
+                        <div><a class="link-freepick" href="http://www.freepik.com">Designed by vectorjuice / Freepik</a></div>
+                    </div>
+                    <div class="col-lg-6 my-auto pt-2">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-3">
+                                <div ><img src="{% static 'img/masili-logo.svg'%}" class="img-fluid"></div>
+                            </div>
+                
+                            <div class="col-lg-9 col-md-9 col-9">
+                                <h1 >BARANGAY <br>MASILI PORTAL</h1>
+                            </div>
+                
+                            <div class="col-lg-12 pt-5 p-4">
+                                <h5>Paalala</h5>
+                                <p>Maari pong pumunta sa opisina ng Barangay Masili upang magkaroon ng account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <form class="needs-validation"  method="POST">
+                    {% csrf_token %}
                     <div class="row background-image" 
-                        style="background-image:url(/media/bg_admin_login@2x.jpg); background-repeat: no-repeat !important; background-size: cover !important; background-position: center; height: 100vh;">
-
-                        <div class="col-12 ps-5 pt-3">
-                                <img src="/media/masili-logo.svg/" class="pe-4" style="width: 100px;">
-                                <img src="/media/Calamba,_Laguna_Seal.svg.png" class="pe-4" style="width: 100px;">
-                                <div><p class="display-6 pt-5" style="font-weight: 400;">WELCOME TO</p></div>
-                                <div><h1 class="display-2" style="font-weight: 700; color: #355389; margin-top: -20px;">DOCUMENT <br>REQUISITION SYSTEM</h1></div>
-                                <p class="lead" style="font-weight: 500; color: #355389;">SANGGUNIANG BARANGAY NG MASILI</p>
-                        </div>
-
-                        <div class="col-lg-12 fixed-bottom">
-                            <a class="" href="https://www.freepik.com/free-vector/early-morning-scenery-seascape-lonely-wooden-boat_17676504.htm#query=sunset%20lake%20vector&position=0&from_view=search">Image by upklyak</a> on Freepik
-                        </div>
-
-                    </div>
-                </div>
-    
-                <div class="col-sm-6 col-md-6 col-lg-5 align-self-center p-5">
-                    <div class="row">
-                        
-                        <p class="fs-4"><b>LOGIN</b></p>
-                        
-                        <div class="col-lg-8">
-                            <form class="needs-validation"  method="POST">
-                                {% csrf_token %}
-                                <br>
-                                <div class="form-outline">
-                                    <label class="form-label">Username</label>
-                                    <input type="name" class="form-control" name="username" placeholder="Enter username" required>
-                                    
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                                    
-                                </div>
-                               
-                                <br>
-                                {% for message in messages %}
-                                <p style="color: red">{{ message }}</p>
-                                {% endfor %}
-                                <br>
+                            style="background-image:url(/media/bg_admin_login@2x.jpg); background-repeat: no-repeat !important; background-size: cover !important; background-position: center; height: 100vh;">
+                        <div class="col-lg-6 col-md-12 my-auto">
+                            <div class="card">
+                                <div class="card-body bg-white">
+                                    <br>
+                                    <h4>Login</h4>
+                                    <div class="form-outline">
+                                        
+                                        <label class="form-label">Username</label>
+                                        <input type="name" class="form-control" name="username" placeholder="Enter username" required>
+                                        
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                        
+                                    </div>
+                                    {% for message in messages %}
+                                    <p style="color: red">{{ message }}</p>
+                                    {% endfor %}
+                                    <br>
                 
-                                <input type="submit" name="btnLogin" class="btn-theme -btn2 col-12 col-md-5" value="Log In">
-                                <br>
-                                <br>
-                            </form>
-                            
+                                    <input type="submit" name="btnLogin" class="btn-theme -btn2 col-12 col-md-5" value="Log In">
+                                    <br>
+                                    <br>
+                                    <p class="h6">Forgot Password? <a href="create_account" class="text-decoration-none">Click Here</a></p>
+                                </div>
+                            </div>  
                         </div>
-                        <p class="h6">Forgot Password? <a href="create_account" class="text-decoration-none">Create an account</a></p>
-    
                     </div>
+
+                </form>
+                <div class="col-lg-12 position-relative">
+                    <div class="position-absolute bottom-0 end-0 sticky-bottom"><a class="" href="https://www.freepik.com/free-vector/early-morning-scenery-seascape-lonely-wooden-boat_17676504.htm#query=sunset%20lake%20vector&position=0&from_view=search">Image by upklyak</a> on Freepik</div>
                 </div>
-                
             </div>
         </div>
-    </section>
+    </div>
 
 
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
