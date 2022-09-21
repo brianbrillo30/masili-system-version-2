@@ -1,3 +1,4 @@
+from atexit import register
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate
@@ -10,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 # from django.contrib.auth import logout, login, authenticate
 # from django.contrib import messages
 # from .decorators import unauthenticated_user
+
 # Create your views here.
 
 #@user_only
@@ -91,7 +93,6 @@ def userLogout(request):
 
 #         return redirect(reverse('service_portal'))
 
-#     return render(request, "UsersideTemplate/login.html")
+def about(request):
+    return render(request, "UsersideTemplate/about.html")
 
-# def services(request):
-#     return render(request, "UsersideTemplate/services.html")

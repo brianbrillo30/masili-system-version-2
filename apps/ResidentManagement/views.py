@@ -1,5 +1,6 @@
 from audioop import reverse
 import email
+from tokenize import group
 from django.shortcuts import render, HttpResponse, redirect
 from .decorators import admin_only
 from .models import *
@@ -10,13 +11,15 @@ import numpy as np
 import winsound
 from django.db.models import Q
 from playsound import playsound
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.urls import reverse
 from django.views.decorators.cache import cache_control
+from django.conf import settings
+from django.core.mail import send_mail
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -183,13 +186,22 @@ def add_profile(request):
 
                 user = User.objects.create(email = email, username = username, password=random_password)
 
+            user = User.objects.create_user(email = email, username = username, password=random_password)
+            group = Group.objects.get(name='resident')
+            user.groups.add(group)
+            
+            subject = 'Welcome to Barangay Masili'
+            message = f'Heres your\nUsername: {user.username}\nPassword: {random_password}'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [user.email]
+            send_mail( subject, message, email_from, recipient_list )
 
-                resident = form.save(commit=False)
-                resident.image.name = filename+".jpg"
-                resident.user = user
-                resident.save()
+            resident = form.save(commit=False)
+            resident.image.name = filename+".jpg"
+            resident.user = user
+            resident.save()
 
-                return redirect('resident_list')
+            return redirect('resident_list')
 
         context={'form':form, 'userform':accountForm}
         return render(request,'ResidentManagement/add_resident.html',context)
