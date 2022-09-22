@@ -13,7 +13,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = ResidentsInfo
         fields = ('image', 'firstname','middlename','lastname','suffix','sex','phone','birthdate','birthplace','civil_status',
-        'citizenship','purok','address','occupation','educ_attainment','single_parent','status')
+        'citizenship','purok','address','occupation','educ_attainment','single_parent','status','years_resided')
 
 
 
@@ -47,6 +47,8 @@ class ProfileForm(forms.ModelForm):
             'educ_attainment' : forms.Select(attrs={'class':'form-select form-select-sm'}),
             'single_parent' : forms.Select(choices=singParentChoices,attrs={'class':'form-select form-select-sm'}),
             'status' : forms.Select(attrs={'class':'form-select form-select-sm'}),
+
+            'years_resided' : forms.Select(attrs={'class':'form-select form-select-sm', 'id':'date-dropdown'}),
         }
         
     def __init__(self, *args, **kwagrs):

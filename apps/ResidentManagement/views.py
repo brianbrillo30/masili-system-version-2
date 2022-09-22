@@ -184,24 +184,22 @@ def add_profile(request):
                 random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
                 username = lastname+randomNum
 
-                user = User.objects.create(email = email, username = username, password=random_password)
+                user = User.objects.create_user(email = email, username = username, password=random_password)
+                group = Group.objects.get(name='resident')
+                user.groups.add(group)
+                
+                subject = 'Welcome to Barangay Masili'
+                message = f'Heres your\nUsername: {user.username}\nPassword: {random_password}'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [user.email]
+                send_mail( subject, message, email_from, recipient_list )
 
-            user = User.objects.create_user(email = email, username = username, password=random_password)
-            group = Group.objects.get(name='resident')
-            user.groups.add(group)
-            
-            subject = 'Welcome to Barangay Masili'
-            message = f'Heres your\nUsername: {user.username}\nPassword: {random_password}'
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [user.email]
-            send_mail( subject, message, email_from, recipient_list )
+                resident = form.save(commit=False)
+                resident.image.name = filename+".jpg"
+                resident.user = user
+                resident.save()
 
-            resident = form.save(commit=False)
-            resident.image.name = filename+".jpg"
-            resident.user = user
-            resident.save()
-
-            return redirect('resident_list')
+                return redirect('resident_list')
 
         context={'form':form, 'userform':accountForm}
         return render(request,'ResidentManagement/add_resident.html',context)

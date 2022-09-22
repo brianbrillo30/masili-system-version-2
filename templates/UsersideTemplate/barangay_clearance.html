@@ -1,0 +1,49 @@
+{% extends "UsersideTemplate/ServicePortalBase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container bg-white rounded shadow p-5">
+<form action="." method="POST">
+{% csrf_token %}
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center" style="color: #355389;">
+            <h3>BARANGAY CLEARANCE</h3>
+        </div>
+        <div class="col-12 d-flex justify-content-center pb-4">
+            <p>Fill-up the form and submit</p>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 col-12">
+            <img src="/media/{{userinfo.residentsinfo.image}}" class="img-thumbnail" width="150">
+        </div>
+
+        <div class="col-lg-10 col-md-8 col-12">
+            <div><h5>Name: {{userinfo.residentsinfo.firstname}} {{userinfo.residentsinfo.middlename|slice:"0:1"}}. {{userinfo.residentsinfo.lastname}}</h5></div>
+            <div><h5>Birthdate: {{userinfo.residentsinfo.birthdate}}</h5></div>
+            <div><h5>Birthplace: {{userinfo.residentsinfo.birthplace}}</h5></div>
+            <div><h5>Civil Status: {{userinfo.residentsinfo.civil_status}}</h5></div>
+            <div><h5>Resided in Masili Since: {{userinfo.residentsinfo.years_resided}}</h5></div>
+        </div>
+
+        <hr>
+
+            <div class="col-12 col-lg-2 pb-3">
+                <p class="h6">Enter your age</p>
+                {{form.age}}
+            </div>
+
+            <div class="col-12 col-lg-10">
+                <p class="h6">Purpose of getting barangay clearance</p>
+                {{form.purpose}}
+            </div>
+
+            <div class="col-12 pt-5">
+                <input type="submit" name="btnLogin" class="btn-theme -btn2 float-end" value="Submit">
+            </div>
+    </div>
+</form>
+</div>
+<br>
+<br>
+<br>
+{% endblock content %}

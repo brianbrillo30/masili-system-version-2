@@ -60,6 +60,8 @@ class ResidentsInfo(models.Model):
     single_parent = models.CharField (max_length=10)
     status = models.ForeignKey (Status, on_delete=models.CASCADE)
 
+    years_resided = models.CharField(max_length=70, null=True)
+    
     image = models.ImageField()
     updated = models.DateTimeField(auto_now=True)
     def __str__(self):

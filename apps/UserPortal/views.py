@@ -6,11 +6,8 @@ from django.contrib import messages
 from .decorators import unauthenticated_user, user_only
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
-# from django.shortcuts import render, redirect
-# from django.urls import reverse
-# from django.contrib.auth import logout, login, authenticate
-# from django.contrib import messages
-# from .decorators import unauthenticated_user
+from .forms import *
+from .models import *
 
 # Create your views here.
 
@@ -60,39 +57,22 @@ def userLogout(request):
      return redirect(reverse('home'))
 
 
-
-
-#     return render(request, "UsersideTemplate/login.html")
-# def index(request):
-#     return render(request, "UsersideTemplate/index.html")
-
-# def about(request):
-#     return render(request, "UsersideTemplate/about.html")
-
-# def ServicesPortal(request):
-#     return render(request, "UsersideTemplate/service_portal.html")
-
-# def userLogout(request):
-#     logout(request)
-#     return redirect(reverse('index'))
-
-# @unauthenticated_user
-# def userLogin(request):
-
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-            
-#         resident = authenticate(request, username = username, password = password )
-
-#         if not resident:
-#             messages.add_message(request, messages.ERROR, 'Invalid username or password !')
-#             return render(request, "UsersideTemplate/login.html")
-
-#         login(request, resident)
-
-#         return redirect(reverse('service_portal'))
-
 def about(request):
     return render(request, "UsersideTemplate/about.html")
+
+def barangay_clearance(request):
+
+    form = CleranceForm
+    userid = request.user.residentsinfo
+    if request.method == 'POST':
+        form = CleranceForm(request.POST)
+        if form.is_valid():
+            
+            instance = form.save(commit=False)
+            instance.res_id = userid
+            instance.save()
+            return redirect('service_portal')
+
+    context={'form':form} 
+    return render(request, "UsersideTemplate/barangay_clearance.html", context)
 
