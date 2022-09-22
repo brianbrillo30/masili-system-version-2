@@ -12,3 +12,16 @@ class CleranceForm(forms.ModelForm):
             'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'purpose'}),
             
         }
+
+
+class IndigencyForm(forms.ModelForm):
+    class Meta:
+        model = CertificateOfIndigency
+        fields = ('age', 'purpose')
+
+        widgets = {
+
+            'age' : forms.NumberInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Age'}),
+            'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'purpose'}),
+            
+        }
