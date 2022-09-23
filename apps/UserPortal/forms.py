@@ -58,4 +58,12 @@ class BusinessPermitForm(forms.ModelForm):
             'gross_sales' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
             
         }
+
+class ResidencyCertificateForm(forms.ModelForm):
+    class Meta:
+        model = ResidencyCertificate
+        fields = ('purpose',)
         
+        widgets = {
+            'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+        }

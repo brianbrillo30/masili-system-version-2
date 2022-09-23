@@ -79,5 +79,11 @@ class BusinessPermit(models.Model):
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
 
-
+class ResidencyCertificate (models.Model):
+    res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
+    transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+    date_requested = models.DateField(auto_now=True)
+    date_released = models.DateField(null=True)
+    purpose = models.CharField(max_length=255)
+    status = models.ForeignKey(DocumentStatus, on_delete=models.CASCADE, default=1)
 

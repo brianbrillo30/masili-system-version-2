@@ -122,4 +122,14 @@ def BusinessPermit(request):
 
 
 def ResidencyCertificate(request):
-    return render(request, 'UsersideTemplate/residency_certificate.html')
+    form = ResidencyCertificateForm
+    userid = request.user.residentsinfo
+    if request.method == 'POST':
+        form = ResidencyCertificateForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.res_id = userid
+            instance.save()
+            return redirect('service_portal')
+    context={'form':form}
+    return render(request, 'UsersideTemplate/residency_certificate.html', context)
