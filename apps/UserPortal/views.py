@@ -119,3 +119,7 @@ def BusinessPermit(request):
             return redirect('service_portal')
     context={'form':form}
     return render(request, "UsersideTemplate/business_permit.html", context)
+
+
+def ResidencyCertificate(request):
+    return render(request, 'UsersideTemplate/residency_certificate.html')
