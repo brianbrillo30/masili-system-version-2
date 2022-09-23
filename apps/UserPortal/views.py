@@ -107,4 +107,15 @@ def BuildingPermit(request):
     return render(request, "UsersideTemplate/building_permit.html", context)
 
 def BusinessPermit(request):
-     return render(request, "UsersideTemplate/business_permit.html")
+
+    form = BusinessPermitForm
+    userid = request.user.residentsinfo
+    if request.method == 'POST':
+        form = BusinessPermitForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.res_id = userid
+            instance.save()
+            return redirect('service_portal')
+    context={'form':form}
+    return render(request, "UsersideTemplate/business_permit.html", context)
