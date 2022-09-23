@@ -1,0 +1,56 @@
+{% extends "UsersideTemplate/ServicePortalBase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container bg-white rounded shadow p-5">
+<form action="." method="POST">
+{% csrf_token %}
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center" style="color: #355389;">
+            <h3>BARANGAY BUILDING PERMIT</h3>
+        </div>
+        <div class="col-12 d-flex justify-content-center pb-4">
+            <p>Fill-up the form and submit</p>
+        </div>
+        
+        <div class="col-lg-6 py-3">
+            <p class="h6">PROPOSED CONSTRUCTION OF:</p>
+            {{form.proposed_construction}}
+        </div>
+
+        <div class="col-lg-6 py-3">
+            <p class="h6">WITH TOTAL AREA OF:</p>
+            {{form.total_area}}
+        </div>
+
+        <div class="col-lg-6 py-3">
+            <p class="h6">EDTIMATED COST:</p>
+            {{form.estimated_cost}}
+        </div>
+
+        <div class="col-lg-6 py-3">
+            <p class="h6">LOCATED AT:</p>
+            {{form.location}}
+        </div>
+
+        <div class="col-lg-6 py-3">
+            <p class="h6">NAME OF OWNER:</p>
+            {{form.owner}}
+        </div>
+
+        <div class="col-lg-6 py-3">
+            <p class="h6">NAME OF CONTRACTOR:</p>
+            {{form.contractor}}
+        </div>
+
+        <div class="col-lg-12 py-5">
+            <input type="submit" class="btn-theme -btn2 float-end col-12 col-lg-4" value="Submit">
+        </div>
+
+    </div>
+</form>
+</div>
+<br>
+<br>
+<br>
+{% endblock content %}

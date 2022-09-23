@@ -6,3 +6,6 @@ from .models import *
 
 admin.site.register(DocumentStatus)
 admin.site.register(clearance)
+admin.site.register(CertificateOfIndigency)
+admin.site.register(BuildingPermit)
+admin.site.register(BusinessPermit)

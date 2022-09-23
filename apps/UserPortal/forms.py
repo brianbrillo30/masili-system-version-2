@@ -25,3 +25,37 @@ class IndigencyForm(forms.ModelForm):
             'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'purpose'}),
             
         }
+
+class BuildingPermitForm(forms.ModelForm):
+    class Meta:
+        model = BuildingPermit
+        fields = ('proposed_construction', 'total_area', 'estimated_cost', 'location', 'owner', 'contractor')
+
+        widgets = {
+
+            'proposed_construction' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'total_area' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'estimated_cost' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'location' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'owner' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'contractor' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            
+        }
+
+class BusinessPermitForm(forms.ModelForm):
+    class Meta:
+        model = BusinessPermit
+        fields = ('business_name', 'location', 'business_nature', 'owner', 'residece_certificate_no', 'capital_investment', 'gross_sales')
+
+        widgets = {
+
+            'business_name' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'location' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'business_nature' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'owner' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'residece_certificate_no' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'capital_investment' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'gross_sales' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            
+        }
+        
