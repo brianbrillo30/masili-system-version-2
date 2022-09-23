@@ -5,8 +5,7 @@ body{
 }
 
 #side_nav{
-    background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgba(0,0,0,1) 61%, rgba(31,47,93,1) 100%, rgba(53,83,137,1) 100%);
+    background: #000;
     min-width: 320px;
     max-width: 320px;
     transition: all 0.3s ;
