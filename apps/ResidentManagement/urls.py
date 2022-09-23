@@ -15,6 +15,7 @@ urlpatterns = [
     path('add_profile/',add_profile,name='add_profile'),
     path('edit_profile/<int:id>/',edit_profile,name='edit_profile'),
     path('delete_profile/<int:id>/',delete_profile,name='delete_profile'),
+    path('clearance/',clearance,name='clearance'),
 
 
     # path('clear_history/',clear_history,name='clear_history'),
