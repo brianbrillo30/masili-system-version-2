@@ -2,7 +2,7 @@ from audioop import reverse
 import email
 from tokenize import group
 from urllib import request
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .decorators import admin_only
 from .models import *
 from .forms import *
@@ -21,7 +21,7 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clerance_list
+
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -266,6 +266,5 @@ def delete_profile(request,id):
 #     return redirect('index')
 
 
-def clearance(request):
-    context = {'clearance_list' :  clerance_list.objects.all()}
-    return render(request, 'ResidentManagement/clearance_table.html', context)
+
+    

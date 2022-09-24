@@ -10,8 +10,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
+    
 
     <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
+
 
 
 
@@ -39,7 +41,7 @@
 
             <ul class="list-unstyled px-2">
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
-                <li class="active"><a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-address-card"></i> Residents</a></li>
+                <li class=""><a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-address-card"></i> Residents</a></li>
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-bullhorn fs-5"></i> Announcements</a></li>
                 <hr class="h-color mx-3">
                 <li class=""><a href="{% url 'clearance'%}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Barangay Clearance</a></li>
@@ -87,6 +89,15 @@
         </div>
     </div>
 
+
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
+<script src="{% static 'bootstrap/js/bootstrap-datepicker.min.js' %}" ></script>
+<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>
+<script src="{% static 'bootstrap/js/img-preview.js' %}" ></script>
+
+<script src="{% static 'bootstrap/js/htmx.min.js' %}" ></script>
+<script src="{% static 'bootstrap/js/dialog.js' %}" ></script>
+
 <script>
     $(function(){
         $('.sidebar ul li a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active');
@@ -102,17 +113,6 @@
     $('.close-btn').on('click' , function(){
         $('.sidebar').removeClass('active');
     });
-</script>
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
-<script src="{% static 'bootstrap/js/bootstrap-datepicker.min.js' %}" ></script>
-<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>
-<script src="{% static 'bootstrap/js/img-preview.js' %}" ></script>
-<!-- <script>
-    $('.sidebar ul a').click(function(){
-    $('.sidebar .active').removeClass('active');
-    $(this).parent().addClass('active');
-});
-</script> -->
-    
+</script> 
 </body>
 </html>

@@ -14,6 +14,7 @@ urlpatterns = [
     path ('BuildingPermit/', BuildingPermit, name='BuildingPermit'),
     path ('BusinessPermit/', BusinessPermit, name='BusinessPermit'),
     path ('ResidencyCertificate/', ResidencyCertificate, name='ResidencyCertificate'),
+    
 
     path('reset_password/', 
         auth_views.PasswordResetView.as_view(template_name="PasswordReset/password_reset.html"), 

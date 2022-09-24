@@ -2,15 +2,8 @@
 {% load static %}
 {% block content %}
 
-<style>
-    .modal-dialog {
-        min-width: auto;
-        max-width: 100%;
-        padding-left: 10%;
-        padding-right: 10%;
 
-}
-</style>
+
 
 <div class="container-fluid bg-white rounded">
     <div class="row p-3 g-0">
@@ -48,6 +41,7 @@
         </div>
 
         <div class="col-lg-12">
+            <span class="visually-hidden text-center">Loading...</span>
             <table class="table table-striped">
                 <thead style="background-color: #355389; color: #fff;">
                     <tr>
@@ -59,19 +53,14 @@
                         <th scope="col " class="text-center">Action</th>
                     </tr>
                 </thead>
-                {% for clearance in clearance_list %}
-                <tbody>
-                    <tr>
-                        <td>{{ clearance.res_id }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                
+                <tbody hx-trigger="load, clearancelistUpdate from:body" hx-get="{% url 'clearance_list' %}" hx-target="this">
                 </tbody>
-                {% endfor %}
+               
             </table>
+            <div id="modal" class="modal fade">
+                <div id="dialog" class="modal-dialog" hx-target="this"></div>
+            </div>
         </div>
 
     </div>

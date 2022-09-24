@@ -1,0 +1,72 @@
+{% load static %}
+<form hx-post="{{ request.path }}" class="modal-content">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h5 class="modal-title">Edit Clearance</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 py-2">
+                <p class="h6">Resident Name</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id }}" disabled>
+            </div>
+
+            <div class="col-6 py-2">
+                <p class="h6">Birthdate</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id.birthdate }}" disabled>
+            </div>
+
+            <div class="col-6 py-2">
+                <p class="h6">Birthplace</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id.birthplace }}" disabled>
+            </div>
+
+            <div class="col-3 py-2">
+                <p class="h6">Civil Status</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id.civil_status }}" disabled>
+            </div>
+
+            <div class="col-3 py-2">
+                <p class="h6">From</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id.purok }}" disabled>
+            </div>
+
+            <div class="col-6 py-2">
+                <p class="h6">Resided in masili since</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id.years_resided }}" disabled>
+            </div>
+
+            <div class="col-6 py-2">
+                <p class="h6">Date Released</p>
+                <div class="input-group input-group-sm mb-3 date" id="datepicker">
+                    {{ form.date_released }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+          
+            <div class="col-6 py-2">
+                <p class="h6">Document Status</p>
+                {{ form.status }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Resident Age</p>
+                {{ form.age }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Purpose of getting clearance</p>
+                {{ form.purpose }}
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
+
+<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>

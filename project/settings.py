@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'apps.ResidentManagement',
     'apps.UserPortal',
     'apps.AdminLogin',
+    'apps.ClearanceManagement',
+    
 ]
 
 MIDDLEWARE = [

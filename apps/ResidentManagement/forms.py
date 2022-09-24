@@ -5,6 +5,7 @@ from .models import *
 
 from django.contrib.auth.models import User
 
+
 # class DateInput(forms.DateInput):
 #     input_type = 'date'
 # class TimeInput(forms.TimeInput):
@@ -68,3 +69,4 @@ class UserAccountForm (forms.ModelForm):
         widgets = {
             'email' : forms.EmailInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Email'}),
         }
+
