@@ -8,6 +8,8 @@ urlpatterns = [
     path('Masili/',include('apps.ResidentManagement.urls')),
     path('Masili/',include('apps.AdminLogin.urls')),
     path('Masili/',include('apps.ClearanceManagement.urls')),
+    path('Masili/',include('apps.IndigencyManagement.urls')),
+
     path('Barangay Masili/',include('apps.UserPortal.urls')),
 ]
 

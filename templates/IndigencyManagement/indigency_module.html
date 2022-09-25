@@ -1,22 +1,18 @@
 {% extends "../base.html" %}
 {% load static %}
 {% block content %}
-
-
-
-
 <div class="container-fluid bg-white rounded">
     <div class="row p-3 g-0">
 
         <div class="col-lg-6 col-md-4 col-12">
-            <h4 class="text-muted">Barangay Clearance</h4>
+            <h4 class="text-muted">Certificate of Indigency</h4>
         </div>
 
         <div class="col-lg-6 col-md-8 col-12">
             <div class="float-end">
                 <a type="button" class="btn bg-warning bg-gradient" href="">
                     <i class="las la-user-plus fs-4" style="vertical-align: middle;"></i>
-                    <span class="mt-5" style="vertical-align: middle;">Add Clearance</span>
+                    <span class="mt-5" style="vertical-align: middle;">Add Certificate</span>
                 </a>
                 &nbsp;
                 &nbsp;
@@ -55,7 +51,7 @@
                         </tr>
                     </thead>
                     
-                    <tbody hx-trigger="load, clearancelistUpdate from:body" hx-get="{% url 'clearance_list' %}" hx-target="this">
+                    <tbody>
                     <tr>
                         <td class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>

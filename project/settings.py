@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'apps.UserPortal',
     'apps.AdminLogin',
     'apps.ClearanceManagement',
+    'apps.IndigencyManagement',
     
 ]
 
