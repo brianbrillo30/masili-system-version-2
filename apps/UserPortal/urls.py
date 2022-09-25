@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from .views import *
-
+from .forms import UserPasswordResetForm
 
 urlpatterns = [
     path('Home/', home, name='home'),
@@ -17,7 +17,7 @@ urlpatterns = [
     
 
     path('reset_password/', 
-        auth_views.PasswordResetView.as_view(template_name="PasswordReset/password_reset.html"), 
+        auth_views.PasswordResetView.as_view(template_name="PasswordReset/password_reset.html", form_class=UserPasswordResetForm), 
         name="reset_password"),
 
     path('reset_password_sent/', 

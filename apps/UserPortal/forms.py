@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.contrib.auth.forms import PasswordResetForm
 
 class CleranceForm(forms.ModelForm):
     class Meta:
@@ -67,3 +68,15 @@ class ResidencyCertificateForm(forms.ModelForm):
         widgets = {
             'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
         }
+
+
+class UserPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(UserPasswordResetForm, self).__init__(*args, **kwargs)
+
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
+        'class': 'form-control ',
+        'placeholder': 'Input',
+        'type': 'email',
+        'name': 'email'
+        }))

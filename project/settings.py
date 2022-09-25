@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'apps.AdminLogin',
     'apps.ClearanceManagement',
     'apps.IndigencyManagement',
-    
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'barangaymasili@gmail.com'
 EMAIL_HOST_PASSWORD = 'mqlxjdpsgmirlnxz'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
