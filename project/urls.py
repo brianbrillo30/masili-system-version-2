@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Masili/',include('apps.ResidentManagement.urls')),
-    path('Masili/',include('apps.AdminLogin.urls')),
+    path('Masili/',include('apps.Login.urls')),
     path('Masili/',include('apps.ClearanceManagement.urls')),
     path('Masili/',include('apps.IndigencyManagement.urls')),
 

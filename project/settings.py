@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.ResidentManagement',
     'apps.UserPortal',
-    'apps.AdminLogin',
+    'apps.Login',
     'apps.ClearanceManagement',
     'apps.IndigencyManagement',
     'crispy_forms',
