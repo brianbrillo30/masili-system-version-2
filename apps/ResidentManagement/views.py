@@ -236,10 +236,13 @@ def edit_profile(request, id):
 @admin_only
 def delete_profile(request,id):
     profile = User.objects.get(id=id)
-    if len(profile.residentsinfo.image) > 0:
-        os.remove(profile.residentsinfo.image.path)
-    profile.delete()
-    return redirect('resident_list')
+    if request.method == 'POST':
+        if len(profile.residentsinfo.image) > 0:
+            os.remove(profile.residentsinfo.image.path)
+            profile.delete()
+            return redirect('resident_list')
+    return render(request, 'ResidentManagement/delete_resident.html')
+
 
 def view_profile (request, id):
     profile = User.objects.get(pk=id)
@@ -250,6 +253,34 @@ def view_profile (request, id):
 def profile_clearance(request, id):
     context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
     return render(request, 'ResidentManagement/clearance_list.html', context)
+
+def demographic(request):
+    cMale = ResidentsInfo.objects.filter(sex_id='1').count
+    cFemale = ResidentsInfo.objects.filter(sex_id='2').count
+
+    cMarried = ResidentsInfo.objects.filter(civil_status='1').count
+    cSingle = ResidentsInfo.objects.filter(civil_status='2').count
+    cDivorced = ResidentsInfo.objects.filter(civil_status='3').count
+    cWidowed = ResidentsInfo.objects.filter(civil_status='4').count
+
+    cYes = ResidentsInfo.objects.filter(single_parent='1').count
+    # cNo = ResidentsInfo.objects.filter(single_parent='2').count
+
+    # cNone = ResidentsInfo.objects.filter(status='1').count
+    cPwd = ResidentsInfo.objects.filter(status='2').count
+    cSenior = ResidentsInfo.objects.filter(status='3').count
+
+    cResident = ResidentsInfo.objects.all().count
+    
+
+    context = {'cResident': cResident,'cMale': cMale, 'cFemale': cFemale, 'cMarried': cMarried, 'cSingle': cSingle, 
+    'cDivorced': cDivorced, 'cWidowed': cWidowed, 'cYes': cYes, 'cPwd': cPwd, 'cSenior': cSenior}
+    
+    return render(request, 'ResidentManagement/demographic.html', context )
+
+
+def adminProfile(request):
+    return render(request, 'admin_profile.html')
 
 
 

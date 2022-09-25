@@ -96,7 +96,7 @@
                                     <i class="las la-pen fs-5" style="vertical-align: middle;"></i>
                                 </a>
     
-                                <form action="{% url 'delete_profile' resident.id %}" method="post" class="d-inline">
+                                <a href="{% url 'delete_profile' resident.id %}" method="post" class="d-inline">
                                     {% csrf_token %}
                                     <button href="" class="btn btn-danger bg-gradient">
                                         <i class="las la-trash-alt fs-5" style="vertical-align: middle;"></i>

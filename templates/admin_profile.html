@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto py-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1>My Details</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>User ID</th>
+                                <td>{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Username</th>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <th>Full Name</th>
+                                <td>{{user.first_name}} {{user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Last Login</th>
+                                <td>{{user.last_login}}</td>
+                            </tr>
+                            <tr>
+                                <th>Join Date</th>
+                                <td>{{user.date_joined}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#">Change Password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

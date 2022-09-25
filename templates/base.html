@@ -50,7 +50,8 @@
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="lar la-building fs-5"></i> Building Permit</a></li>
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-certificate fs-5"></i> Certificate of Residency</a></li>
                 <hr class="h-color mx-3">
-                <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user fs-5"></i> Profile </a></li>
+                <li class=""><a href="{% url 'demographic' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-bar"></i> Demographic </a></li>
+                <li class=""><a href="{% url 'adminProfile' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user fs-5"></i> Profile </a></li>
                 <hr class="h-color mx-3">
                 <li class=""><a href="#" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Reports </a></li>
             </ul>
@@ -71,7 +72,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Admin</a>
+                        <a class="nav-link active" aria-current="page" href="#">Welcome {{user.first_name}} {{user.last_name}}</a>
                         </li>
                         
                         <li class="nav-item">
