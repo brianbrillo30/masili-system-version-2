@@ -6,3 +6,4 @@ face-recognition-models==0.3.0
 playsound==1.2.2
 pytz==2020.4
 sqlparse==0.4.1
+pip install xhtml2pdf

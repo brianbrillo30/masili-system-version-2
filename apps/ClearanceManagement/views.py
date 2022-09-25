@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from apps.UserPortal.models import clearance as clerance_list
 from .forms import *
-
+from .utils import render_to_pdf
 # Create your views here.
 
 def clearance(request):
@@ -27,3 +27,17 @@ def edit_clearance(request, id):
 
     context = {'form':form, 'disabledform':clearance_id}
     return render(request, 'ClearanceManagement/clearance_form.html', context)
+
+def generate_clearance (requesr, id):
+    
+    template_name = "ClearanceManagement/clearance_pdf.html"
+    clearance = clerance_list.objects.get(pk=id)
+    
+    return render_to_pdf(
+        template_name,
+        {
+            "clearance": clearance,
+        },
+    )
+
+

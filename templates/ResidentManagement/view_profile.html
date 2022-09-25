@@ -1,8 +1,8 @@
 {% extends "../base.html" %}
 {% load static %}
 {% block content %}
-<div class="container-fluid bg-white rounded">
 
+<div class="container-fluid bg-white rounded">
     <div class="row p-2">
         <nav>
             <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
@@ -13,57 +13,59 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
                 <div class="row p-3">
-                    <div class="col-lg-3 pt-3 px-5">
-                        <img src="/media/{{profile.image}}" class="img-thumbnail" height="40">
+                    <div class="col-lg-3 col-md-5 pt-3 px-5">
+                        <img src="/media/{{profile.residentsinfo.image}}" class="img-thumbnail" height="40">
                     </div>
 
-                    <div class="col-lg-6 pt-5">
-                        <p class="h4">Name: {{profile.firstname}} {{profile.lastname}} {{profile.middlename}} {{profile.suffix}}</p>
-                        <p class="h5">Resident's ID: {{profile.res_id}}</p>
-                        <p class="h6">Sex: {{profile.sex}}</p>
-                        <p class="h6">From: {{profile.purok}}</p>
-                        <p class="h6">Occupation: {{profile.occupation}}</p>
+                    <div class="col-lg-6 col-md-7 pt-5">
+                        <p class="h4"><b>Name:</b> {{profile.residentsinfo.firstname}} {{profile.residentsinfo.lastname}} {{profile.residentsinfo.middlename}} {{profile.residentsinfo.suffix}}</p>
+                        <p class="h5"><b>Resident's ID:</b> {{profile.residentsinfo.res_id}}</p>
+                        <p class="h6"><b>Sex:</b> {{profile.residentsinfo.sex}}</p>
+                        <p class="h6"><b>From:</b> {{profile.residentsinfo.purok}}</p>
+                        <p class="h6"><b>Occupation:</b> {{profile.residentsinfo.occupation}}</p>
                     </div>
 
                     <div class="col-lg-3">
-                        <button type="button" class="btn btn-dark float-end">Edit Profile</button>
+                        <button type="button" class="btn btn-dark float-end">Print Data</button>
                     </div>
 
                     <div class="px-5"><hr></div>
 
                     <div class="col-lg-6 pt-3 px-5 border-end">
-                        <p class="h6 text-muted">Personal Details</p>
-                        <p class="h6">Birthdate: {{profile.birthdate}}</p>
-                        <p class="h6">Birthplace: {{profile.birthplace}}</p>
-                        <p class="h6">Citizenship: {{profile.citizenship}}</p>
-                        <p class="h6">Single Parent: {{profile.single_parent}}</p>
-                        <p class="h6">Civil Status: {{profile.civil_status}}</p>
-                        <p class="h6">Educational Attainment: {{profile.educ_attainment}}</p>
-                        <p class="h6">Status: {{profile.status}}</p>
+                        <p class="h6 text-muted">Resident Details</p>
+                        <p><b>Birthdate:</b> {{profile.residentsinfo.birthdate}}</p>
+                        <p><b>Birthplace:</b> {{profile.residentsinfo.birthplace}}</p>
+                        <p><b>Citizenship:</b> {{profile.residentsinfo.citizenship}}</p>
+                        <p><b>Singe Parent?:</b> {{profile.residentsinfo.single_parent}}</p>
+                        <p><b>Status:</b> {{profile.residentsinfo.civil_status}}</p>
+                        <p><b>Educational Attainment:</b> {{profile.residentsinfo.educ_attainment}}</p>
+                        <p><b>Status:</b> {{profile.residentsinfo.status}}</p>
                     </div>
 
                     <div class="col-lg-6 pt-3 px-5">
                         <p class="h6 text-muted">Contact Informaton</p>
-                        <p class="h6">Phone: {{profile.phone}}</p>
-                        <p class="h6">Email: {{profile.email}}</p>
-                        <p class="h6">Address: {{profile.address}}</p>
+                        <p><b>Phone:</b> {{profile.residentsinfo.phone}}</p>
+                        <p><b>Email:</b> {{profile.email}}</p>
+                        <p><b>Address:</b> {{profile.residentsinfo.address}}</p>
                     </div>
             
                 </div>
             </div>
 
+
             <div class="tab-pane fade" id="nav-requested-document" role="tabpanel" aria-labelledby="nav-requested-document-tab">
+
                 <div class="row">
-                    <div class="col-4 tab">
+                    <div class="col-3 tab">
                         <ul class="list-group">
                             <li class="list-group-item tablinks" onclick="openRequest(event, 'clearance')">Barangay Clearance</li>
                             <li class="list-group-item tablinks" onclick="openRequest(event, 'indigency')">Certificate of Indigency</li>
                           </ul>
                     </div>
 
-                    <div class="col-8">
+                    <div class="col-9">
                         <div id="clearance" class="tabcontent">
-                            <table class="table table-striped table-fit">
+                            <table class="table table-striped ">
                                 <thead style="background-color: #355389; color: #fff;">
                                     <tr>
                                         <th scope="col">Resident</th>
@@ -75,7 +77,7 @@
                                     </tr>
                                 </thead>
                                 
-                                <tbody hx-trigger="load, clearancelistUpdate from:body" hx-get="{% url 'profile_clearance' profile.id %}" hx-target="this">
+                                <tbody hx-trigger="load, clearancelistUpdate from:body" hx-get="{% url 'profile_clearance' profile.residentsinfo.id %}" hx-target="this">
                                     <tr>
                                         <td class="spinner-border" role="status">
                                         <span class="visually-hidden">Loading...</span>
@@ -92,35 +94,17 @@
 
                     </div>
                 </div>
+
             </div>
+            
         </div>
     </div>
 
-    
+    <div id="modal" class="modal fade">
+        <div id="dialog" class="modal-dialog" hx-target="this"></div>
+    </div>
 </div>
-
-
-<div id="modal" class="modal fade">
-    <div id="dialog" class="modal-dialog" hx-target="this"></div>
-</div>
-
-
-<p id="last_face" class="d-none">{{last_face}}</p>
-
-<script>
-    setInterval(function () {
-        var url = 'http://127.0.0.1:8000/Masili/ajax/';
-        var last_face = document.getElementById('last_face').innerHTML;
-        $.ajax({
-            url: url,
-            success: function (data) {
-                if (data != last_face) {
-                    location.reload()
-                }
-            }
-        })
-    }, 3000);
-
-</script>
-
+<br>
+<br>
+<br>
 {% endblock content %}

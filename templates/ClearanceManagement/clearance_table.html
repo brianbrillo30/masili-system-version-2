@@ -41,7 +41,6 @@
         </div>
 
         <div class="col-lg-12">
-            <span class="visually-hidden text-center">Loading...</span>
             <table class="table table-striped">
                 <thead style="background-color: #355389; color: #fff;">
                     <tr>
@@ -55,6 +54,11 @@
                 </thead>
                 
                 <tbody hx-trigger="load, clearancelistUpdate from:body" hx-get="{% url 'clearance_list' %}" hx-target="this">
+                <tr>
+                    <td class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                    </td>
+                </tr>
                 </tbody>
                
             </table>

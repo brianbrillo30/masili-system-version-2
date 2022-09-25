@@ -1,7 +1,4 @@
 from audioop import reverse
-import email
-from tokenize import group
-from urllib import request
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .decorators import admin_only
 from .models import *
@@ -21,6 +18,8 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
 from django.core.mail import send_mail
+from apps.UserPortal.models import clearance as clearance_list
+from apps.ClearanceManagement.forms import*
 
 
 last_face = 'no_face'
@@ -43,9 +42,6 @@ def adminLogout(request):
     logout(request)
     messages.add_message(request, messages.SUCCESS, 'Succefull logout')
     return redirect(reverse('adminLogin'))
-# def adminLogout(request):
-#     del request.session['adminLogin']
-#     return redirect('adminLogin')
 
 def ajax(request):
     last_face = LastFace.objects.last()
@@ -140,28 +136,25 @@ def scan(request):
     return HttpResponse('scaner closed', last_face)
 
 
-# def profiles(request):
-#     profiles = ResidentsInfo.objects.all()
-#     context = {
-#         'profiles': profiles
-#     }
-#     return render(request, 'core/profiles.html', context)
-
 @login_required(login_url="adminLogin")
 @admin_only
 def details(request):
     try:
         last_face = LastFace.objects.last()
         profile = ResidentsInfo.objects.get(Q(image__icontains=last_face))
+        clearance = clearance_list.objects.filter(res_id=profile)
     except:
         last_face = None
         profile = None
+        clearance = None
 
     context = {
         'profile': profile,
-        'last_face': last_face
+        'last_face': last_face,
+        'clearance': clearance
     }
     return render(request, 'ResidentManagement/details.html', context)
+   
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="adminLogin")
@@ -248,22 +241,16 @@ def delete_profile(request,id):
     profile.delete()
     return redirect('resident_list')
 
+def view_profile (request, id):
+    profile = User.objects.get(pk=id)
+    context = {'profile': profile}
+    return render (request, 'ResidentManagement/view_profile.html', context)
 
-# def clear_history(request):
-#     history = LastFace.objects.all()
-#     history.delete()
-#     return redirect('index')
 
+def profile_clearance(request, id):
+    context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
+    return render(request, 'ResidentManagement/clearance_list.html', context)
 
-# def reset(request):
-#     profiles = ResidentsInfo.objects.all()
-#     for profile in profiles:
-#         if profile.present == True:
-#             profile.present = False
-#             profile.save()
-#         else:
-#             pass
-#     return redirect('index')
 
 
 

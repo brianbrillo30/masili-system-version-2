@@ -1,4 +1,5 @@
 {% load static %}
+<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>
 <form hx-post="{{ request.path }}" class="modal-content">
     {% csrf_token %}
     <div class="modal-header">
@@ -38,7 +39,7 @@
 
             <div class="col-6 py-2">
                 <p class="h6">Date Released</p>
-                <div class="input-group input-group-sm mb-3 date" id="datepicker">
+                <div class="input-group input-group-sm mb-3 date">
                     {{ form.date_released }}
                     <span class="input-group-append">
                     <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
@@ -61,6 +62,27 @@
                 {{ form.purpose }}
             </div>
 
+            <br>
+            <hr>
+
+            <center><h6>ISSUED COMMUNITY TAX CERTIFICATE</h6></center>
+            <div class="col-12 py-2">
+                <p class="h6">Community Tax Number</p>
+                {{ form.community_tax_num }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Community Tax Date Issued</p>
+                <div class="input-group input-group-sm mb-3 date" >
+                    {{ form.community_tax_date_issued }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
     <div class="modal-footer">
@@ -69,4 +91,3 @@
     </div>
 </form>
 
-<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>

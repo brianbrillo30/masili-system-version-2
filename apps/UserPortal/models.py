@@ -19,6 +19,10 @@ class clearance(models.Model):
     purpose = models.CharField(max_length=70)
     date_requested = models.DateField(auto_now_add=True)
     date_released = models.DateField(null=True)
+
+    community_tax_num = models.CharField(max_length=70, null=True)
+    community_tax_date_issued = models.DateField(null=True)
+
     status = models.ForeignKey(DocumentStatus, on_delete=models.CASCADE, default=1)
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 

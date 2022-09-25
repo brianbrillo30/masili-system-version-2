@@ -202,3 +202,31 @@ hr.h-color{
     width:100%;
     position:absolute;
   }
+
+    /* Style the tab */
+  .tab {
+      overflow: hidden;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab li:hover {
+      background-color: #0043e0 ;
+      color: #fff;
+  }
+
+  .tabcontent {
+      display: none;
+  }
+
+  table.table-fit {
+  width: auto !important;
+  table-layout: auto !important;
+  }
+  table.table-fit thead th, table.table-fit tfoot th {
+      width: auto !important;
+  }
+  table.table-fit tbody td, table.table-fit tfoot td {
+      width: auto !important;
+  }
+
+  

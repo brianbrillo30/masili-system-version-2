@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>Barangay Clearance</title>
+    
+</head>
+<style>
+    p {
+        margin: 0;
+    }
+
+    h1{
+        margin: 0;
+    }
+
+    table, tr {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+</style>
+<body >
+    <table >
+        <tr>
+            <td colspan="3" >
+            <table >
+                <tr>
+                    <td VALIGN = Top style="width:90px;display:block; margin-left: -30px;">
+                        <img src="static/img/Calamba,_Laguna_Seal.svg.png" alt="" width="80">
+                    </td>
+                    <td VALIGN = Top style="width:90px;display:block; margin-left: -30px;">
+                       <img src="static/img/masili_logo.png" alt="" width="80">
+                    </td>
+
+                    <td VALIGN = Top style="margin-left: -30px; font-size: 14px;">
+
+                        <p>Republic of the Philippines</p>
+                        <p>PROVINCE OF LAGUNA</p>
+                        <p>CITY OF CALAMBA</p>
+                        <h1>BARANGAY MASILI</h1>
+                    </td>
+                    
+                    <td VALIGN = Top>
+                        <table width=100%>
+                            <tr>
+                                <td colspan="3">
+                                    <br>
+                                    <p style="font-size: 12px; ">Barangaymasili.calamba@gmail.com</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <img src="static/img/gmail_icon.png" alt="" width="20">
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="3">
+                                    <br>
+                                    <p style="font-size: 12px; text-align: right; margin-right: -55px;">(049) 502-945</p>
+                                </td>
+                                <td>
+                                    <br>
+                                    <img src="static/img/telephone_icon.jpg" alt="" width="20">
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+
+
+                </tr>
+              </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td align=center colspan="3" style="font-size: 16px;">
+                <br>
+                <h1>OFFICE OF THE BARANGAY CHAIRMAN</h1>
+                <h1>BARANGAY CLEARANCE</h1>
+            </td>
+        </tr>
+    </table>
+
+    <table border=1 bordercolor=black width=100% align=center>
+        <tr >
+            <td  width=34%  colspan="2">
+                <br>
+
+                <h1><i>HON.ELISEO G. MALIGAYA</i></h1>
+                <p>Barangay Chairman</p>
+                <br>
+                <h1><i>EDWIN H. DE LEON</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>CHRISTOPHER M. APACIONADO</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>SOLIDARIO M. APACIONADO</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>MARY GRACE S. ROLDAN</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>ERNESTO M. DE JURAS</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>ABELARDO P. CALIMLIM JR.</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>CHERRYL R. ALVIAR</i></h1>
+                <p>Brgy. Councilor</p>
+                <br>
+                <h1><i>DALE LUTHER A. QUINIA</i></h1>
+                <p>SK Chairman</p>
+                <br>
+                <h1><i>LEAH G. POMASIN</i></h1>
+                <p>Brgy. Secretary</p>
+                <br>
+                <h1><i>AMELIA R. APACIONADO</i></h1>
+                <p>Brgy. Treasurer</p>
+                <br>
+                <h1><i>CELIA A. ALVIAR</i></h1>
+                <p>Brgy. Record Keeper</p>
+                <br>
+                <h1><i>GINA T. TAYAM</i></h1>
+                <p>Brgy. Clerk</p>
+
+            </td>
+
+            <td  width=66% VALIGN = Top>
+                <br>
+                <p style="font-size: 12px;">To whom It may Concern;</p><br>
+                <p style="font-size: 12px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    This is to certify that <b>{{clearance.res_id}}</b>, {{clearance.age}} years of age, born on {{clearance.res_id.birthdate}} at {{clearance.res_id.birthplace}}, 
+                    {{clearance.res_id.civil_status}} and resident of {{clearance.res_id.purok}} Barangay Masili, Calamba City since {{clearance.res_id.years_resided}} has never been charged
+                    of any kind of offense and has no records on file before in this Barangay</p>
+                <br><br><br>
+                <p style="font-size: 12px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    This is Issued upon the request of the above mentioned resident for the purpose of: <u>{{clearance.purpose}} </u></p>
+
+                <br><br><br><br>
+                <p style="font-size: 12px;">
+                    Issued this {{clearance.date_released.day}} of {{clearance.date_released|date:"F"}}, {{clearance.date_released.year}} at Barangay Masili, City of Calamba
+                </p>
+                <table>
+                    <tr>
+                        <td VALIGN = Top>
+                            <p style="font-size: 12px;"><b>Thumbmark</b></p>
+                            <img src="static/img/sqaure.png" alt="" width="90"><img src="static/img/sqaure.png" alt="" width="90">
+                        </td>
+
+                        <td  VALIGN = Top>
+                            <br>
+                            <p style="font-size: 12px;"><b>NI. APACIONADO</b></p>
+                            <p style="font-size: 12px; text-align: center;">Signiture</p>
+                        </td>
+                    </tr>
+                  </table>
+                  <br>
+                  <br>
+                  <table>
+                    <tr>
+                        <td VALIGN = Top>
+                            <br>
+                            <p style="font-size: 12px;"><b>Community Tax</b> - {{clearance.community_tax_num}}</p>
+                            <p style="font-size: 10px;"><b>Date</b> - {{clearance.community_tax_date_issued}}</p>
+                            <p style="font-size: 10px;"><b>Place Issue</b> - <b>Masili, Calmaba City</b></p>
+                        </td>
+
+                        <td VALIGN = Top>
+                            <p style="font-size: 12px;">Approved by:</p>
+                            <h1 style="text-align: center;">Hon.ELISEO G. MALIGAYA</h1>
+                            <p style="font-size: 12px; text-align: center;">Signiture</p>
+                        </td>
+                    </tr>
+                  </table>
+            </td>
+            
+
+        </tr>
+
+
+    </table>
+</body>
+</html>

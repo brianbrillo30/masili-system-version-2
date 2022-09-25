@@ -13,8 +13,13 @@ urlpatterns = [
     path('Resident Details/', details, name= 'details'),
 
     path('add_profile/',add_profile,name='add_profile'),
+    path('view_profile/<int:id>/',view_profile, name='view_profile'),
     path('edit_profile/<int:id>/',edit_profile,name='edit_profile'),
     path('delete_profile/<int:id>/',delete_profile,name='delete_profile'),
+
+    # Resident Clearance
+    path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
+    # path('UpdateClearance/<int:id>', edit_profile_clearance, name='edit_profile_clearance'),
 
 
     # path('clear_history/',clear_history,name='clear_history'),
