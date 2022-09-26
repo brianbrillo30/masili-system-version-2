@@ -19,7 +19,8 @@ urlpatterns = [
 
     # Resident Clearance
     path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
-    # path('UpdateClearance/<int:id>', edit_profile_clearance, name='edit_profile_clearance'),
+    path('indigency/<int:id>/', profile_indigency, name ='profile_indigency'),
+
 
     path('Demographic/', demographic, name='demographic'),
     # path('clear_history/',clear_history,name='clear_history'),

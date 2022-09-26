@@ -18,7 +18,7 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clearance_list
+from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency
 from apps.ClearanceManagement.forms import*
 
 
@@ -253,6 +253,10 @@ def view_profile (request, id):
 def profile_clearance(request, id):
     context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
     return render(request, 'ResidentManagement/clearance_list.html', context)
+
+def profile_indigency (request, id):
+    context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
+    return render(request, 'ResidentManagement/indigency_list.html', context)
 
 def demographic(request):
     cMale = ResidentsInfo.objects.filter(sex_id='1').count
