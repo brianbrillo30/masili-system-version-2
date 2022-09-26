@@ -127,9 +127,11 @@ def scan(request):
                         font, 0.5, (255, 255, 255), 1)
 
         cv2.imshow('Video', frame)
-
+        cv2.setWindowProperty('Video', cv2.WND_PROP_TOPMOST, 1)
         if cv2.waitKey(1) & 0xFF == 13:
             break
+        if (cv2.getWindowProperty('Video', 0) < 0):        
+            break 
 
     video_capture.release()
     cv2.destroyAllWindows()

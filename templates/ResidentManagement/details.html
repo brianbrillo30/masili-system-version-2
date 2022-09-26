@@ -1,6 +1,41 @@
 {% extends "../base.html" %}
 {% load static %}
 {% block content %}
+
+{% if profile == None %}
+ <div class="container-fluid bg-white rounded">
+    <div class="row">
+        <div class="col-lg-6 p-5">
+            <h1 class="display-2" style="font-weight: 700; color: #355389;">FACE <br>RECOGNITION</h1>
+            <p class="lead p-2">
+                <b>
+                The scanner takes some time to start if your computer hardware does not meet the face recognition software's system requirements.
+                </b>
+            </p>
+
+            <p class="lead p-2"><b>
+                For the program to operate effectively, consider on providing good lighting and high-resolution cameras.
+            </b></p>
+
+            <p class="lead p-2"><b>
+                This will take a moment. Please wait...
+            </b></p>
+
+            <div class="p-2">
+                <div class="spinner-border text-primary p-4" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <img src="{% static 'img/face_scan.jpg'%}" class="img-fluid">
+            <a class="float-end" style="text-decoration: none;" href="https://www.freepik.com/free-vector/verification-technologies-abstract-concept-illustration_12291262.htm#query=face%20recognition&position=16&from_view=keyword">Image by vectorjuice</a>
+        </div>
+    </div>
+ </div>
+ <br><br><br>
+{% else %}
 <div class="container-fluid bg-white rounded">
 
     <div class="row p-2">
@@ -128,7 +163,7 @@
 <div id="modal" class="modal fade">
     <div id="dialog" class="modal-dialog" hx-target="this"></div>
 </div>
-
+{% endif %}
 
 <p id="last_face" class="d-none">{{last_face}}</p>
 

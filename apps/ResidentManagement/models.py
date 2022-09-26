@@ -67,6 +67,15 @@ class ResidentsInfo(models.Model):
     def __str__(self):
         return self.firstname +' '+self.middlename+' '+self.lastname
 
+    def save(self, *args, **kwargs):
+        # delete old file when replacing by updating the file
+        try:
+            this = ResidentsInfo.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete(save=False)
+        except: pass # when new photo then we do nothing, normal case          
+        super(ResidentsInfo, self).save(*args, **kwargs)
+        
 
 class LastFace(models.Model):
     last_face = models.CharField(max_length=200)
