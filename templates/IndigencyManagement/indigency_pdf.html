@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Indigency</title>
+</head>
+<style>
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .p1 {
+        font-family: "Times New Roman", Times, serif;
+    }
+    .p2 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .remove_space p{
+        margin: -4px;
+    }
+
+</style>
+
+<body>
+    <table width="100%" cellpadding="0">
+        <tr>
+            <td align="center" >
+                <img src="static/img/masili_logo.png" alt="" width="80">
+            </td>
+    
+            <td align="center">
+                <div class="remove_space">
+                    <p class="p1" style="font-size: 16px;"><b>Republic of the Philippines</b></p>
+                    <p class="p1" style="font-size: 14px;">Province of Laguna</p>
+                    <p class="p1" style="font-size: 14px;">City of Calamba</p>
+                    <p class="p2" style="font-size: 14px;"><b>BARANGAY MASILI</b></p>
+                    <p class="p2" style="color: red; font-size: 10px;">049-502-9459</p>
+                </div>
+            </td>
+    
+            <td align="center">
+                <img src="static/img/Calamba,_Laguna_Seal.svg.png" alt="" width="80">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <br><br>
+                <p class="p2" style="font-size: 16px;"><b><i>OFFICE OF THE BARANGAY CHAIRMAN</i></b></p>
+                <hr width="80%" style="margin-top:0;">
+                <p class="p2" style="font-size: 16px; letter-spacing: 4px; margin-left: -55px;"><b><i>CERTIFICATION</i></b></p>
+                <p class="p2" style="font-size: 14px;"><b><i>INDIGENCY</i></b></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td VALIGN = Top colspan="3" style="margin-left: 70px; margin-right: 70px;">
+                <br><br><br><br>
+                <p class="p2" style="font-size: 16px;"><b><i>TO WHOM IT MAY CONCERN</i></b></p>
+                <br>
+                <p class="p2" style="font-size: 14px; text-align: justify;">
+                    <i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        Bearer of this letter is Mr. / Mrs. / Ms. <b>{{indigency.res_id}}</b>, <b>{{indigency.age}}</b> years old, 
+                        <b>{{indigency.res_id.civil_status}}</b>, and a resident of <b>{{indigency.res_id.purok}}</b> Barangay Masili, Calamba City, Laguna.
+                    </i>
+                </p>
+                <br><br>
+                <p class="p2" style="font-size: 14px; text-align: justify;">
+                    <i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        It is also further certifying that he / she is not gainfully employed at present and belongs to 
+                        Indigent families in our community. 
+                    </i>
+                </p>
+
+                <br><br>
+                <p class="p2" style="font-size: 14px; text-align: justify;">
+                    <i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        This certification is being issued upon the request of Mr. / Mrs. / Ms. <b>{{indigency.res_id}}</b>, 
+                        in connection for the application for <b>{{indigency.purpose}}</b>.
+                    </i>
+                </p>
+
+                <br><br>
+                <p class="p2" style="font-size: 14px; text-align: justify;">
+                    <i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Issued this <b>{{indigency.date_released|date:"F"}}</b>, day of <b>{{indigency.date_released|date:"jS"}} {{indigency.date_released.year}}</b>,
+                        at the office of the Barangay Chairman, Barangay Masili, Calamba City.
+                    </i>
+                </p>
+
+                
+            </td>
+        </tr>
+    
+        <tr>
+            <td VALIGN = Top colspan="3" style="margin-left: 70px; margin-right: 70px;" >
+                <br><br><br><br>
+                <p class="p2" style="font-size: 14px;"><i>Certified:</i></p>
+
+                <table>
+                    <tr>
+                        <td>
+                            <br>
+                            <br>
+                            <p class="p2" style="font-size: 16px; text-decoration: underline;"><i><b>HON.ELISEO G. MALIGAYA</b></i></p>
+                            <p class="p2" style="font-size: 14px;"><i><b>Barangay Chairman, Masili</b></i></p>
+                        </td>
+
+                        <td style="display:block; margin-left: -320px;">
+                            <img src="static/img/captain_signature.png" height="60">
+                            
+                        </td>
+                    </tr>
+                </table>  
+            </td>
+        </tr>
+      </table>
+</body>
+</html>

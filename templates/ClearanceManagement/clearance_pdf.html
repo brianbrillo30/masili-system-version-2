@@ -129,23 +129,23 @@
                 <br>
                 <h1><i>GINA T. TAYAM</i></h1>
                 <p>Brgy. Clerk</p>
-
+                <br><br><br><br><br><br><br><br><br><br>
             </td>
 
             <td  width=66% VALIGN = Top>
                 <br>
                 <p style="font-size: 12px;">To whom It may Concern;</p><br>
                 <p style="font-size: 12px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                    This is to certify that <b>{{clearance.res_id}}</b>, {{clearance.age}} years of age, born on {{clearance.res_id.birthdate}} at {{clearance.res_id.birthplace}}, 
-                    {{clearance.res_id.civil_status}} and resident of {{clearance.res_id.purok}} Barangay Masili, Calamba City since {{clearance.res_id.years_resided}} has never been charged
+                    This is to certify that <b>{{clearance.res_id}}</b>, <b>{{clearance.age}}</b> years of age, born on <b>{{clearance.res_id.birthdate}}</b> at <b>{{clearance.res_id.birthplace}}</b>, 
+                    <b>{{clearance.res_id.civil_status}}</b> and resident of <b>{{clearance.res_id.purok}}</b> Barangay Masili, Calamba City since <b>{{clearance.res_id.years_resided}}</b> has never been charged
                     of any kind of offense and has no records on file before in this Barangay</p>
                 <br><br><br>
                 <p style="font-size: 12px;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                    This is Issued upon the request of the above mentioned resident for the purpose of: <u>{{clearance.purpose}} </u></p>
+                    This is Issued upon the request of the above mentioned resident for the purpose of: &nbsp; &nbsp;<u> <b style="font-size: 14px;">{{clearance.purpose}}</b> </u></p>
 
                 <br><br><br><br>
                 <p style="font-size: 12px;">
-                    Issued this {{clearance.date_released.day}} of {{clearance.date_released|date:"F"}}, {{clearance.date_released.year}} at Barangay Masili, City of Calamba
+                    Issued this <b>{{clearance.date_released|date:"jS"}}</b> of <b>{{clearance.date_released|date:"F"}}</b>, <b>{{clearance.date_released.year}}</b> at Barangay Masili, City of Calamba
                 </p>
                 <table>
                     <tr>
@@ -163,19 +163,45 @@
                   </table>
                   <br>
                   <br>
-                  <table>
-                    <tr>
-                        <td VALIGN = Top>
-                            <br>
-                            <p style="font-size: 12px;"><b>Community Tax</b> - {{clearance.community_tax_num}}</p>
-                            <p style="font-size: 10px;"><b>Date</b> - {{clearance.community_tax_date_issued}}</p>
-                            <p style="font-size: 10px;"><b>Place Issue</b> - <b>Masili, Calmaba City</b></p>
-                        </td>
 
+                  <table>
+                    <tr style="margin: 0;">
                         <td VALIGN = Top>
-                            <p style="font-size: 12px;">Approved by:</p>
-                            <h1 style="text-align: center;">Hon.ELISEO G. MALIGAYA</h1>
-                            <p style="font-size: 12px; text-align: center;">Signiture</p>
+                            <table>
+                                <tr style="margin: 0;">
+                                    <td style="margin-left: 270px;">
+                                        <br><br>
+                                        <img src="static/img/captain_signature.png" height="60">
+                                    </td>
+                                    <td>
+                                        <p style="font-size: 12px;">Approved by:</p>
+                                        <br>
+                                        <h1 style="text-align: center;">Hon.ELISEO G. MALIGAYA</h1>
+                                        <p style="font-size: 12px; text-align: center;">Barangay Chairman</p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                            <table>
+                                <tr style="margin: 0;">
+                                    <td>
+                                        <br>
+                                        <p style="font-size: 12px;"><b>Community Tax</b> - {{clearance.community_tax_num}}</p>
+                                        <p style="font-size: 10px;"><b>Date</b> - {{clearance.community_tax_date_issued}}</p>
+                                        <p style="font-size: 10px;"><b>Place Issue</b> - <b>Masili, Calmaba City</b></p>
+                                    </td>
+                                </tr>
+
+                                <tr style="margin: 0;">
+                                    <td>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <p>Not valid w/o</p>
+                                        <p>Dry Seal</p>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                   </table>
@@ -183,7 +209,6 @@
             
 
         </tr>
-
 
     </table>
 </body>

@@ -8,7 +8,7 @@ def clearance(request):
     return render(request, 'ClearanceManagement/clearance_table.html')
 
 def clearance_list(request):
-    context = {'clearance_list' :  clerance_list.objects.all()}
+    context = {'clearance_list' :  clerance_list.objects.all().order_by('id')}
     return render(request, 'ClearanceManagement/clearance_list.html', context)
 
 
