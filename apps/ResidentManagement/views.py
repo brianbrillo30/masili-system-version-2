@@ -144,11 +144,9 @@ def details(request):
     try:
         last_face = LastFace.objects.last()
         profile = ResidentsInfo.objects.get(Q(image__icontains=last_face))
-        clearance = clearance_list.objects.filter(res_id=profile)
     except:
         last_face = None
         profile = None
-        clearance = None
 
     context = {
         'profile': profile,
