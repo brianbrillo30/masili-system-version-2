@@ -100,8 +100,16 @@ def scan(request):
 
 
                     if last_face != name:
-                        last_face = LastFace(last_face=name)
-                        last_face.save()
+                        
+                        # last_face = LastFace(last_face=name)
+                        last_face = LastFace.objects.all().last()
+                        if last_face == None:
+                            last_face = LastFace(last_face=name)
+                            last_face.save()
+                        else:
+
+                            last_face.last_face = name
+                            last_face.save()
                         last_face = name
                         winsound.PlaySound(sound, winsound.SND_ASYNC)
                         
