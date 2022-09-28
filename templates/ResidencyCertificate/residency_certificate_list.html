@@ -1,0 +1,21 @@
+{% for residency in residency_certificate_list %}
+<tr>
+    <td></td>
+    <td>{{ residency.res_id }}</td>
+    <td>{{ residency.transaction_id }}</td>
+    <td>{{ residency.date_requested}}</td>
+    <td>{{ residency.date_released}}</td>
+    <td>{{ residency.status}}</td>
+    <td class="text-center">
+        <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_residency' residency.id %}" hx-target="#dialog">
+            <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
+        </button>
+
+        <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_resident_certificate' residency.id %}">
+            <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
+            <span style="vertical-align: middle;">Generate</span>
+        </a>
+        
+    </td>
+</tr>
+{% endfor %}
