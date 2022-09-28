@@ -9,7 +9,7 @@ urlpatterns = [
     path('Admin Logout/', adminLogout, name='adminLogout'),
     path('ajax/', ajax, name= 'ajax'),
     path('scan/', scan,name='scan'),
-    path('Admin Profile/', adminProfile, name= 'adminProfile'),
+ 
     path('Resident Details/', details, name= 'details'),
 
     path('add_profile/',add_profile,name='add_profile'),
