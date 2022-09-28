@@ -17,9 +17,10 @@ urlpatterns = [
     path('edit_profile/<int:id>/',edit_profile,name='edit_profile'),
     path('delete_profile/<int:id>/',delete_profile,name='delete_profile'),
 
-    # Resident Clearance
+    # Resident document
     path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
     path('indigency/<int:id>/', profile_indigency, name ='profile_indigency'),
+    path('business_permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
 
 
     path('Demographic/', demographic, name='demographic'),

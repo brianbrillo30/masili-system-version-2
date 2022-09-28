@@ -1,0 +1,75 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid bg-white rounded">
+    <div class="row p-3 g-0">
+
+        <div class="col-lg-6 col-md-4 col-12">
+            <h4 class="text-muted">Certificate of Indigency</h4>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-12">
+            <div class="float-end">
+                <a type="button" class="btn bg-warning bg-gradient" href="">
+                    <i class="las la-user-plus fs-4" style="vertical-align: middle;"></i>
+                    <span class="mt-5" style="vertical-align: middle;">Add Certificate</span>
+                </a>
+                &nbsp;
+                &nbsp;
+                <button type="button" class="btn btn-primary bg-gradient">
+                    <i class="las la-file-csv fs-4" style="vertical-align: middle;"></i>
+                    <span class="mt-5" style="vertical-align: middle;">Export CSV</span>
+                </button>
+            </div>
+        </div>
+
+        <hr class="my-3">
+        
+        <div class="col-lg-10 col-md-7 col-12 pb-2">
+            <span>Show <input type="number" value="50" style="width: 50px;"> entries</span>
+        </div>
+
+        <div class="col-lg-2 col-md-5 col-12">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm"><i class="las la-search fs-5"></i></span>
+                <input type="text" class="form-control" placeholder="search">
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered align-middle mb-0 shadow-sm p-3 mb-5 bg-body">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th scope="col">Resident</th>
+                            <th scope="col">Business Name</th>
+                            <th scope="col">Business Address</th>
+                            <th scope="col">Type of Business</th>
+                            <th scope="col">OR NUMBER</th>
+                            <th scope="col">Status</th>
+                            <th scope="col " class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody hx-trigger="load, BusinessPermitlistUpdate from:body" hx-get="{% url 'business_permit_list' %}" hx-target="this">
+
+                    </tbody>
+                   
+                </table>
+            </div>
+                    <!-- modal -->
+            <div id="modal" class="modal fade">
+                <div id="dialog" class="modal-dialog" hx-target="this"></div>
+            </div> 
+
+        </div>
+
+      
+
+    </div>
+</div>
+
+
+{% endblock content %}

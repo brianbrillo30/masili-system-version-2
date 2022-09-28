@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Business Permit</title>
+</head>
+<style>
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .p1 {
+        font-family: "Times New Roman", Times, serif;
+    }
+    .p2 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    table {
+        line-height: normal;
+    }
+
+    .border_underline{
+        border-bottom: 1px solid rgb(0, 0, 0); 
+    }
+
+    .border_topline{
+        border-top: 1px solid rgb(0, 0, 0); 
+    }
+</style>
+
+<body>
+    <table width="100%" cellpadding="0">
+        <tr>
+            <td align="center" >
+                <img src="static/img/masili_logo.png" alt="" width="80">
+            </td>
+    
+            <td align="center">
+                <div class="remove_space">
+                    <p class="p1" style="font-size: 16px;"><b>Republic of the Philippines</b></p>
+                    <p class="p1" style="font-size: 14px;">Province of Laguna</p>
+                    <p class="p1" style="font-size: 14px;">City of Calamba</p>
+                    <p class="p2" style="font-size: 14px;"><b>BARANGAY MASILI</b></p>
+                    <p class="p2" style="color: red; font-size: 10px;">049-502-9459</p>
+                </div>
+            </td>
+    
+            <td align="center">
+                <img src="static/img/Calamba,_Laguna_Seal.svg.png" alt="" width="80">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <br><br><br><br><br>
+                <p class="p2" style="font-size: 16px;"><b><i>OFFICE OF THE BARANGAY CHAIRMAN</i></b></p>
+                <hr width="80%" style="margin-top:0;">
+                <p class="p2" style="font-size: 16px;"><b><i>BARANGAY BUSINESS CLEARANCE/CERTIFICATE</i></b></p>
+                <br><br><br><br><br><br><br>
+            </td>
+            
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <table>
+                    <tr>
+                        <td>
+                            <!-- {% now "jS F Y H:i" %} -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="65%"></td>
+                        <td width="25%" class="border_topline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>Date</b></p>
+                        </td>
+                        <td width="10%"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <br><br><br>
+                <table width="100%" cellpadding="0" >
+                    <tr>
+                        <td width="45%" style="margin-left: 70px;">
+                            <p class="p2" style="font-size: 12px;"><b>BUSINESS NAME</b></p>
+                        </td>
+                        <td width="1%">
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td width="40%" class="border_underline">
+                            <p class="p2" style="font-size: 12px;">{{business_permit.business_name}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>LOCATION</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.location}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>CLASSIFICATION/ NATURE OF BUSINESS</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;" >{{business_permit.business_nature}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; "><b>NAME OF OWNER/ PROPRIETOR</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;" >{{business_permit.owner}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>RESIDENCE CERTIFICATE NO.</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.residece_certificate_no}}</p>
+                            
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; text-align: justify;"><b>DATE ISSUED</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{ business_permit.date_released}}</p>
+                        </td>
+
+                        
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; text-align: justify;"><b>ISSUED AT</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{ business_permit.issued_at }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; text-align: justify;"><b>CAPITAL INVESTMENT</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.capital_investment|add:" Php"}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; text-align: justify;"><b>GROSS SALES OR RECEIPTS</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.gross_sales}}</p>
+                        </td>
+                    </tr>
+                </table>
+                <br><br><br><br><br><br><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <table>
+                    <tr>
+                        <td width="60%"></td>
+                        <td width="30%" class="border_topline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>Signiture of applicant</b></p>
+                        </td>
+                        <td width="10%"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <br><br><br><br>
+                <table width="100%" cellpadding="0">
+                    <tr>
+                        <td width="45%" style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>PREVIOUS O.R.</b></p>
+                        </td>
+                        <td width="1%">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td width="40%" class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.previous_or}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>DATE ISSUED</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.date_issued}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>ISSUED AT</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.previous_or_issued_at}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; "><b>AMMOUNT COLLECT</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.amount_collect}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>PAID O.R. No.</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.paid_or}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>DATE ISSUED</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.paid_or_date_issued}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px;"><b>ISSUED AT</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.paid_or_issued_at}}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="margin-left: 70px;">
+                            <br>
+                            <p class="p2" style="font-size: 12px; text-align: justify;"><b>AMMOUNT COLLECTED</b></p>
+                        </td>
+                        <td>
+                            <br>
+                            <p class="p2" style="font-size: 12px;">:</p>
+                        </td>
+                        <td class="border_underline">
+                            <br>
+                            <p class="p2" style="font-size: 12px;">{{business_permit.amount_colledted}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    
+        <tr>
+            <td VALIGN = Top colspan="3" style="margin-left: 70px; margin-right: 70px;" >
+                <br><br><br>
+                <table>
+                    <tr>
+                        <td>
+                            
+                        </td>
+
+                        <td>
+                            <p class="p2" style="font-size: 14px;"><i>APPROVED BY:</i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="display:block; margin-left: 400px;">
+                            <img src="static/img/captain_signature.png" height="60">
+                            
+                        </td>
+
+                        <td>
+                            <br>
+                            <br>
+                            <p class="p2" style="font-size: 16px; text-decoration: underline;"><i><b>HON.ELISEO G. MALIGAYA</b></i></p>
+                            <p class="p2" style="font-size: 14px;"><i><b>Barangay Chairman, Masili</b></i></p>
+                        </td>
+                    </tr>
+                </table>  
+            </td>
+        </tr>
+      </table>
+
+</body>
+</html>

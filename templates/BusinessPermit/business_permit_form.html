@@ -1,0 +1,149 @@
+{% load static %}
+<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>
+
+<form hx-post="{{ request.path }}" class="modal-content">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h5 class="modal-title">Edit Business Permit</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 py-2">
+                <p class="h6">Requestors Name</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id }}" disabled>
+            </div>
+
+            <div class="col-8 py-2">
+                <p class="h6">Transaction ID</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.transaction_id }}" disabled>
+            </div>
+
+            <div class="col-4 py-2">
+                <p class="h6">Date Requested</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.date_requested }}" disabled>
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Business Name</p>
+                {{ form.business_name }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Location</p>
+                {{ form.location }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Classification/Nature of Business</p>
+                {{ form.business_nature }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Name of Owner/Proprietor</p>
+                {{ form.owner }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Capital Inviestment</p>
+                {{ form.capital_investment }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Gross Sales or Receipts</p>
+                {{ form.gross_sales }}
+            </div>
+            <br><br><br><br>
+            <hr>
+            <div class="col-12 py-2">
+                <p class="h6">Residence Certificate No.</p>
+                {{ form.residece_certificate_no }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Date Issued</p>
+                <div class="input-group input-group-sm date">
+                    {{ form.date_released }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Issued At</p>
+                {{ form.issued_at }}
+            </div>
+            <br><br><br><br>
+            <hr>
+
+            <div class="col-12 py-2">
+                <p class="h6">Previous O.R</p>
+                {{ form.previous_or }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Date Issued</p>
+                <div class="input-group input-group-sm date">
+                    {{ form.date_issued }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="col-12 py-2">
+                <p class="h6">Issued At</p>
+                {{ form.previous_or_issued_at }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Amount Collect</p>
+                {{ form.amount_collect }}
+            </div>
+
+            <br><br><br><br>
+            <hr>
+
+            <div class="col-12 py-2">
+                <p class="h6">Paid O.R. No.</p>
+                {{ form.paid_or }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Date Issued</p>
+                <div class="input-group input-group-sm date">
+                    {{ form.paid_or_date_issued }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Issued At</p>
+                {{ form.paid_or_issued_at }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Amount Collected</p>
+                {{ form.amount_colledted }}
+            </div>
+
+            <br><br><br><br>
+            <hr>
+
+            <div class="col-12 py-2">
+                <p class="h6">Document Status</p>
+                {{ form.status }}
+            </div>
+            <br>
+            <hr>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
+
