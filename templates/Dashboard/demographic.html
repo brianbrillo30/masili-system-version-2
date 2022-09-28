@@ -2,12 +2,19 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid bg-white rounded p-5">
-
+<div class="container-fluid ">
     <div class="row">
+
+        <div class="col-12 pb-4">
+            <div class="card border-0 rounded">
+                <div class="card-body">
+                    <h4 class="text-muted">Dashboard</h4>
+                </div>
+              </div>
+        </div>
         <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="resident">
+                <div class="card text-center text-white mb-3 border-0" id="resident">
                     <div class="card-header">
                         <h5 class="card-title">Registered Residents</h5>
                     </div>
@@ -20,7 +27,7 @@
 
         <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="male">
+                <div class="card text-center text-white mb-3 border-0" id="male">
                     <div class="card-header">
                         <h5 class="card-title">Male</h5>
                     </div>
@@ -33,7 +40,7 @@
     
         <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="f">
+                <div class="card text-center text-white mb-3 border-0" id="f">
                     <div class="card-header">
                         <h5 class="card-title">Female</h5>
                     </div>
@@ -43,61 +50,10 @@
                 </div>
             </div>
         </div>
-    
-        <h4>Civil Status</h4>
-        <div class="col">
+
+        <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="married">
-                    <div class="card-header">
-                        <h5 class="card-title">Married</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cMarried}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="single">
-                    <div class="card-header">
-                        <h5 class="card-title">Single</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cSingle}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="divorced">
-                    <div class="card-header">
-                        <h5 class="card-title">Divorced</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cDivorced}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="widowed">
-                    <div class="card-header">
-                        <h5 class="card-title">Widowed</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cWidowed}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <h4>Parents Status</h4>
-        <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="yes">
+                <div class="card text-center text-white mb-3 border-0" id="yes">
                     <div class="card-header">
                         <h5 class="card-title">Single Parent</h5>
                     </div>
@@ -107,35 +63,10 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col">
+
+        <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="no">
-                    <div class="card-header">
-                        <h5 class="card-title">Not Single Parent</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cNo}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    
-        <h4>Status</h4>
-        <!-- <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="none">
-                    <div class="card-header">
-                        <h5 class="card-title">None</h5>
-                    </div>
-                    <div clas="card-body">
-                        <h3 class="card-title">{{cNone}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <div class="col">
-            <div class="col-md">
-                <div class="card text-center text-white mb-3" id="pwd">
+                <div class="card text-center text-white mb-3 border-0" id="pwd">
                     <div class="card-header">
                         <h5 class="card-title">PWD</h5>
                     </div>
@@ -145,14 +76,63 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-4">
             <div class="col-md">
-                <div class="card text-center text-white mb-3" id="senior">
+                <div class="card text-center text-white mb-3 border-0" id="senior">
                     <div class="card-header">
                         <h5 class="card-title">Senior</h5>
                     </div>
                     <div clas="card-body">
                         <h3 class="card-title">{{cSenior}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <h4>Civil Status</h4> -->
+        <div class="col-lg-3">
+            <div class="col-md">
+                <div class="card text-center text-white mb-3 border-0" id="married">
+                    <div class="card-header">
+                        <h5 class="card-title">Married</h5>
+                    </div>
+                    <div clas="card-body">
+                        <h3 class="card-title">{{cMarried}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="col-md">
+                <div class="card text-center text-white mb-3 border-0" id="single">
+                    <div class="card-header">
+                        <h5 class="card-title">Single</h5>
+                    </div>
+                    <div clas="card-body">
+                        <h3 class="card-title">{{cSingle}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="col-md">
+                <div class="card text-center text-white mb-3 border-0" id="divorced">
+                    <div class="card-header">
+                        <h5 class="card-title">Divorced</h5>
+                    </div>
+                    <div clas="card-body">
+                        <h3 class="card-title">{{cDivorced}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="col-md">
+                <div class="card text-center text-white mb-3 border-0" id="widowed">
+                    <div class="card-header">
+                        <h5 class="card-title">Widowed</h5>
+                    </div>
+                    <div clas="card-body">
+                        <h3 class="card-title">{{cWidowed}}</h3>
                     </div>
                 </div>
             </div>
