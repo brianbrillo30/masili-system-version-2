@@ -21,7 +21,7 @@ urlpatterns = [
     path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
     path('indigency/<int:id>/', profile_indigency, name ='profile_indigency'),
     path('business_permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
-
+    path('building_permit/<int:id>/', profile_building_permit, name='profile_building_permit'),
 
     path('Demographic/', demographic, name='demographic'),
     # path('clear_history/',clear_history,name='clear_history'),
