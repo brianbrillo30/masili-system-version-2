@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'apps.IndigencyManagement',
     'apps.BusinessPermit',
     'apps.BuildingPermit',
+    'apps.Dashboard',
+    'apps.AdminProfile',
     'crispy_forms',
     'crispy_bootstrap5',
 ]

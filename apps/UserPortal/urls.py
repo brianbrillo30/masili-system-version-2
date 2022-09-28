@@ -6,7 +6,6 @@ from .forms import UserPasswordResetForm
 urlpatterns = [
     path('Home/', home, name='home'),
     path ('About/', about, name='about'),
-    path ('Login/', userLogin, name='userLogin'),
     path ('ServicePortal/', servicesPortal, name='service_portal'),
     path ('User Logout/', userLogout, name='userLogout'),
     path ('BarangayClearance/', barangay_clearance, name='barangay_clearance'),

@@ -8,7 +8,7 @@ urlpatterns = [
     path('resident/', resident_list, name= 'resident_list'),
     path('Admin Logout/', adminLogout, name='adminLogout'),
     path('ajax/', ajax, name= 'ajax'),
-    path('scan/',scan,name='scan'),
+    path('scan/', scan,name='scan'),
     path('Admin Profile/', adminProfile, name= 'adminProfile'),
     path('Resident Details/', details, name= 'details'),
 
@@ -23,7 +23,6 @@ urlpatterns = [
     path('business_permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
 
 
-    path('Demographic/', demographic, name='demographic'),
     # path('clear_history/',clear_history,name='clear_history'),
     # path('reset/',reset,name='reset'),
 
