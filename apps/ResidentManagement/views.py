@@ -317,6 +317,13 @@ def profile_business_permit (request, id):
         return redirect('loginPage')
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
+def profile_building_permit(request, id):
+    context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
+    return render(request, 'ResidentManagement/building_permit_list.html', context)
+
 
 
 
