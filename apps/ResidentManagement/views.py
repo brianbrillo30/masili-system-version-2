@@ -29,28 +29,36 @@ face_list_file = os.path.join(current_path, 'face_list.txt')
 sound = os.path.join(sound_folder, 'beep.wav')
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
-@login_required(login_url="adminLogin")
+@login_required(login_url="loginPage")
 @admin_only
 def resident_list(request):
     if request.user.is_authenticated:
         context = {'resident_list' : User.objects.filter(is_superuser=0).order_by('id')}
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
-        return redirect('adminLogin')
+        return redirect('loginPage')
 
 def adminLogout(request):
     logout(request)
     messages.add_message(request, messages.SUCCESS, 'Succefull logout')
-    return redirect(reverse('adminLogin'))
+    return redirect(reverse('loginPage'))
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def ajax(request):
-    last_face = LastFace.objects.last()
-    context = {
-        'last_face': last_face
-    }
-    return render(request, 'ResidentManagement/ajax.html', context)
+    if request.user.is_authenticated:
+        last_face = LastFace.objects.last()
+        context = {
+            'last_face': last_face
+        }
+        return render(request, 'ResidentManagement/ajax.html', context)
 
+    else:
+        return redirect('loginPage')
 
+@login_required(login_url="loginPage")
+@admin_only
 def scan(request):
 
     global last_face
@@ -145,27 +153,31 @@ def scan(request):
     cv2.destroyAllWindows()
     return HttpResponse('scaner closed', last_face)
 
-
-@login_required(login_url="adminLogin")
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
 @admin_only
 def details(request):
-    try:
-        last_face = LastFace.objects.last()
-        profile = ResidentsInfo.objects.get(Q(image__icontains=last_face))
-    except:
-        last_face = None
-        profile = None
+    if request.user.is_authenticated:
+        try:
+            last_face = LastFace.objects.last()
+            profile = ResidentsInfo.objects.get(Q(image__icontains=last_face))
+        except:
+            last_face = None
+            profile = None
 
-    context = {
-        'profile': profile,
-        'last_face': last_face,
-        'clearance': clearance
-    }
-    return render(request, 'ResidentManagement/details.html', context)
+        context = {
+            'profile': profile,
+            'last_face': last_face,
+            'clearance': clearance
+        }
+        return render(request, 'ResidentManagement/details.html', context)
+
+    else:
+        return redirect('loginPage')
    
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
-@login_required(login_url="adminLogin")
+@login_required(login_url="loginPage")
 @admin_only
 def add_profile(request):
     if request.user.is_authenticated:
@@ -208,10 +220,10 @@ def add_profile(request):
         return render(request,'ResidentManagement/add_resident.html',context)
 
     else:
-        return redirect('adminLogin')
+        return redirect('loginPage')
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
-@login_required(login_url="adminLogin")
+@login_required(login_url="loginPage")
 @admin_only
 def edit_profile(request, id):
     if request.user.is_authenticated:
@@ -238,70 +250,80 @@ def edit_profile(request, id):
         return render(request,'ResidentManagement/edit_resident.html',context)
     
     else:
-        return redirect('adminLogin')
+        return redirect('loginPage')
 
-@login_required(login_url="adminLogin")
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
 @admin_only
 def delete_profile(request,id):
-    profile = User.objects.get(id=id)
-    if request.method == 'POST':
-        if len(profile.residentsinfo.image) > 0:
-            os.remove(profile.residentsinfo.image.path)
-            profile.delete()
-            return redirect('resident_list')
-    return render(request, 'ResidentManagement/delete_resident.html')
+    if request.user.is_authenticated:
+        profile = User.objects.get(id=id)
+        if request.method == 'POST':
+            if len(profile.residentsinfo.image) > 0:
+                os.remove(profile.residentsinfo.image.path)
+                profile.delete()
+                return redirect('resident_list')
+        return render(request, 'ResidentManagement/delete_resident.html')
+
+    else:
+        return redirect('loginPage')
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def view_profile (request, id):
-    profile = User.objects.get(pk=id)
-    context = {'profile': profile}
-    return render (request, 'ResidentManagement/view_profile.html', context)
+    if request.user.is_authenticated:
+        profile = User.objects.get(pk=id)
+        context = {'profile': profile}
+        return render (request, 'ResidentManagement/view_profile.html', context)
+
+    else:
+        return redirect('loginPage')
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def profile_clearance(request, id):
-    context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
-    return render(request, 'ResidentManagement/clearance_list.html', context)
+    if request.user.is_authenticated:
+        context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
+        return render(request, 'ResidentManagement/clearance_list.html', context)
+        
+    else:
+        return redirect('loginPage')
 
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def profile_indigency (request, id):
-    context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
-    return render(request, 'ResidentManagement/indigency_list.html', context)
+    if request.user.is_authenticated:
+        context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
+        return render(request, 'ResidentManagement/indigency_list.html', context)
 
+    else:
+        return redirect('loginPage')
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def profile_business_permit (request, id):
-    context = {'profile_business_permit' : BusinessPermit.objects.filter(res_id = id)}
-    return render(request, 'ResidentManagement/business_permit_list.html', context)
+    if request.user.is_authenticated:
+        context = {'profile_business_permit' : BusinessPermit.objects.filter(res_id = id)}
+        return render(request, 'ResidentManagement/business_permit_list.html', context)
+    
+    else:
+        return redirect('loginPage')
 
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
 def profile_building_permit(request, id):
     context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
     return render(request, 'ResidentManagement/building_permit_list.html', context)
 
-def demographic(request):
-    cMale = ResidentsInfo.objects.filter(sex_id='1').count
-    cFemale = ResidentsInfo.objects.filter(sex_id='2').count
-
-    cMarried = ResidentsInfo.objects.filter(civil_status='1').count
-    cSingle = ResidentsInfo.objects.filter(civil_status='2').count
-    cDivorced = ResidentsInfo.objects.filter(civil_status='3').count
-    cWidowed = ResidentsInfo.objects.filter(civil_status='4').count
-
-    cYes = ResidentsInfo.objects.filter(single_parent='1').count
-    # cNo = ResidentsInfo.objects.filter(single_parent='2').count
-
-    # cNone = ResidentsInfo.objects.filter(status='1').count
-    cPwd = ResidentsInfo.objects.filter(status='2').count
-    cSenior = ResidentsInfo.objects.filter(status='3').count
-
-    cResident = ResidentsInfo.objects.all().count
-    
-
-    context = {'cResident': cResident,'cMale': cMale, 'cFemale': cFemale, 'cMarried': cMarried, 'cSingle': cSingle, 
-    'cDivorced': cDivorced, 'cWidowed': cWidowed, 'cYes': cYes, 'cPwd': cPwd, 'cSenior': cSenior}
-    
-    return render(request, 'ResidentManagement/demographic.html', context )
-
-
-def adminProfile(request):
-    return render(request, 'admin_profile.html')
 
 
 

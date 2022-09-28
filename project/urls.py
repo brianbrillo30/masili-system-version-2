@@ -5,14 +5,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('Masili/',include('apps.Dashboard.urls')),
+    path('Masili/',include('apps.AdminProfile.urls')),
     path('Masili/',include('apps.ResidentManagement.urls')),
-    path('Masili/',include('apps.Login.urls')),
     path('Masili/',include('apps.ClearanceManagement.urls')),
     path('Masili/',include('apps.IndigencyManagement.urls')),
     path('Masili/',include('apps.BusinessPermit.urls')),
     path('Masili/',include('apps.BuildingPermit.urls')),
     path('Masili/',include('apps.ResidencyCertificate.urls')),
 
+    path('Barangay Masili/',include('apps.Login.urls')),
     path('Barangay Masili/',include('apps.UserPortal.urls')),
 ]
 

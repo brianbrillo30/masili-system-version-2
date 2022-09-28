@@ -1,0 +1,55 @@
+{% load static %}
+<script src="{% static 'bootstrap/js/datepicker.js' %}" ></script>
+
+<form hx-post="{{ request.path }}" class="modal-content">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h5 class="modal-title">Edit Certificate of Indigency</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-8 py-2">
+                <p class="h6">Requestors Name</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id }}" disabled>
+            </div>
+
+            <div class="col-4 py-2">
+                <p class="h6">Date Requested</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.date_requested }}" disabled>
+            </div>
+
+            <div class="col-8 py-2">
+                <p class="h6">Transaction ID</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.transaction_id }}" disabled>
+            </div>
+
+            <div class="col-4 py-2">
+                <p class="h6">Document Status</p>
+                {{ form.status }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Purpose</p>
+                {{ form.purpose }}
+            </div>
+
+            <div class="col-12 py-2">
+                <p class="h6">Date Issued</p>
+                <div class="input-group input-group-sm date">
+                    {{ form.date_released }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <br>
+            <hr>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+</form>
+
