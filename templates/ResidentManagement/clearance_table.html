@@ -1,0 +1,80 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    .modal-dialog {
+        min-width: auto;
+        max-width: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+
+}
+</style>
+
+<div class="container-fluid bg-white rounded">
+    <div class="row p-3 g-0">
+
+        <div class="col-lg-6 col-md-4 col-12">
+            <h4 class="text-muted">Barangay Clearance</h4>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-12">
+            <div class="float-end">
+                <a type="button" class="btn bg-warning bg-gradient" href="">
+                    <i class="las la-user-plus fs-4" style="vertical-align: middle;"></i>
+                    <span class="mt-5" style="vertical-align: middle;">Add Clearance</span>
+                </a>
+                &nbsp;
+                &nbsp;
+                <button type="button" class="btn btn-primary bg-gradient">
+                    <i class="las la-file-csv fs-4" style="vertical-align: middle;"></i>
+                    <span class="mt-5" style="vertical-align: middle;">Export CSV</span>
+                </button>
+            </div>
+        </div>
+
+        <hr class="my-3">
+        
+        <div class="col-lg-10 col-md-7 col-12 pb-2">
+            <span>Show <input type="number" value="50" style="width: 50px;"> entries</span>
+        </div>
+
+        <div class="col-lg-2 col-md-5 col-12">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm"><i class="las la-search fs-5"></i></span>
+                <input type="text" class="form-control" placeholder="search">
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead style="background-color: #355389; color: #fff;">
+                    <tr>
+                        <th scope="col">Resident</th>
+                        <th scope="col">Date Requested</th>
+                        <th scope="col">Date Released</th>
+                        <th scope="col">Transaction ID</th>
+                        <th scope="col">Status</th>
+                        <th scope="col " class="text-center">Action</th>
+                    </tr>
+                </thead>
+                {% for clearance in clearance_list %}
+                <tbody>
+                    <tr>
+                        <td>{{ clearance.res_id }}</td>
+                        <td>{{ clearance.date_requested }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
