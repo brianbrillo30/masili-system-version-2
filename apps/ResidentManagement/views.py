@@ -18,7 +18,7 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit
+from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit
 from apps.ClearanceManagement.forms import*
 
 

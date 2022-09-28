@@ -61,6 +61,7 @@
                             <li class="list-group-item tablinks" onclick="openRequest(event, 'clearance')">Barangay Clearance</li>
                             <li class="list-group-item tablinks" onclick="openRequest(event, 'indigency')">Certificate of Indigency</li>
                             <li class="list-group-item tablinks" onclick="openRequest(event, 'business')">Business Permit</li>
+                            <li class="list-group-item tablinks" onclick="openRequest(event, 'building')">Building Permit</li>
                           </ul>
                     </div>
 
@@ -94,7 +95,7 @@
 
                         <div id="indigency" class="tabcontent">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered align-middle mb-0 shadow-sm">
+                                <table class="table table-striped table-bordered align-middle mb-0 shadow-sm p-3 mb-5 bg-body">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -136,7 +137,35 @@
                                     </thead>
                                     
                                     <tbody hx-trigger="load, BusinessPermitlistUpdate from:body" hx-get="{% url 'profile_business_permit' profile.residentsinfo.id %}" hx-target="this">
-                
+                                        <td class="spinner-border" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </td>
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="building" class="tabcontent">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered align-middle mb-0 shadow-sm p-3 mb-5 bg-body">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th scope="col">Requestor</th>
+                                            <th scope="col">Proposed Construction</th>
+                                            <th scope="col">Total Area</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Owner</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col " class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody hx-trigger="load, BuildingPermitList from:body" hx-get="{% url 'profile_building_permit' profile.residentsinfo.id %}" hx-target="this">
+                                        <td class="spinner-border" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </td>
                                     </tbody>
                                    
                                 </table>

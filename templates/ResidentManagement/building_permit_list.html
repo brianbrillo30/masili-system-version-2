@@ -1,0 +1,22 @@
+{% for building_permit in building_permit_list %}
+<tr>
+    <td></td>
+    <td>{{ building_permit.res_id }}</td>
+    <td>{{ building_permit.proposed_construction }}</td>
+    <td>{{ building_permit.total_area}}</td>
+    <td>{{ building_permit.location}}</td>
+    <td>{{ building_permit.owner}}</td>
+    <td>{{ building_permit.status}}</td>
+    <td class="text-center">
+        <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_building_permit' building_permit.id %}" hx-target="#dialog">
+            <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
+        </button>
+
+        <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_building_permit' building_permit.id %}">
+            <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
+            <span style="vertical-align: middle;">Generate</span>
+        </a>
+        
+    </td>
+</tr>
+{% endfor %}

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.BuildingPermit',
     'apps.Dashboard',
     'apps.AdminProfile',
+    'apps.ResidencyCertificate',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
