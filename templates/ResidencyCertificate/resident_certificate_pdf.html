@@ -32,7 +32,7 @@
 </style>
 
 <body>
-    <table width="100%" cellpadding="0" border="1" bordercolor="red">
+    <table width="100%" cellpadding="0">
         <tr>
             <td align="center" >
                 <img src="static/img/masili_logo.png" alt="" width="80">
@@ -73,9 +73,16 @@
         </tr>
 
         <tr>
-            <td colspan="3" style="margin-left: 70px; margin-right: 70px">
+            <td colspan="3" style="margin-left: 70px; margin-right: 70px;">
                 <p class="p2" style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ito ay pagpapatunay na si <b><i>{{ residency_certificate.res_id }}</i></b>, nasa wastong gulang, 
-                ay lehitimong mamamayan ng </p>
+                ay lehitimong mamamayan ng Barangay Masili, lungsod ng Calamba sapul pa ng taong <b><i>{{ residency_certificate.res_id.years_resided }}</i></b> hanggang kasalukuyan.</p>
+                <br><br><br>
+                <p class="p2" style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ang pagpapatunay na ito ay ginawa ayon sa kahilingan ni <b><i>{{ residency_certificate.res_id }}</i></b>
+                upang magamit sa : <b><i>{{ residency_certificate.purpose }}</i></b></p>
+                <br><br><br>
+                <p class="p2" style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ginawa ngayong ika-<b><i>{{ residency_certificate.date_released.day }}</i></b> 
+                    ng <b><i>{{residency_certificate.date_released|date:"F"}} {{residency_certificate.date_released.year}}.</i></b> sa Tanggpan ng Punong Barangay Masili, lungsod ng Calamba.
+                </p>
             </td>
         </tr>
     
