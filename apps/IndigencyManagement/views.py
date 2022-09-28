@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from apps.UserPortal.models import CertificateOfIndigency
 from .forms import *
-from .utils import render_to_pdf
+from project.utils import render_to_pdf
 # Create your views here.
 
 def indigency_module(request):

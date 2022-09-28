@@ -7,10 +7,7 @@ class BusinessPermitForm(forms.ModelForm):
         fields = ('business_name', 'location', 'business_nature', 'owner', 
                     'capital_investment', 'gross_sales', 'residece_certificate_no', 'date_released', 'issued_at', 
                     'previous_or', 'date_issued', 'previous_or_issued_at', 'amount_collect', 
-                    'paid_or', 'paid_or_date_issued', 'paid_or_issued_at', 'amount_colledted','status')
-
-        # fields = ('business_name', 'location', 'business_nature', 'owner', 
-        # 'capital_investment', 'gross_sales', 'residece_certificate_no',)        
+                    'paid_or', 'paid_or_date_issued', 'paid_or_issued_at', 'amount_colledted','status')      
 
         widgets = {
 

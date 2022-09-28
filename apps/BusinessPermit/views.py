@@ -1,10 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from apps.UserPortal.models import BusinessPermit 
 from .forms import *
-from .utils import render_to_pdf
+from project.utils import render_to_pdf
 # Create your views here.
 
-def building_permit_module(request):
+def business_permit_module(request):
     return render (request, 'BusinessPermit/business_permit_module.html')
 
 def business_permit_list(request):

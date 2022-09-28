@@ -10,6 +10,7 @@ urlpatterns = [
     path('Masili/',include('apps.ClearanceManagement.urls')),
     path('Masili/',include('apps.IndigencyManagement.urls')),
     path('Masili/',include('apps.BusinessPermit.urls')),
+    path('Masili/',include('apps.BuildingPermit.urls')),
 
     path('Barangay Masili/',include('apps.UserPortal.urls')),
 ]

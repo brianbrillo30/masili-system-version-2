@@ -8,9 +8,14 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-12 py-2">
+            <div class="col-8 py-2">
                 <p class="h6">Requestors Name</p>
                 <input type="text" class="form-control form-control-sm" value="{{ disabledform.res_id }}" disabled>
+            </div>
+
+            <div class="col-4 py-2">
+                <p class="h6">Date Requested</p>
+                <input type="text" class="form-control form-control-sm" value="{{ disabledform.date_requested }}" disabled>
             </div>
 
             <div class="col-8 py-2">
@@ -19,8 +24,8 @@
             </div>
 
             <div class="col-4 py-2">
-                <p class="h6">Date Requested</p>
-                <input type="text" class="form-control form-control-sm" value="{{ disabledform.date_requested }}" disabled>
+                <p class="h6">Document Status</p>
+                {{ form.status }}
             </div>
 
             <div class="col-12 py-2">
@@ -128,14 +133,6 @@
             <div class="col-12 py-2">
                 <p class="h6">Amount Collected</p>
                 {{ form.amount_colledted }}
-            </div>
-
-            <br><br><br><br>
-            <hr>
-
-            <div class="col-12 py-2">
-                <p class="h6">Document Status</p>
-                {{ form.status }}
             </div>
             <br>
             <hr>
