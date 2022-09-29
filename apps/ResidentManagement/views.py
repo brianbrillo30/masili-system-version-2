@@ -21,6 +21,7 @@ from django.core.mail import send_mail
 from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit
 from apps.ClearanceManagement.forms import*
 
+from django.core.paginator import Paginator
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -33,7 +34,18 @@ sound = os.path.join(sound_folder, 'beep.wav')
 @admin_only
 def resident_list(request):
     if request.user.is_authenticated:
-        context = {'resident_list' : User.objects.filter(is_superuser=0).order_by('id')}
+
+        if 'q' in request.GET:
+            q=request.GET['q']
+            resident_list = User.objects.filter(Q(residentsinfo__lastname__icontains=q) | Q(residentsinfo__res_id__icontains=q)).order_by('id')
+        else:
+            resident_list = User.objects.filter(is_superuser=0).order_by('id')
+
+        # Pagination
+        paginator = Paginator(resident_list, 50)
+        page_number = request.GET.get('page')
+        resident_list = paginator.get_page(page_number)
+        context = {'resident_list' : resident_list}
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
         return redirect('loginPage')

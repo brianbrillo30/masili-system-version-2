@@ -11,3 +11,10 @@ function openRequest(evt, documentType) {
     document.getElementById(documentType).style.display = "block";
     evt.currentTarget.className += " active";
   }
+
+  $(document).ready(function () {
+    $('#dtHorizontal').DataTable({
+      "scrollX": true
+    });
+    $('.dataTables_length').addClass('bs-select');
+  });
