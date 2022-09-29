@@ -4,6 +4,23 @@ body{
     background: #eee;
 }
 
+.fade-page {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.no-data {
+    display: none;
+    text-align: center;
+}
 #side_nav{
     background: #000;
     min-width: 320px;
