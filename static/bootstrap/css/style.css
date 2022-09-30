@@ -22,8 +22,8 @@ body{
 /* sidebar */
 #side_nav{
     background: #000;
-    min-width: 320px;
-    max-width: 320px;
+    min-width: 300px;
+    max-width: 300px;
     transition: all 0.3s ;
 }
 
@@ -50,9 +50,9 @@ hr.h-color{
     
 }
 
-/* @media(max-width: 767px){
+@media(max-width: 767px){
     #side_nav{
-        margin-left: -320px;
+        margin-left: -300px;
         position: fixed;
         min-height: 100vh;
         z-index: 1;
@@ -62,9 +62,9 @@ hr.h-color{
     #side_nav.active{
         margin-left:  0;
     }
-} */
+}
 
-@media(max-width: 1280px){
+/* @media(max-width: 1280px){
     #side_nav{
         margin-left: -320px;
         position: fixed;
@@ -81,7 +81,7 @@ hr.h-color{
     #side_nav.active{
         margin-left:  0;
     }
-}
+} */
 
 /* image preview */
 
