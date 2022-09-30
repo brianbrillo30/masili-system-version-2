@@ -18,9 +18,10 @@ from django.urls import reverse
 from django.views.decorators.cache import cache_control
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit
+from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate
 from apps.ClearanceManagement.forms import*
 
+from django.core.paginator import Paginator
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -34,7 +35,21 @@ sound = os.path.join(sound_folder, 'beep.wav')
 @admin_only
 def resident_list(request):
     if request.user.is_authenticated:
-        context = {'resident_list' : User.objects.filter(is_superuser=0).order_by('id')}
+
+        if 'q' in request.GET:
+            q=request.GET['q']
+            resident_list = User.objects.filter(Q(residentsinfo__lastname__icontains=q) | Q(residentsinfo__res_id__icontains=q)).order_by('id')
+        
+        else:
+            resident_list = User.objects.filter(is_superuser=0).order_by('id')
+
+        # Pagination
+        paginator = Paginator(resident_list, 50)
+        page_number = request.GET.get('page')
+        resident_list = paginator.get_page(page_number)
+
+        form = ProfileForm
+        context = {'resident_list' : resident_list, 'form':form}
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
         return redirect('loginPage')
@@ -290,7 +305,12 @@ def view_profile (request, id):
 def profile_clearance(request, id):
     if request.user.is_authenticated:
         context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
+<<<<<<< HEAD
         return render(request, 'ResidentManagement/clearance_list.html', context)
+=======
+        return render(request, 'ResidentManagement/DocumentList/clearance_list.html', context)
+        
+>>>>>>> 85b4a23d2199544c64cd5348c24729679e8ac8f3
     else:
         return redirect('loginPage')
 
@@ -301,7 +321,12 @@ def profile_clearance(request, id):
 def profile_indigency (request, id):
     if request.user.is_authenticated:
         context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
+<<<<<<< HEAD
         return render(request, 'ResidentManagement/indigency_list.html', context)
+=======
+        return render(request, 'ResidentManagement/DocumentList/indigency_list.html', context)
+
+>>>>>>> 85b4a23d2199544c64cd5348c24729679e8ac8f3
     else:
         return redirect('loginPage')
 
@@ -311,7 +336,12 @@ def profile_indigency (request, id):
 def profile_business_permit (request, id):
     if request.user.is_authenticated:
         context = {'profile_business_permit' : BusinessPermit.objects.filter(res_id = id)}
+<<<<<<< HEAD
         return render(request, 'ResidentManagement/business_permit_list.html', context)
+=======
+        return render(request, 'ResidentManagement/DocumentList/business_permit_list.html', context)
+    
+>>>>>>> 85b4a23d2199544c64cd5348c24729679e8ac8f3
     else:
         return redirect('loginPage')
 
@@ -320,14 +350,23 @@ def profile_business_permit (request, id):
 @login_required(login_url="loginPage")
 @admin_only
 def profile_building_permit(request, id):
+<<<<<<< HEAD
     if request.user.is_authenticated:
         context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
         return render(request, 'ResidentManagement/building_permit_list.html', context)
     else:
         return redirect('loginPage')
+=======
+    context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
+    return render(request, 'ResidentManagement/DocumentList/building_permit_list.html', context)
+>>>>>>> 85b4a23d2199544c64cd5348c24729679e8ac8f3
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
+def profile_residency_certificate(request, id):
+    context = {'residency_certificate_list':ResidencyCertificate.objects.filter(res_id = id)}
+    return render(request, 'ResidentManagement/DocumentList/residency_certificate.html', context)
 
 
-
-    

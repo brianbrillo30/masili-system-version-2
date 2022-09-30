@@ -14,15 +14,15 @@ def dashboard(request):
         cMale = ResidentsInfo.objects.filter(sex_id='1').count
         cFemale = ResidentsInfo.objects.filter(sex_id='2').count
 
-        cMarried = ResidentsInfo.objects.filter(civil_status='1').count
-        cSingle = ResidentsInfo.objects.filter(civil_status='2').count
+        cSingle = ResidentsInfo.objects.filter(civil_status='1').count
+        cMarried = ResidentsInfo.objects.filter(civil_status='2').count
         cDivorced = ResidentsInfo.objects.filter(civil_status='3').count
         cWidowed = ResidentsInfo.objects.filter(civil_status='4').count
 
         cYes = ResidentsInfo.objects.filter(single_parent='1').count
    
         cPwd = ResidentsInfo.objects.filter(status='2').count
-        cSenior = ResidentsInfo.objects.filter(status='3').count
+        cSenior = ResidentsInfo.objects.filter(status='1').count
 
         cResident = ResidentsInfo.objects.all().count
                 

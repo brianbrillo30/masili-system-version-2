@@ -4,6 +4,22 @@ body{
     background: #eee;
 }
 
+.fade-page {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* sidebar */
 #side_nav{
     background: #000;
     min-width: 320px;
@@ -34,9 +50,30 @@ hr.h-color{
     
 }
 
-@media(max-width: 767px){
+/* @media(max-width: 767px){
     #side_nav{
         margin-left: -320px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+
+    #side_nav.active{
+        margin-left:  0;
+    }
+} */
+
+@media(max-width: 1280px){
+    #side_nav{
+        margin-left: -320px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+    #side_nav{
+        margin-left: -1200px;
         position: fixed;
         min-height: 100vh;
         z-index: 1;
@@ -45,7 +82,6 @@ hr.h-color{
         margin-left:  0;
     }
 }
-
 
 /* image preview */
 
@@ -217,29 +253,34 @@ hr.h-color{
   .tabcontent {
       display: none;
   }
-  #resident{
-    background-color: #64B5F6;
+
+#resident{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    
 }
 #male{
-    background-color: #F98724;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    
 }
 #f{
-    background-color: #F98724;
+    background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
 }
 #married{
-    background-color: #64B5F6;
+    background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
 }
 #single{
-    background-color: #64B5F6;
+    background: linear-gradient(105.2deg, rgb(255, 78, 78) 11.2%, rgb(253, 176, 71) 117.9%);
 }
 #divorced{
-    background-color: #64B5F6;
+    background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
 }
 #widowed{
-    background-color: #64B5F6;
+    background: radial-gradient(circle at 12.3% 19.3%, rgb(85, 88, 218) 0%, rgb(95, 209, 249) 100.2%);
 }
 #yes{
-    background-color: #F98724;
+    background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
 }
 #no{
     background-color: #F98724;
@@ -248,11 +289,20 @@ hr.h-color{
     background-color: #64B5F6;
 }
 #pwd{
-    background-color: #64B5F6;
+    background: linear-gradient(109.6deg, rgb(83, 231, 173) 11.2%, rgb(67, 209, 222) 100.2%);
 }
 #senior{
-    background-color: #64B5F6;
+    background: radial-gradient(590px at 8.2% 13.8%, rgb(18, 35, 60) 0%, rgb(187, 187, 187) 90%);
 }
+
+.dtHorizontalWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+#dtHorizontal th, td {
+    white-space: nowrap;
+}
+
 
 
   

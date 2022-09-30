@@ -1,0 +1,32 @@
+{% for business_permit in profile_business_permit %}
+
+<tr>
+    <td></td>
+    <td>{{ business_permit.res_id }}</td>
+    <td>{{ business_permit.business_name }}</td>
+    <td>{{ business_permit.location}}</td>
+    <td>{{ business_permit.business_nature}}</td>
+    <td>{{ business_permit.previous_or}}</td>
+    <td>{{ business_permit.status}}</td>
+    <td class="text-center">
+        <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_business_permit' business_permit.id %}" hx-target="#dialog">
+            <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
+        </button>
+
+        <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_business_permit' business_permit.id %}">
+            <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
+            <span style="vertical-align: middle;">Generate</span>
+        </a>
+        
+    </td>
+</tr>
+
+{% empty %}
+
+<tr align="center">
+    <td colspan="8">
+        <h6 class="text-muted p-4">CURRENTLY NO DATA AVAILABLE</h6>
+    </td>
+</tr>
+
+{% endfor %}

@@ -11,3 +11,7 @@ class ResidencyCertificateForm(forms.ModelForm):
             'date_released' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
             'status' : forms.Select(attrs={'class':'form-select form-select-sm'}),
         }
+
+    def __init__(self, *args, **kwagrs):
+        super(ResidencyCertificateForm,self).__init__(*args, **kwagrs)
+        self.fields['date_released'].required = False
