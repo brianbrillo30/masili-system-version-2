@@ -7,6 +7,7 @@ urlpatterns = [
     path('Home/', home, name='home'),
     path ('About/', about, name='about'),
     path ('ServicePortal/', servicesPortal, name='service_portal'),
+    path('Profile/', profile, name='profile'),
     path ('User Logout/', userLogout, name='userLogout'),
     path ('BarangayClearance/', barangay_clearance, name='barangay_clearance'),
     path ('indigency/', indigency, name='indigency'),
@@ -14,6 +15,14 @@ urlpatterns = [
     path ('BusinessPermit/', BusinessPermit, name='BusinessPermit'),
     path ('ResidencyCertificate/', ResidencyCertificate, name='ResidencyCertificate'),
     
+
+    path('password_change', 
+    auth_views.PasswordChangeView.as_view(template_name='ChangePassword/password_change.html'), 
+    name='password_change'),
+
+    path('password_change_done', 
+    auth_views.PasswordChangeDoneView.as_view(template_name='ChangePassword/password_change_done.html'), 
+    name='password_change_done'),
 
     path('reset_password/', 
         auth_views.PasswordResetView.as_view(template_name="PasswordReset/password_reset.html", form_class=UserPasswordResetForm), 

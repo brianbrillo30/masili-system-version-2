@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "UsersideTemplate/ServicePortalBase.html" %}
 {% load static %}
 {% block content %}
 
@@ -15,20 +15,16 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th>User ID</th>
-                                <td>{{user.id}}</td>
+                                <th>Resident ID</th>
+                                <td>{{user.residentsinfo.res_id}}</td>
                             </tr>
                             <tr>
-                                <th>Username</th>
-                                <td>{{user.username}}</td>
-                            </tr>
-                            <tr>
-                                <th>Full Name</th>
-                                <td>{{user.first_name}} {{user.last_name}}</td>
+                                <th>Fullname</th>
+                                <td>{{userinfo.residentsinfo.firstname}} {{userinfo.residentsinfo.lastname}}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>{{user.email}}</td>
+                                <td>{{userinfo.email}}</td>
                             </tr>
                             <tr>
                                 <th>Last Login</th>

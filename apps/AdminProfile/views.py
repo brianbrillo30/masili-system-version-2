@@ -10,8 +10,6 @@ from django.contrib.auth.decorators import login_required
 @admin_only
 def adminProfile(request):
     if request.user.is_authenticated:
-
         return render(request, 'AdminProfile/admin_profile.html')
-    
     else:
         return redirect('loginPage')
