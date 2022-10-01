@@ -1,16 +1,34 @@
 {% load static %}
 
-
-<form hx-post="{{ request.path }}" class="modal-content">
-    {% csrf_token %}
+{% block content %}
+<form hx-post="{{ request.path }}" class="modal-content" enctype="multipart/form-data">
+    
     <div class="modal-header">
       <h5 class="modal-title">Add announcment</h5>
     </div>
     <div class="modal-body">
+      {% csrf_token %}
+      {{form.as_p}}
+      <!-- <div class="row">
+        <div class="col-12 py-2">
+            <p class="h6">Title</p>
+            <input type="text" id="title" name="title" class="form-control form-control-sm" >
+        </div>
+     
+        <div class="col-12 py-2">
+          <p class="h6">Information</p>
+          <textarea id="textarea" name="textarea" class="form-control form-control-sm" ></textarea>
+      </div>
+
+      <div class="col-12 py-2">
+        <p class="h6">Select Image</p>
+        <input type="file" id="img" name="img" accept="image/*" class="form-control form-control-sm">
+      </div> -->
 
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary" type="submit">Add</button>
     </div>
 </form>
+{% endblock content %}
