@@ -52,7 +52,13 @@
                     </thead>
                     
                     <tbody hx-trigger="load, indigencylistUpdate from:body" hx-get="{% url 'indigency_list' %}" hx-target="this">
-
+                        <tr align="center">
+                            <td colspan="7">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                    
                 </table>
