@@ -1,5 +1,5 @@
 {% for clearance in clearance_list %}
-<tr>
+<tr class="fade-page">
     <td></td>
     <td>{{ clearance.res_id }}</td>
     <td>{{ clearance.date_requested }}</td>
@@ -19,6 +19,12 @@
     </td>
 </tr>
 
-<!-- modal placeholder -->
+{% empty %}
+
+<tr align="center" class="fade-page">
+    <td colspan="8">
+        <h6 class="text-muted p-4">CURRENTLY NO DATA AVAILABLE</h6>
+    </td>
+</tr>
 
 {% endfor %}

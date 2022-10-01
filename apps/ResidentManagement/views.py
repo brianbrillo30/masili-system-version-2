@@ -43,10 +43,10 @@ def resident_list(request):
         else:
             resident_list = User.objects.filter(is_superuser=0).order_by('id')
 
-        # Pagination
-        paginator = Paginator(resident_list, 50)
-        page_number = request.GET.get('page')
-        resident_list = paginator.get_page(page_number)
+        # # Pagination
+        # paginator = Paginator(resident_list, 50)
+        # page_number = request.GET.get('page')
+        # resident_list = paginator.get_page(page_number)
 
         form = ProfileForm
         context = {'resident_list' : resident_list, 'form':form}
@@ -202,18 +202,16 @@ def details(request):
 def add_profile(request):
     if request.user.is_authenticated:
         form = ProfileForm
-        accountForm = UserAccountForm
 
         if request.method == 'POST':
             form = ProfileForm(request.POST,request.FILES)
             firstname = request.POST.get('firstname')
             lastname = request.POST.get('lastname')
-            accountForm = UserAccountForm(request.POST)
             email = request.POST.get('email')
 
             filename = firstname+" "+lastname
 
-            if form.is_valid() and accountForm.is_valid():
+            if form.is_valid():
 
                 randomNum = User.objects.make_random_password(length=2, allowed_chars="01234567889")
                 random_password = User.objects.make_random_password(length=8, allowed_chars="01234567889")
@@ -236,7 +234,7 @@ def add_profile(request):
 
                 return redirect('resident_list')
 
-        context={'form':form, 'userform':accountForm}
+        context={'form':form}
         return render(request,'ResidentManagement/add_resident.html',context)
     else:
         return redirect('loginPage')
@@ -305,7 +303,7 @@ def view_profile (request, id):
 def profile_clearance(request, id):
     if request.user.is_authenticated:
         context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/clearance_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/clearance_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -316,7 +314,7 @@ def profile_clearance(request, id):
 def profile_indigency (request, id):
     if request.user.is_authenticated:
         context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/indigency_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/indigency_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -326,7 +324,7 @@ def profile_indigency (request, id):
 def profile_business_permit (request, id):
     if request.user.is_authenticated:
         context = {'profile_business_permit' : BusinessPermit.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/business_permit_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/business_permit_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -337,7 +335,7 @@ def profile_business_permit (request, id):
 def profile_building_permit(request, id):
     if request.user.is_authenticated:
         context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/building_permit_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/building_permit_list.html', context)
     else:
         return redirect('loginPage')
 

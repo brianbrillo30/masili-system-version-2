@@ -49,7 +49,7 @@ class ProfileForm(forms.ModelForm):
             'single_parent' : forms.Select(choices=singParentChoices,attrs={'class':'form-select form-select-sm'}),
             'status' : forms.Select(attrs={'class':'form-select form-select-sm'}),
 
-            'years_resided' : forms.Select(attrs={'class':'form-select form-select-sm', 'id':'date-dropdown'}),
+            'years_resided' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Select a year', 'id':'year'}),
         }
         
     def __init__(self, *args, **kwagrs):
@@ -60,13 +60,4 @@ class ProfileForm(forms.ModelForm):
         self.fields['educ_attainment'].empty_label = "Select"
         self.fields['status'].empty_label = "Select"
         self.fields['suffix'].required = False
-
-
-class UserAccountForm (forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('email',)
-        widgets = {
-            'email' : forms.EmailInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Email'}),
-        }
 

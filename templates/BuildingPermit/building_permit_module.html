@@ -54,7 +54,13 @@
                     </thead>
                     
                     <tbody hx-trigger="load, BuildingPermitList from:body" hx-get="{% url 'building_permit_list' %}" hx-target="this">
-
+                        <tr align="center">
+                            <td colspan="8">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                    
                 </table>

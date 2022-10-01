@@ -17,6 +17,8 @@ def home(request):
 def about(request):
      return render(request, "UsersideTemplate/about.html")
 
+def contact(request):
+    return render(request, "UsersideTemplate/contact.html")
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")
