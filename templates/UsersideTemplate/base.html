@@ -17,32 +17,32 @@
     <title>Barangay Masili</title>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fade-page">
   <div class="container">
     <a class="navbar-brand" href="#"><img src="{%static 'img/nav_masili_logo@2x.png' %}" height="70"></a>   
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
+    <div class="collapse navbar-collapse tabs-wrapper" id="navbarNav">
+      <ul class="navbar-nav ms-auto tabs">
+        <li class="nav-item tab py-2">
           <a class="nav-link" href="{% url 'home' %}" style="font-weight: 600; color:black">Home</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item py-2 tab">
           <a class="nav-link" href="{% url 'about' %}" style="font-weight: 600; color:black">About</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="font-weight: 600; color:black">Contact</a>
+        <li class="nav-item py-2 tab">
+          <a class="nav-link" href="{% url 'contact' %}" style="font-weight: 600; color:black">Contact</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item py-2 tab">
           <a class="nav-link" href="#" style="font-weight: 600; color:black">Announcement</a>
         </li>
 
-        <li class="nav-item me-2 input-sm">
+        <li class="nav-item me-2 py-1 input-sm">
           <a type="button" class="btn-theme -btn1" href="{% url 'loginPage' %}">Services Portal</a>
         </li>
 
@@ -52,14 +52,14 @@
   </div>
 </nav>
 
-<body class="bg-white">
+<body class="bg-white fade-page">
 
 
         {% block content %}
         {% endblock content %}
         
 
-<section>
+<section class="fade-page">
           <!-- Footer -->
         <footer class="bg-dark text-center text-white">
           <!-- Grid container -->
@@ -132,5 +132,15 @@
         </footer>
         <!-- Footer -->
         </section>
+
+
+        <script>
+          $(function(){
+              $('.navbar ul li a').filter(function(){return this.href==location.href}).parent().addClass('is-active').siblings().removeClass('is-active');
+              $('.navbar ul li a').click(function(){
+                  $(this).parent().addClass('active').siblings().removeClass('is-active')    
+          })
+          });
+      </script>
 </body>
 </html>
