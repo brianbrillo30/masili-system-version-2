@@ -43,10 +43,10 @@ def resident_list(request):
         else:
             resident_list = User.objects.filter(is_superuser=0).order_by('id')
 
-        # Pagination
-        paginator = Paginator(resident_list, 50)
-        page_number = request.GET.get('page')
-        resident_list = paginator.get_page(page_number)
+        # # Pagination
+        # paginator = Paginator(resident_list, 50)
+        # page_number = request.GET.get('page')
+        # resident_list = paginator.get_page(page_number)
 
         form = ProfileForm
         context = {'resident_list' : resident_list, 'form':form}
@@ -305,7 +305,7 @@ def view_profile (request, id):
 def profile_clearance(request, id):
     if request.user.is_authenticated:
         context = {'profile_clearance' : clearance_list.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/clearance_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/clearance_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -316,7 +316,7 @@ def profile_clearance(request, id):
 def profile_indigency (request, id):
     if request.user.is_authenticated:
         context = {'profile_indigency' : CertificateOfIndigency.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/indigency_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/indigency_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -326,7 +326,7 @@ def profile_indigency (request, id):
 def profile_business_permit (request, id):
     if request.user.is_authenticated:
         context = {'profile_business_permit' : BusinessPermit.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/business_permit_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/business_permit_list.html', context)
     else:
         return redirect('loginPage')
 
@@ -337,7 +337,7 @@ def profile_business_permit (request, id):
 def profile_building_permit(request, id):
     if request.user.is_authenticated:
         context = {'building_permit_list':BuildingPermit.objects.filter(res_id = id)}
-        return render(request, 'ResidentManagement/building_permit_list.html', context)
+        return render(request, 'ResidentManagement/DocumentList/building_permit_list.html', context)
     else:
         return redirect('loginPage')
 
