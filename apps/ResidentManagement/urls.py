@@ -1,28 +1,30 @@
 from django.urls import path,include
 from .views import *
 
+from project.utils import HashIdConverter
+from django.urls import register_converter
 
-
+register_converter(HashIdConverter, "hashid")
 
 urlpatterns = [
     path('resident/', resident_list, name= 'resident_list'),
-    path('Admin Logout/', adminLogout, name='adminLogout'),
+    path('admin-logout/', adminLogout, name='adminLogout'),
     path('ajax/', ajax, name= 'ajax'),
     path('scan/', scan,name='scan'),
  
     path('Resident Details/', details, name= 'details'),
 
     path('add_profile/',add_profile,name='add_profile'),
-    path('view_profile/<int:id>/',view_profile, name='view_profile'),
-    path('edit_profile/<int:id>/',edit_profile,name='edit_profile'),
-    path('delete_profile/<int:id>/',delete_profile,name='delete_profile'),
+    path('view_profile/<hashid:id>/',view_profile, name='view_profile'),
+    path('edit_profile/<hashid:id>/',edit_profile,name='edit_profile'),
+    path('delete_profile/<hashid:id>/',delete_profile,name='delete_profile'),
 
     # Resident document
     path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
     path('indigency/<int:id>/', profile_indigency, name ='profile_indigency'),
-    path('business_permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
-    path('building_permit/<int:id>/', profile_building_permit, name='profile_building_permit'),
-    path('residency_certificate/<int:id>/', profile_residency_certificate, name='profile_residency_certificate'),
+    path('business-permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
+    path('building-permit/<int:id>/', profile_building_permit, name='profile_building_permit'),
+    path('residency-certificate/<int:id>/', profile_residency_certificate, name='profile_residency_certificate'),
     
 
     # path('clear_history/',clear_history,name='clear_history'),

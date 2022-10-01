@@ -19,12 +19,13 @@ $(document).ready(function() {
       filterDropDown:({
         columns: [
           {
-            idx: 2,
+            idx: 3,
 							title: "Select Gender",
               autoSize: true
               
           },{
-            idx: 3,
+            title: "Select Purok",
+            idx: 4,
           }
         ],
         bootstrap: false,

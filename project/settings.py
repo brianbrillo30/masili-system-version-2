@@ -71,6 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+HASHIDS_SALT= 'some_random_string'
 
 
 # Database
