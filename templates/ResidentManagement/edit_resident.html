@@ -61,11 +61,6 @@
             </div>
 
             <div class="col-lg-6 mb-3">
-                <p class="h6">Email</p>
-                {{ form.email }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
                 <p class="h6">Birthdate</p>
                 <div class="input-group input-group-sm mb-3 date" id="datepicker">
                     {{ form.birthdate }}
@@ -80,7 +75,7 @@
                 {{ form.birthplace }}
             </div>
 
-            <div class="col-lg-2 mb-3">
+            <div class="col-lg-3 mb-3">
                 <p class="h6">Civil Status</p>
                 {{ form.civil_status }}
             </div>
@@ -90,14 +85,19 @@
                 {{ form.citizenship }}
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <div class="col-lg-6 mb-3">
                 <p class="h6">Purok</p>
                 {{ form.purok }}
             </div>
 
-            <div class="col-lg-3 mb-3">
+            <div class="col-lg-6 mb-3">
                 <p class="h6">Years Recided</p>
-                {{ form.years_resided }}
+                <div class="input-group input-group-sm mb-3 year">
+                    {{ form.years_resided }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
             </div>
 
             <div class="col-lg-12 mb-3">
@@ -158,17 +158,4 @@
         </div>
     </form>
 </div>
-<script>
-    let dateDropdown = document.getElementById('date-dropdown'); 
-         
-    let currentYear = new Date().getFullYear();    
-    let earliestYear = 1970;     
-    while (currentYear >= earliestYear) {      
-      let dateOption = document.createElement('option');          
-      dateOption.text = currentYear;      
-      dateOption.value = currentYear;        
-      dateDropdown.add(dateOption);      
-      currentYear -= 1;    
-    }
-  </script>
 {% endblock content %} 
