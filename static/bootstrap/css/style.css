@@ -18,6 +18,9 @@ body{
     }
 }
 
+.txt-color-theme-1{
+    color: #355389;
+}
 /* Home Nav Animation */
 .tab {
     --animation-time: 200ms;
