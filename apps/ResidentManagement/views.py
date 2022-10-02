@@ -91,7 +91,7 @@ def scan(request):
             image_of_person = face_recognition.load_image_file(f'media/{person}')
             person_face_encoding = face_recognition.face_encodings(image_of_person)[0]
             known_face_encodings.append(person_face_encoding)
-            known_face_names.append(f'{person}'[:-4])
+            known_face_names.append(f'{person}'[18:-4])
 
 
         video_capture = cv2.VideoCapture(0)
