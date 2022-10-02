@@ -24,21 +24,21 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse tabs-wrapper" id="navbarNav">
-      <ul class="navbar-nav ms-auto tabs">
-        <li class="nav-item tab py-2">
+    <div class="collapse navbar-collapse navtabs-wrapper" id="navbarNav">
+      <ul class="navbar-nav ms-auto navtabs">
+        <li class="nav-item navtab py-2">
           <a class="nav-link" href="{% url 'home' %}" style="font-weight: 600; color:black">Home</a>
         </li>
 
-        <li class="nav-item py-2 tab">
+        <li class="nav-item py-2 navtab">
           <a class="nav-link" href="{% url 'about' %}" style="font-weight: 600; color:black">About</a>
         </li>
 
-        <li class="nav-item py-2 tab">
+        <li class="nav-item py-2 navtab">
           <a class="nav-link" href="{% url 'contact' %}" style="font-weight: 600; color:black">Contact</a>
         </li>
 
-        <li class="nav-item py-2 tab">
+        <li class="nav-item py-2 navtab">
           <a class="nav-link" href="#" style="font-weight: 600; color:black">Announcement</a>
         </li>
 
@@ -138,7 +138,7 @@
           $(function(){
               $('.navbar ul li a').filter(function(){return this.href==location.href}).parent().addClass('is-active').siblings().removeClass('is-active');
               $('.navbar ul li a').click(function(){
-                  $(this).parent().addClass('active').siblings().removeClass('is-active')    
+                  $(this).parent().addClass('is-active').siblings().removeClass('is-active')    
           })
           });
       </script>

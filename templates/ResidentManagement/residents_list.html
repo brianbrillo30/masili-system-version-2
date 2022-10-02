@@ -40,20 +40,6 @@
         </div>
 
         <hr class="my-3">
-
-        <!-- <div class="col-lg-4 col-md-5 col-12 pb-2">
-            <form>
-                <div class="input-group">
-                    <input name="q" type="text" placeholder="Search" class="form-control form-control-sm" />
-                    <div class="input-group-append">
-                        <button class="btn btn-dark btn-sm"><i class="las la-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div> -->
-
-
-
         <div class="col-12 col-sm-12 col-lg-12">
             <div class="table-responsive">
                 <table id="residents" class="table table-striped table-bordered align-middle mb-0 shadow-sm fade-page">
@@ -78,7 +64,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img 
-                                        src='/media/{{resident.residentsinfo.image}}' 
+                                        src='{{resident.residentsinfo.image.url}}' 
                                         style="width: 45px; height: 45px; object-fit:cover;" 
                                         class="rounded-circle"/>
     
@@ -112,53 +98,6 @@
                     </tbody>
                 </table>
             </div>
-
-                <!--Pagination-->
-            <!-- <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    {% if resident_list.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ resident_list.previous_page_number }}">Previous</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
-                        </li>
-                    {% endif %}
-
-                    {% if resident_list.number|add:'-4' > 1 %}
-                        <li class="page-item"><a class="page-link" href="?page={{ resident_list.number|add:'-5' }}">&hellip;</a></li>
-                    {% endif %}
-
-                    {% for i in resident_list.paginator.page_range %}
-                        {% if resident_list.number == i %}
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    {{ i }}
-                                    <span class="sr-only">(current)</span>
-                                </span>
-                            </li>
-                        {% elif i > resident_list.number|add:'-5' and i < resident_list.number|add:'5' %}
-                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if resident_list.paginator.num_pages > resident_list.number|add:'4' %}
-                        <li class="page-item"><a class="page-link" href="?page={{ resident_list.number|add:'5' }}">&hellip;</a></li>
-                    {% endif %}
-
-                    {% if resident_list.has_next %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ resident_list.next_page_number }}">Next</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
-                        </li>
-                    {% endif %}
-            </ul>
-            </nav> -->
-    <!--end of Pagination-->
         </div>
 
     </div>

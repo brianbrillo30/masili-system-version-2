@@ -36,7 +36,7 @@ class Status(models.Model):
 
     def __str__(self):
         return self.status
-
+    
 class ResidentsInfo(models.Model):
     res_id = models.CharField(default= random_string, unique=True, max_length=5)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True,)
@@ -62,7 +62,7 @@ class ResidentsInfo(models.Model):
 
     years_resided = models.CharField(max_length=70, null=True)
     
-    image = models.ImageField()
+    image = models.ImageField(upload_to='residents-profile')
     updated = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.firstname +' '+self.middlename+' '+self.lastname

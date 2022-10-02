@@ -35,21 +35,7 @@ sound = os.path.join(sound_folder, 'beep.wav')
 @admin_only
 def resident_list(request):
     if request.user.is_authenticated:
-
-        if 'q' in request.GET:
-            q=request.GET['q']
-            resident_list = User.objects.filter(Q(residentsinfo__lastname__icontains=q) | Q(residentsinfo__res_id__icontains=q)).order_by('id')
-        
-        else:
-            resident_list = User.objects.filter(is_superuser=0).order_by('id')
-
-        # # Pagination
-        # paginator = Paginator(resident_list, 50)
-        # page_number = request.GET.get('page')
-        # resident_list = paginator.get_page(page_number)
-
-        form = ProfileForm
-        context = {'resident_list' : resident_list, 'form':form}
+        context = {'resident_list' : User.objects.filter(is_superuser=0).order_by('id')}
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
         return redirect('loginPage')
@@ -91,7 +77,7 @@ def scan(request):
             image_of_person = face_recognition.load_image_file(f'media/{person}')
             person_face_encoding = face_recognition.face_encodings(image_of_person)[0]
             known_face_encodings.append(person_face_encoding)
-            known_face_names.append(f'{person}'[:-4])
+            known_face_names.append(f'{person}'[18:-4])
 
 
         video_capture = cv2.VideoCapture(0)
