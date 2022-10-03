@@ -1,18 +1,33 @@
 {% for announce in announcementList %}
-<tr class="fade-page">
-    <td></td>
-    <td>{{ announce.title }}</td>
-    <td>{{ announce.body }}</td>
+<div class="card mb-3 border-0 shadow">
+    <div>
+        <div class="row g-0">
+            <div class="col-lg-5 col-md-12 col-12 my-auto d-flex justify-content-cente">
+              <img src='{{announce.image.url}}' class="img-fluid rounded-start">
+            </div>
+            <div class="col-lg-7 col-md-12 col-12">
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <i class="float-end las la-edit text-muted fs-4"></i>
+                            <i class="float-end las la-trash-alt text-muted fs-4"></i>
+                        </div>
+                    </div>
 
-
-</tr>
-
-{% empty %}
-
-<tr align="center" class="fade-page">
-    <td colspan="8">
-        <h6 class="text-muted p-4">CURRENTLY NO ANNOUNCEMENT AVAILABLE</h6>
-    </td>
-</tr>
-
+                    <div class="col-12">
+                        <h5 class="card-title">{{ announce.title }}</h5>
+                        <p class="card-text">{{ announce.body }}</p>
+                    </div>
+                </div>
+              </div>
+    
+              <br>
+              <div class="position-absolute bottom-0 end-0 px-3">
+                <p class="card-text"><small class="text-muted">Posted at {{ announce.post_date }}</small></p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endfor %}
