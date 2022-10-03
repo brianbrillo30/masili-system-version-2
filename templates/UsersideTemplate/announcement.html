@@ -1,0 +1,68 @@
+{% extends "UsersideTemplate/base.html" %}
+{% load static %}
+{% block content %}
+<div class="video-wrapper" style="height: 300px;">
+
+    <img class="imageheader" src="{% static 'img/slider-4-slide-1-1920x678.jpg'%}" alt="">
+  
+    <div class="header">
+      <h1 class="display-1"><b>ABOUT BARANGAY MASILI</b></h1>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div class="container pt-5">
+    <div class="row">
+        {% for announce in announcementList %}
+        <div class="col-lg-6 pt-2">
+            <img class="float-end" src="/media/{{announce.image}}" width="600" height="300">
+        </div>
+
+        <div class="col-lg-6">
+            <h2>Title: {{announce.title}}</h2>
+            <p>{{announce.body}}</p>
+            <p>Posted: {{announce.post_date}}</p>
+        </div>
+        {% empty %}
+        <center>
+            <img src="/media/empty.jpg" width="600" height="350">
+        </center>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<div class="container" style="padding-top: 10%;">
+    <div class="row">
+
+        <div class="col-lg-6 p-5 pt-5">
+            <!-- <div class=""><h2>Map of Masili</h2></div>
+            <div class="h-auto d-inline-block"><p><b>Address</b> : 69 Masili Calamba City Laguna Philippines, Calamba, Laguna</p></div>
+            <div class="h-auto d-inline-block"><p><b>Coordinate</b> : <a href="https://www.google.com/maps/place/14.1825988737,121.202162233">14.1825988737, 121.202162233</a></p></div>
+            <div class="h-auto d-inline-block"><p><b>Land Area</b> : 32.1 hectares</p></div>
+            <div class="h-auto d-inline-block"><p><b>Boundaries</b> : West - Sucol, East - Los Baños, South - Sucol and South - Sucol</p></div>
+            <div class="h-auto d-inline-block"><p><b>Number of Sitios/Purok</b> : 6</p></div>
+            <div class="h-auto d-inline-block"><p><b>List of Sitios/Purok</b> : Purok I, Purok II, Purok III, Purok IV, Purok V, Purok VI</p></div> -->
+        </div>
+
+        <div class="col-lg-6 p-5 pt-5">
+            <!-- Google map
+            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 400px">
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9200.27538250287!2d121.20604870750162!3d14.18075793337452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd613926c4267f%3A0x62fd88e8affa6ac1!2sMasili%2C%20Real%2C%20Calamba%2C%20Laguna!5e0!3m2!1sen!2sph!4v1663532435301!5m2!1sen!2sph" 
+                width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>   -->
+            <!--Google Maps-->            
+        </div> 
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

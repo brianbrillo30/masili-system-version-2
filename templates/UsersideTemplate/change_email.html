@@ -1,0 +1,15 @@
+{% extends "UsersideTemplate/ServicePortalBase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <label>Email</label>
+        {{ form.email }}
+        <br>
+        <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

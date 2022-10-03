@@ -7,6 +7,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto py-4">
+            {% for message in messages %}  
+            <p id="msg" style="color: green">{{ message }}</p>
+            {% endfor %}
             <div class="card">
                 <div class="card-header">
                     <h1>My Details</h1>
@@ -27,21 +30,24 @@
                                 <td>{{userinfo.email}}</td>
                             </tr>
                             <tr>
-                                <th>Last Login</th>
-                                <td>{{user.last_login}}</td>
-                            </tr>
-                            <tr>
                                 <th>Join Date</th>
                                 <td>{{user.date_joined}}</td>
                             </tr>
                         </tbody>
                     </table>
                     <a href="{% url 'password_change' %}" class="btn-theme -btn2 col-12 col-md-5">Change Password</a>
+                    <a href="{% url 'changeEmail' %}" class="btn-theme -btn2 col-12 col-md-5">Change Email</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
 
 {% endblock content %}

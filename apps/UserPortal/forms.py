@@ -1,7 +1,7 @@
 from django import forms
 from .models import *
-from django.contrib.auth.forms import PasswordResetForm
-
+from django.contrib.auth.forms import PasswordResetForm, UserChangeForm
+from django.contrib.auth.models import User
 class CleranceForm(forms.ModelForm):
     class Meta:
         model = clearance
@@ -80,3 +80,15 @@ class UserPasswordResetForm(PasswordResetForm):
         'type': 'email',
         'name': 'email'
         }))
+
+# class changeEmailForm(UserChangeForm):
+#     class Meta:
+#         model = User
+#         fields = ('email',)
+
+class UpdateUserForm(forms.ModelForm):
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ('email',)

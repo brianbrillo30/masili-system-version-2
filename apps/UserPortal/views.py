@@ -5,8 +5,13 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+
+from apps.AnnouncementManagement.models import Announcement
 from .forms import *
 from .models import *
+from django.contrib.auth.forms import UserChangeForm
+
+
 
 # Create your views here.
 
@@ -50,6 +55,7 @@ def barangay_clearance(request):
                 instance = form.save(commit=False)
                 instance.res_id = userid
                 instance.save()
+                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
                 return redirect('service_portal')
 
         context={'form':form} 
@@ -70,6 +76,7 @@ def indigency(request):
                 instance = form.save(commit=False)
                 instance.res_id = userid
                 instance.save()
+                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
                 return redirect('service_portal')
         context={'form':form} 
         return render(request, "UsersideTemplate/indigency.html", context)
@@ -88,6 +95,7 @@ def BuildingPermit(request):
                 instance = form.save(commit=False)
                 instance.res_id = userid
                 instance.save()
+                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
                 return redirect('service_portal')
 
         context={'form':form}
@@ -107,6 +115,7 @@ def BusinessPermit(request):
                 instance = form.save(commit=False)
                 instance.res_id = userid
                 instance.save()
+                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
                 return redirect('service_portal')
         context={'form':form}
         return render(request, "UsersideTemplate/business_permit.html", context)
@@ -125,6 +134,7 @@ def ResidencyCertificate(request):
                 instance = form.save(commit=False)
                 instance.res_id = userid
                 instance.save()
+                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
                 return redirect('service_portal')
         context={'form':form}
         return render(request, 'UsersideTemplate/residency_certificate.html', context)
@@ -139,4 +149,23 @@ def profile(request):
         return render(request, 'UsersideTemplate/profile.html')
     else:
         return redirect('loginPage')
+
+
+def changeEmail(request):
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your email has been updated')
+            return redirect('profile')
+    else:
+        form = UpdateUserForm(instance=request.user)
+        context = {'form': form}
+    return render(request, 'UsersideTemplate/change_email.html', context)
+
+def announce(request):
+    announce_list = Announcement.objects.all()
+    context = {'announcementList' :  announce_list}
+    return render(request, 'UsersideTemplate/announcement.html', context)
     

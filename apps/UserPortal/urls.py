@@ -1,22 +1,26 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+
+
 from .views import *
 from .forms import UserPasswordResetForm
 
 urlpatterns = [
-    path('Home/', home, name='home'),
+    path ('Home/', home, name='home'),
     path ('About/', about, name='about'),
     path ('Contact/', contact, name='contact'),
+    path ('Announcement/', announce, name='announce'),
     path ('ServicePortal/', servicesPortal, name='service_portal'),
-    path('Profile/', profile, name='profile'),
+    path ('Profile/', profile, name='profile'),
+    path ('Change Email/', changeEmail, name='changeEmail'),
     path ('User Logout/', userLogout, name='userLogout'),
     path ('BarangayClearance/', barangay_clearance, name='barangay_clearance'),
     path ('indigency/', indigency, name='indigency'),
     path ('BuildingPermit/', BuildingPermit, name='BuildingPermit'),
     path ('BusinessPermit/', BusinessPermit, name='BusinessPermit'),
     path ('ResidencyCertificate/', ResidencyCertificate, name='ResidencyCertificate'),
-    
 
+    
     path('password_change', 
     auth_views.PasswordChangeView.as_view(template_name='ChangePassword/password_change.html'), 
     name='password_change'),

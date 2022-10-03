@@ -1,0 +1,18 @@
+{% for announce in announcementList %}
+<tr class="fade-page">
+    <td></td>
+    <td>{{ announce.title }}</td>
+    <td>{{ announce.body }}</td>
+
+
+</tr>
+
+{% empty %}
+
+<tr align="center" class="fade-page">
+    <td colspan="8">
+        <h6 class="text-muted p-4">CURRENTLY NO ANNOUNCEMENT AVAILABLE</h6>
+    </td>
+</tr>
+
+{% endfor %}
