@@ -1,0 +1,40 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+<center>
+    <div class="card mb-3 border-0 shadow">
+        <div>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="row g-0">
+                <div class="col-lg-5 col-md-12 col-12 my-auto d-flex justify-content-cente">
+                  <img src='{{ann.image.url}}' class="img-fluid rounded-start">
+                </div>
+                <div class="col-lg-7 col-md-12 col-12">
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">{{ ann.title }}</h5>
+                            <p class="card-text">{{ ann.body }}</p>
+                        </div>
+                    </div>
+                  </div>
+        
+                  <br>
+                  <div class="position-absolute bottom-0 end-0 px-3">
+                    <p class="card-text"><small class="text-muted">Posted at {{ ann.post_date }}</small></p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<h3>Delete this announcement?</h3>
+<input class="btn btn-danger" type="submit" value="Yes" />
+&nbsp;
+<a href="{% url 'announcementPage' %}"><div class="btn btn-primary">Cancel</div></a>
+</form>
+
+</center>
+{% endblock content %}
