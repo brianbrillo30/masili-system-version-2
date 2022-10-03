@@ -1,0 +1,39 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<style>
+    .modal-dialog {
+        min-width: auto;
+        max-width: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+
+}
+</style>
+
+<div class="container-fluid bg-white rounded">
+    <div class="row p-3 g-0">
+
+        <div class="col-lg-6 col-md-4 col-12">
+            <h4 class="text-muted">Generating Reports</h4>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-12">
+            <div class="float-end">
+                <button type="button" class="btn btn-primary bg-gradient">
+                    <i class="las la-file-csv fs-4" style="vertical-align: middle;"></i>
+                    <span class="mt-5" style="vertical-align: middle;">Export CSV</span>
+                </button>
+            </div>
+        </div>
+
+        <hr class="my-3">
+
+    </div>
+</div>
+
+
+{% endblock content %}

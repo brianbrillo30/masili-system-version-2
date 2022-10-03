@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 from apps.ResidentManagement.models import*
@@ -14,6 +15,7 @@ class DocumentStatus(models.Model):
     
 
 class clearance(models.Model):
+    document_type = models.CharField(max_length=70, default="Barangay Clearance")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     age = models.CharField(max_length=70)
     purpose = models.CharField(max_length=70)
@@ -28,6 +30,7 @@ class clearance(models.Model):
 
 
 class CertificateOfIndigency(models.Model):
+    document_type = models.CharField(max_length=70, default="Certificate of Indigency")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     age = models.CharField(max_length=70)
     purpose = models.CharField(max_length=70)
@@ -37,6 +40,7 @@ class CertificateOfIndigency(models.Model):
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
 class BuildingPermit(models.Model):
+    document_type = models.CharField(max_length=70, default="Building Permit")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     proposed_construction = models.CharField(max_length=255)
     total_area  = models.CharField(max_length=255)
@@ -58,6 +62,7 @@ class BuildingPermit(models.Model):
 
 
 class BusinessPermit(models.Model):
+    document_type = models.CharField(max_length=70, default="Business Permit")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     business_name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -84,6 +89,7 @@ class BusinessPermit(models.Model):
 
 
 class ResidencyCertificate (models.Model):
+    document_type = models.CharField(max_length=70, default="Certificate of Residency")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     date_requested = models.DateField(auto_now_add=True)
