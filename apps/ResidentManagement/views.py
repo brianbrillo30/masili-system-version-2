@@ -1,6 +1,5 @@
 from audioop import reverse
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from .decorators import admin_only
 from .models import *
 from .forms import *
 import face_recognition
@@ -11,11 +10,12 @@ from django.db.models import Q
 from playsound import playsound
 from django.contrib.auth.models import User, Group
 import os
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.urls import reverse
+from .decorators import admin_only
 from django.views.decorators.cache import cache_control
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
 from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate
@@ -160,6 +160,7 @@ def scan(request):
     else:
         return redirect('loginPage')
 
+
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")
 @admin_only
@@ -225,6 +226,7 @@ def add_profile(request):
     else:
         return redirect('loginPage')
 
+
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")
 @admin_only
@@ -253,6 +255,7 @@ def edit_profile(request, id):
         return render(request,'ResidentManagement/edit_resident.html',context)
     else:
         return redirect('loginPage')
+
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")
@@ -303,6 +306,7 @@ def profile_indigency (request, id):
         return render(request, 'ResidentManagement/DocumentList/indigency_list.html', context)
     else:
         return redirect('loginPage')
+
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")

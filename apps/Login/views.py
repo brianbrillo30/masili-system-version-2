@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from .decorators import unauthenticated_user
-from .decorators import unauthenticated_user
+
 
 # Create your views here.
 
