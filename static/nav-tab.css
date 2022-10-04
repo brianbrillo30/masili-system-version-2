@@ -1,0 +1,24 @@
+.tab-holder{
+    background-color: #355389;
+}
+
+/* .nav-tabs {
+    border-color: white;
+} */
+
+.nav-capsule > li > a {
+    border: 0;
+    color: white;
+}
+
+.nav-capsule > li > a:hover {
+    border: 0;
+    background-color: rgba(53, 83, 137, 0.28);
+    color: #ffffff;
+}
+
+.nav-capsule > li > .nav-link.active {
+    background-color: #ffffff;
+    color: #355389;
+    font-weight: 600;
+}

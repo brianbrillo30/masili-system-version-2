@@ -349,6 +349,15 @@ hr.h-color{
     margin-bottom: 10px;
 }
 
+.report_table_filterSelect{
+    width: 15%;
+    position: relative;
+    display:inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
 
 table.table-fit {
     width: auto !important;

@@ -1,11 +1,21 @@
 from django.shortcuts import render
-from apps.ResidentManagement.models import ResidentsInfo
+from apps.UserPortal.models import *
 # Create your views here.
 
 def reports(request):
-    return render (request, 'ReportManagement/reports.html')
+    clearance_list = clearance.objects.filter(status=3)
+    indigency_list = CertificateOfIndigency.objects.filter(status=3)
+    business_list = BusinessPermit.objects.filter(status=3)
+    building_list = BuildingPermit.objects.filter(status=3)
+    residency_list = ResidencyCertificate.objects.filter(status=3)
+    context = {
+        'clearance_list': clearance_list, 
+        'indigency_list': indigency_list,
+        'business_list' : business_list,
+        'building_list' : building_list,
+        'residency_list': residency_list
+    }
+    return render (request, 'ReportManagement/reports.html', context)
 
-# def reports(request):
-#     report_list = ResidentsInfo.objects.select_related('clearance', 'CertificateOfIndigency', 'BuildingPermit')
-#     context = {'reports':report_list}
-#     return render (request, 'ReportManagement/reports.html', context)
+
+
