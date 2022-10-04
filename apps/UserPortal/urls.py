@@ -19,6 +19,7 @@ urlpatterns = [
     path ('BuildingPermit/', BuildingPermit, name='BuildingPermit'),
     path ('BusinessPermit/', BusinessPermit, name='BusinessPermit'),
     path ('ResidencyCertificate/', ResidencyCertificate, name='ResidencyCertificate'),
+    path ('document-status/', document_status, name='document-status'),
 
     
     path('password_change', 

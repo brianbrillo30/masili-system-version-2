@@ -124,7 +124,7 @@ hr.h-color{
 /* image preview */
 
 .form-element-upload input {
-    display:none;
+    /* display:none; */
 }  
 
 .form-element-upload img{
@@ -357,6 +357,15 @@ hr.h-color{
     margin-right: 5px;
     margin-bottom: 10px;
 }
+
+.doc_track_filterSelect{
+    width: 15%;
+    display:inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
 
 
 table.table-fit {

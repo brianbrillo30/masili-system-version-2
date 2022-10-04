@@ -1,0 +1,99 @@
+{% extends "UsersideTemplate/ServicePortalBase.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container bg-white rounded shadow">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center pt-5" style="color: #355389;">
+            <h3>REQUESTED DOCUMENT</h3>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <p>Track your Requested Document Here</p>
+        </div>
+        <div class="col-lg-12 py-5">
+            <div class="table-responsive">
+                <table id="doc_track" class="table table-striped table-bordered align-middle mb-0 shadow-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th scope="col">Document Type</th>
+                            <th scope="col">Date Requested</th>
+                            <th scope="col">Date Released</th>
+                            <th scope="col">Transaction ID</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>                           
+                    <tbody>
+                    <!-- clearance -->
+                        {% for clearance in clearance_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{clearance.document_type}}</td>
+                            <td>{{clearance.date_requested}}</td>
+                            <td>{{clearance.date_released}}</td>
+                            <td>{{clearance.transaction_id}}</td>
+                            <td>{{clearance.status}}</td>
+                        </tr>
+                        {% endfor %}      
+
+                        <!-- indigency -->
+                        {% for indigency_list in indigency_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{indigency_list.document_type}}</td>
+                            <td>{{indigency_list.date_requested}}</td>
+                            <td>{{indigency_list.date_released}}</td>
+                            <td>{{indigency_list.transaction_id}}</td>
+                            <td>{{indigency_list.status}}</td>
+                        </tr>
+                        {% endfor %} 
+                        
+                        <!-- business permit -->
+                        {% for business_list in business_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{business_list.document_type}}</td>
+                            <td>{{business_list.date_requested}}</td>
+                            <td>{{business_list.paid_or_date_issued}}</td>
+                            <td>{{business_list.transaction_id}}</td>
+                            <td>{{business_list.status}}</td>
+                        </tr>
+                        {% endfor %}
+
+                        <!-- building_permit -->
+
+                        {% for building_list in building_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{building_list.document_type}}</td>
+                            <td>{{building_list.date_requested}}</td>
+                            <td>{{building_list.date_released}}</td>
+                            <td>{{building_list.transaction_id}}</td>
+                            <td>{{building_list.status}}</td>
+                        </tr>
+                        {% endfor %}
+
+                        <!-- residency certificate -->
+                        {% for residency_list in residency_list %}
+                        <tr>
+                            <td></td>
+                            <td>{{residency_list.document_type}}</td>
+                            <td>{{residency_list.date_requested}}</td>
+                            <td>{{residency_list.date_released}}</td>
+                            <td>{{residency_list.transaction_id}}</td>
+                            <td>{{residency_list.status}}</td>
+                        </tr>  
+                        {% endfor %} 
+                    </tbody>
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+
+{% endblock content %}
