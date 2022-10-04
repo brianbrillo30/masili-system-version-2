@@ -47,7 +47,7 @@ class ResidentsInfo(models.Model):
     suffix = models.CharField (max_length=70)
     sex = models.ForeignKey (Sex, on_delete=models.CASCADE)
 
-    phone = models.BigIntegerField()
+    phone = models.CharField (max_length=70)
 
     birthdate = models.DateField ()
     birthplace = models.CharField (max_length=255)

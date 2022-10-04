@@ -19,7 +19,7 @@ class clearance(models.Model):
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     age = models.CharField(max_length=70)
     purpose = models.CharField(max_length=70)
-    date_requested = models.DateField(auto_now_add=True)
+    date_requested = models.DateTimeField(auto_now_add=True)
     date_released = models.DateField(null=True)
 
     community_tax_num = models.CharField(max_length=70, null=True)
@@ -34,7 +34,7 @@ class CertificateOfIndigency(models.Model):
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     age = models.CharField(max_length=70)
     purpose = models.CharField(max_length=70)
-    date_requested = models.DateField(auto_now_add=True)
+    date_requested = models.DateTimeField(auto_now_add=True)
     date_released = models.DateField(null=True)
     status = models.ForeignKey(DocumentStatus, on_delete=models.CASCADE, default=1)
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
@@ -52,7 +52,7 @@ class BuildingPermit(models.Model):
 
     paid_under_or = models.CharField(max_length=255)
     
-    date_requested = models.DateField(auto_now_add=True)
+    date_requested = models.DateTimeField(auto_now_add=True)
     date_released = models.DateField(null=True)
 
     amount_paid = models.CharField(max_length=255)
@@ -69,7 +69,7 @@ class BusinessPermit(models.Model):
     business_nature = models.CharField(max_length=255)
     owner = models.CharField(max_length=255)
     residece_certificate_no = models.CharField(max_length=255)
-    date_requested = models.DateField(auto_now_add=True)
+    date_requested = models.DateTimeField(auto_now_add=True)
     date_released = models.DateField(null=True)
     issued_at = models.CharField(max_length=255)
     capital_investment = models.CharField(max_length=255)
@@ -92,7 +92,7 @@ class ResidencyCertificate (models.Model):
     document_type = models.CharField(max_length=70, default="Certificate of Residency")
     res_id = models.ForeignKey(ResidentsInfo, on_delete=models.CASCADE, null=True)
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    date_requested = models.DateField(auto_now_add=True)
+    date_requested = models.DateTimeField(auto_now_add=True)
     date_released = models.DateField(null=True)
     purpose = models.CharField(max_length=255)
     status = models.ForeignKey(DocumentStatus, on_delete=models.CASCADE, default=1)
