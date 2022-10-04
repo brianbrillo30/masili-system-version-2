@@ -1,7 +1,7 @@
 from atexit import register
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import logout, authenticate
 from django.contrib import messages
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
@@ -152,18 +152,23 @@ def profile(request):
         return redirect('loginPage')
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
 def changeEmail(request):
-    if request.method == 'POST':
-        form = UpdateUserForm(request.POST, instance=request.user)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = UpdateUserForm(request.POST, instance=request.user)
 
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your email has been updated')
-            return redirect('profile')
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your email has been updated')
+                return redirect('profile')
+        else:
+            form = UpdateUserForm(instance=request.user)
+            context = {'form': form}
+        return render(request, 'UsersideTemplate/change_email.html', context)
     else:
-        form = UpdateUserForm(instance=request.user)
-        context = {'form': form}
-    return render(request, 'UsersideTemplate/change_email.html', context)
+        return redirect('loginPage')
 
 def announce(request):
     announce_list = Announcement.objects.all()

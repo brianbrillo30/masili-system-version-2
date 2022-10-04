@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %} 
 {% block content %}
 <form hx-post="{{ request.path }}" class="modal-content" enctype="multipart/form-data">
     
@@ -8,7 +7,6 @@
     </div>
     <div class="modal-body">
       {% csrf_token %}
-      <!-- {{form|crispy}} -->
       <div class="row">
         <div class="col-12 py-2">
             <p class="h6">Title</p>
@@ -22,8 +20,15 @@
 
       <div class="col-12 py-2">
         <p class="h6">Select Image</p>
-        {{form.image}}
-        </label>
+        <div class="form-element-upload-2"> 
+          {{ form.image }}
+            <label for="file-2" id="file-2-preview">
+              <img src="{% static 'img/announcement_preview.jpg'%}">
+                <div>
+                    <span>+</span>
+                </div>
+            </label>
+        </div>
       </div>
 
     </div>
@@ -32,4 +37,5 @@
       <button class="btn btn-primary" type="submit">Add</button>
     </div>
 </form>
+
 {% endblock content %}
