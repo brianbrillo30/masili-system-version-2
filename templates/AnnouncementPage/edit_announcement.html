@@ -1,0 +1,77 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+<center>
+    <!-- <div class="card mb-3 border-0 shadow">
+        <div>
+            <form method="POST">
+            {% csrf_token %}
+            <div class="row g-0">
+                <div class="col-lg-5 col-md-12 col-12 my-auto d-flex justify-content-cente">
+                  {{ edit.image }}
+                  <label for="file" id="file-preview">
+                  <img src='{{prev_img.url}}' class="img-fluid rounded-start">
+                </label>
+                </div>
+                <div class="col-lg-7 col-md-12 col-12">
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">{{ edit.title }}</h5>
+                            <p class="card-text">{{ edit.body }}</p>
+                        </div>
+                    </div>
+                  </div>
+        
+                  <br>
+                  <div class="position-absolute bottom-0 end-0 px-3">
+                    <p class="card-text"><small class="text-muted">Posted at {{ editA.post_date }}</small></p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <section class="section">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-8">
+                  <div class="card">
+                      <div class="card-header">
+                          <h2 class="fw-bold">Edit Announcement</h2>
+                      </div>
+                      <div class="card-body">
+                          <form method="POST" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              <div class="mb-3">
+                                  <label for="" class="form-label">Title</label>
+                                  <input type="text" name="title" value="{{ edit.title }}" class="form-control">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="" class="form-label">Information</label>
+                                  <textarea class="form-control" name="body" rows="4" cols="50">{{ edit.body }}</textarea>
+                              </div>
+                               <div class="mb-3">
+                                  {% if edit.image %}
+                                      <img src="{{ edit.image.url }}" class="img-fluid rounded-start">
+                                  {% endif %}
+                                  <br>
+                                  <label for="" class="form-label">Image</label>
+                                  <input type="file" name="image" class="form-control">
+                              </div>
+                              <button type="submit" class="btn btn-success">Update</button>
+                              <a href="{% url 'announcementPage' %}"><div class="btn btn-primary">Cancel</div></a>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+</center>
+{% endblock content %}
+
+
+
+

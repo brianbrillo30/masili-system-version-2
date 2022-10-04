@@ -10,8 +10,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div>
-                            <i class="float-end las la-edit text-muted fs-4"></i>
+                          <a href="{% url 'delete_announcement' announce.pk%}">
                             <i class="float-end las la-trash-alt text-muted fs-4"></i>
+                          </a>
+                          <a href="{% url 'edit_announcement' announce.pk%}">
+                            <i class="float-end las la-edit text-muted fs-4"></i>
+                          </a>
                         </div>
                     </div>
 
@@ -30,4 +34,9 @@
         </div>
     </div>
 </div>
+{% empty %}
+  <center>
+    <h6 class="text-muted p-4">CURRENTLY NO ANNOUNCEMENT AVAILABLE</h6>
+  </center>
+
 {% endfor %}
