@@ -11,6 +11,6 @@ class AnnouncementForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(),
             'body' : forms.Textarea(),
-            'image' : forms.FileInput(),
+            'image' : forms.FileInput(attrs={'class':'form-control', 'id':'file-2', 'accept':'image/*'}),
         }
 

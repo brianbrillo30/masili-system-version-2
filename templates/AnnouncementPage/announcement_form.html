@@ -22,8 +22,15 @@
 
       <div class="col-12 py-2">
         <p class="h6">Select Image</p>
-        {{form.image}}
-        </label>
+        <div class="form-element-upload"> 
+          {{ form.image }}
+            <label for="file-2" id="file-2-preview">
+              <img src="{% static 'img/announcement_preview.jpg'%}">
+                <div>
+                    <span>+</span>
+                </div>
+            </label>
+        </div>
       </div>
 
     </div>

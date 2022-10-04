@@ -13,3 +13,4 @@ function previewBeforeUpload(id){
 }
 
 previewBeforeUpload("file");
+previewBeforeUpload("file-2");
