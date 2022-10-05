@@ -19,7 +19,7 @@ def loginPage(request):
         user = authenticate(request, username = username, password = password )
 
         if not user:
-            messages.add_message(request, messages.ERROR, 'Invalid username or password !')
+            messages.error(request, 'Invalid username or password !')
             return render(request, "Login/login.html")
 
         login(request, user)
