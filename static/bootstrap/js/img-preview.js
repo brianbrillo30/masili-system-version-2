@@ -6,12 +6,10 @@ function previewBeforeUpload(id){
         }
 
         let file = e.target.files[0];
-        let url = URL.createObjectURL(file);
-        
+        let url = URL.createObjectURL(file);     
         document.querySelector("#"+id+"-preview img").src = url;
     });
 }
 
 previewBeforeUpload("file");
-previewBeforeUpload("file-2");
 

@@ -124,22 +124,13 @@ hr.h-color{
 /* image preview */
 
 .form-element-upload input {
-    /* display:none; */
-}  
-
-.form-element-upload-2 input {
     display:none;
 }  
+
 
 .form-element-upload img{
     height: 208px;
     width: 208px;
-    object-fit:cover;
-}
-
-.form-element-upload-2 img{
-    height: 208px;
-    width: 470px;
     object-fit:cover;
 }
 
@@ -156,25 +147,11 @@ hr.h-color{
     font-weight:600;
 }
 
-.form-element-upload-2 div{
-    position:relative;
-    height:40px;
-    margin-top:-40px;
-    min-width:40px;
-    background:rgba(0,0,0,0.5);
-    text-align:center;
-    line-height:30px;
-    font-size:13px;
-    color:#f5f5f5;
-    font-weight:600;
-}
+
 .form-element-upload span {
     font-size:40px;
 }
 
-.form-element-upload-2 span {
-    font-size:40px;
-}
 
 .modal-backdrop+.modal-backdrop {
     opacity : 0;

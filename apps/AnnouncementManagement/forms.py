@@ -9,8 +9,8 @@ class AnnouncementForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'title' : forms.TextInput(),
-            'body' : forms.Textarea(),
+            'title' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'body' : forms.Textarea(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
             'image' : forms.FileInput(attrs={'class':'form-control', 'id':'file-2', 'accept':'image/*'}),
         }
 

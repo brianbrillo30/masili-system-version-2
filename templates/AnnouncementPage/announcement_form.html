@@ -1,41 +1,91 @@
 {% load static %}
-{% block content %}
 <form hx-post="{{ request.path }}" class="modal-content" enctype="multipart/form-data">
     
     <div class="modal-header">
       <h5 class="modal-title">Add announcement</h5>
     </div>
+    
     <div class="modal-body">
       {% csrf_token %}
-      <div class="row">
-        <div class="col-12 py-2">
-            <p class="h6">Title</p>
-            {{form.title}}
-        </div>
-     
-        <div class="col-12 py-2">
-          <p class="h6">Information</p>
-          {{form.body}}
-      </div>
+        <div class="row">
 
-      <div class="col-12 py-2">
-        <p class="h6">Select Image</p>
-        <div class="form-element-upload-2"> 
-          {{ form.image }}
-            <label for="file-2" id="file-2-preview">
-              <img src="{% static 'img/announcement_preview.jpg'%}">
-                <div>
-                    <span>+</span>
-                </div>
-            </label>
-        </div>
-      </div>
+          <div class="col-12 py-2">
+              <p class="h6">Title</p>
+              {{form.title}}
+          </div>
+        
+          <div class="col-12 py-2">
+            <p class="h6">Information</p>
+            {{form.body}}
+          </div>
 
+          <div class="col-12 py-2 d-flex justify-content-center">
+            
+            <div class="form-element-upload-2">
+              <p class="h6">Select Image</p>
+              {{ form.image }}
+                <label for="file-2" id="file-2-preview">
+                  <img src="{% static 'img/announcement_preview.jpg'%}">
+                    <div>
+                        <span>+</span>
+                    </div>
+                </label>
+            </div>
+          </div>
+          
+      </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-      <button class="btn btn-primary" type="submit">Add</button>
-    </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" type="submit">Add</button>
+  </div>
+
 </form>
 
-{% endblock content %}
+<script>
+
+function previewBeforeUpload(id){
+    document.querySelector("#"+id).addEventListener("change",function(e){
+        
+        if(e.target.files.length == 0){
+            return;
+        }
+
+        let file = e.target.files[0];
+        let url = URL.createObjectURL(file);   
+        document.querySelector("#"+id+"-preview img").src = url;
+    });
+}
+previewBeforeUpload("file-2");
+
+</script>
+
+<style>
+  .form-element-upload-2 span {
+      font-size:40px;
+  }
+
+  .form-element-upload-2 input {
+      display:none;
+  }  
+
+  .form-element-upload-2 img{
+      height: 465px;
+      width: 465px;
+      object-fit:cover;
+  }
+
+  .form-element-upload-2 div{
+      position:relative;
+      height:40px;
+      margin-top:-40px;
+      min-width:40px;
+      background:rgba(0,0,0,0.5);
+      text-align:center;
+      line-height:30px;
+      font-size:13px;
+      color:#f5f5f5;
+      font-weight:600;
+  }
+</style>
