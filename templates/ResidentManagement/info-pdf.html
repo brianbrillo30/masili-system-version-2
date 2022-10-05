@@ -32,7 +32,7 @@
 </style>
 
 <body>
-    <table width="100%" cellpadding="0" border="1" bordercolor="red">
+    <table width="100%" cellpadding="0">
         <tr>
             <td align="center" >
                 <img src="static/img/masili_logo.png" alt="" width="80">
@@ -85,15 +85,40 @@
             </td>
         </tr>
 
+
+
         <tr>
-            <td colspan="3">
+            <td colspan="3"  style="margin-left: 70px;">
+                <br>
+                
+                <br>
                 <table>
                     <tr>
+                        <td colspan="3" align="center">
+                            <hr width="80%" style="margin-top:0;">
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
-
+                            <br><br><br><br><br>
+                            <p class="p2" style="font-size: 14px;">Resident Details</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Birthday: </b>{{profile.residentsinfo.birthdate}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Citizenship: </b>{{profile.residentsinfo.citizenship}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Civil Status: </b>{{profile.residentsinfo.civil_status}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Educational Attainment: </b>{{profile.residentsinfo.educ_attainment}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Status: </b>{{profile.residentsinfo.educ_attainment}}</p>
                         </td>
                         <td>
-                            
+                            <p class="p2" style="font-size: 14px;">Contact Information</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Phone:</b> {{profile.residentsinfo.phone}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Email:</b> {{profile.email}}</p>
                         </td>
                     </tr>
                 </table>
