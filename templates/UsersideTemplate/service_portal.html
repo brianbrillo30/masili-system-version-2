@@ -11,7 +11,7 @@
             <p>Available barangay document for requisition</p>
         </div>
 
-        <div class="col-12 px-5">
+        <div id="msg" class="col-12 px-5 fade-page">
             {% for message in messages %}  
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ message }}
@@ -90,6 +90,12 @@
 <br>
 <br>
 <br>
-
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    }, 5000)
+</script>
 
 {% endblock content %}
