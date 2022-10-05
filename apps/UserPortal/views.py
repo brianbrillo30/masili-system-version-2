@@ -52,12 +52,16 @@ def barangay_clearance(request):
         if request.method == 'POST':
             form = CleranceForm(request.POST)
             if form.is_valid():
-                
-                instance = form.save(commit=False)
-                instance.res_id = userid
-                instance.save()
-                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
-                return redirect('service_portal')
+                docs = clearance.objects.filter(res_id=userid)
+                if docs.get(status=1):
+                    messages.success(request, 'You still have pending request')
+                    return redirect('service_portal')
+                else:
+                    instance = form.save(commit=False)
+                    instance.res_id = userid
+                    instance.save()
+                    messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
+                    return redirect('service_portal')
 
         context={'form':form} 
         return render(request, "UsersideTemplate/barangay_clearance.html", context)
@@ -73,6 +77,7 @@ def indigency(request):
         if request.method == 'POST':
             form = IndigencyForm(request.POST)
             if form.is_valid():
+                
                 
                 instance = form.save(commit=False)
                 instance.res_id = userid
