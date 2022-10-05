@@ -1,6 +1,7 @@
 {% extends "UsersideTemplate/base.html" %}
 {% load static %}
 {% block content %}
+{% load humanize %}
 <div class="video-wrapper" style="height: 300px;">
 
     <img class="imageheader" src="{% static 'img/slider-4-slide-1-1920x678.jpg'%}" alt="">
@@ -34,7 +35,7 @@
                     
                               <br>
                               <div class="position-absolute bottom-0 end-0 px-3">
-                                <p class="card-text"><small class="text-muted">Posted at {{ announce.post_date }}</small></p>
+                                <p class="card-text"><small class="text-muted">Posted {{ announce.post_date|naturaltime }}</small></p>
                               </div>
                             </div>
                         </div>

@@ -127,6 +127,10 @@ hr.h-color{
     display:none;
 }  
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53f633fa2dd62706b7321697417a7a16f702d118
 .form-element-upload img{
     height: 208px;
     width: 208px;
@@ -146,6 +150,7 @@ hr.h-color{
     font-weight:600;
 }
 
+<<<<<<< HEAD
 .form-element-upload span {
     font-size:40px;
 }
@@ -172,10 +177,13 @@ hr.h-color{
     color:#f5f5f5;
     font-weight:600;
 }
+=======
 
-.form-element-upload-2 span {
+.form-element-upload span {
     font-size:40px;
 }
+>>>>>>> 53f633fa2dd62706b7321697417a7a16f702d118
+
 
 .modal-backdrop+.modal-backdrop {
     opacity : 0;
@@ -385,6 +393,15 @@ hr.h-color{
     margin-right: 5px;
     margin-bottom: 10px;
 }
+
+.doc_track_filterSelect{
+    width: 15%;
+    display:inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
 
 
 table.table-fit {

@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 from apps.AnnouncementManagement.models import Announcement
 from .forms import *
-from .models import *
+from .models import clearance as clr,CertificateOfIndigency as coi,BuildingPermit as buildingpermit, BusinessPermit as businesspermit, ResidencyCertificate as rescert
+
 from django.contrib.auth.forms import UserChangeForm
 
 
@@ -192,4 +193,24 @@ def announce(request):
     announce_list = Announcement.objects.all()
     context = {'announcementList' :  announce_list}
     return render(request, 'UsersideTemplate/announcement.html', context)
+
+
+
+def document_status(request):
+    
+
+    user_id = request.user.residentsinfo.id
+    clearance_status = clr.objects.filter(res_id=user_id)
+    indigency_status = coi.objects.filter(res_id=user_id)
+    business_status =   businesspermit.objects.filter(res_id=user_id)
+    building_status = buildingpermit.objects.filter(res_id=user_id)
+    residency_status = rescert.objects.filter(res_id=user_id)
+    context = {
+        'clearance_list': clearance_status, 
+        'indigency_list': indigency_status,
+        'business_list' : business_status,
+        'building_list' : building_status,
+        'residency_list': residency_status
+    }
+    return render(request, 'UsersideTemplate/doc_status.html', context)
     
