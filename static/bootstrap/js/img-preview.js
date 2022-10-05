@@ -12,4 +12,8 @@ function previewBeforeUpload(id){
 }
 
 previewBeforeUpload("file");
+<<<<<<< HEAD
+
+=======
+>>>>>>> 53f633fa2dd62706b7321697417a7a16f702d118
 
