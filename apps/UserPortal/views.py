@@ -52,11 +52,12 @@ def barangay_clearance(request):
         if request.method == 'POST':
             form = CleranceForm(request.POST)
             if form.is_valid():
-                docs = clearance.objects.filter(res_id=userid)
-                if docs.get(status=1):
-                    messages.success(request, 'You still have pending request')
-                    return redirect('service_portal')
-                else:
+                try:
+                    docs = clr.objects.filter(res_id=userid)
+                    if docs.get(status=1):
+                        messages.success(request, 'You still have pending request in Barangay Clearance')
+                        return redirect('service_portal')
+                except clr.DoesNotExist:
                     instance = form.save(commit=False)
                     instance.res_id = userid
                     instance.save()
