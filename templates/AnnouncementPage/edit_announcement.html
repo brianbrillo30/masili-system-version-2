@@ -44,34 +44,35 @@
                       <div class="card-body">
                           <form method="POST" enctype="multipart/form-data">
                               {% csrf_token %}
-                              <div class="mb-3">
-                                  <label for="" class="form-label"><b>Title</b></label>
-                                  <input type="text" name="title" value="{{ edit.title }}" class="form-control">
+                              <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label"><b>Title</b></label>
+                                        <input type="text" name="title" value="{{ edit.title }}" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label"><b>Information</b></label>
+                                        <textarea class="form-control" name="body" rows="4" cols="50">{{ edit.body }}</textarea>
+                                    </div>
+                                    <a href="{% url 'announcementPage' %}"><div class="btn btn-danger">Cancel</div></a>
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div>
+                                        <p class="h6"><b>Image</b></p>
+                                        <div class="form-element-upload-2"> 
+                                          <input type="file" id="file-3" accept="image/*" name="image">
+                                            <label for="file-3" id="file-3-preview">
+                                              <img src="{{ edit.image.url }}" class="img-fluid">
+                                                <div>
+                                                    <span>+</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                               </div>
-                              <div class="mb-3">
-                                  <label for="" class="form-label"><b>Information</b></label>
-                                  <textarea class="form-control" name="body" rows="4" cols="50">{{ edit.body }}</textarea>
-                              </div>
-                               <div class="mb-3">
-                                  {% if edit.image %}
-                                      <img src="{{ edit.image.url }}" class="img-fluid rounded-start">
-                                  {% endif %}
-                                  <br>
-                                  <!-- <label for="" class="form-label">Image</label>
-                                  <input type="file" name="image" class="form-control"> -->
-                                  <p class="h6"><b>Image</b></p>
-                                  <div class="form-element-upload-2"> 
-                                    <input type="file" id="file-3" accept="image/*" name="image">
-                                      <label for="file-3" id="file-3-preview">
-                                        <img src="{% static 'img/announcement_preview.jpg'%}">
-                                          <div>
-                                              <span>+</span>
-                                          </div>
-                                      </label>
-                                  </div>
-                              </div>
-                              <button type="submit" class="btn btn-success">Update</button>
-                              <a href="{% url 'announcementPage' %}"><div class="btn btn-primary">Cancel</div></a>
                           </form>
                       </div>
                   </div>
