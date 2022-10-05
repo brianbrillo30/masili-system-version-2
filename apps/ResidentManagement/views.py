@@ -45,7 +45,7 @@ def resident_list(request):
 
 def adminLogout(request):
     logout(request)
-    messages.add_message(request, messages.SUCCESS, 'Succefull logout')
+    messages.success(request, 'Succefull logout')
     return redirect(reverse('loginPage'))
 
 

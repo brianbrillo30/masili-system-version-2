@@ -67,11 +67,11 @@
                                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                                     </div>
 
-                                    {% for message in messages %}
-                                    <div class="py-2 fade-page">
-                                        <p style="color: red">{{ message }}</p>
-                                    </div>
-                                    {% endfor %}
+                                        {% for message in messages %}
+                                        <div class="alert {{ message.tags }}">
+                                            <p>{{ message }}</p>
+                                        </div>
+                                        {% endfor %}
 
                                     <div class="py-3">
                                         <input type="submit" name="btnLogin" class="btn-theme -btn2 col-12" value="Log In">
@@ -97,3 +97,4 @@
     <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
 </body>
 </html>
+

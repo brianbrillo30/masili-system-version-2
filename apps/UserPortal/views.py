@@ -55,7 +55,7 @@ def barangay_clearance(request):
                 try:
                     docs = clr.objects.filter(res_id=userid)
                     if docs.get(status=1):
-                        messages.success(request, 'You still have pending request in Barangay Clearance')
+                        messages.error(request, 'You still have pending request in Barangay Clearance')
                         return redirect('service_portal')
                 except clr.DoesNotExist:
                     instance = form.save(commit=False)
@@ -78,13 +78,17 @@ def indigency(request):
         if request.method == 'POST':
             form = IndigencyForm(request.POST)
             if form.is_valid():
-                
-                
-                instance = form.save(commit=False)
-                instance.res_id = userid
-                instance.save()
-                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
-                return redirect('service_portal')
+                try:
+                    docs = coi.objects.filter(res_id=userid)
+                    if docs.get(status=1):
+                        messages.error(request, 'You still have pending request in Certificate of Indigency')
+                        return redirect('service_portal')
+                except coi.DoesNotExist:
+                    instance = form.save(commit=False)
+                    instance.res_id = userid
+                    instance.save()
+                    messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
+                    return redirect('service_portal')
         context={'form':form} 
         return render(request, "UsersideTemplate/indigency.html", context)
     else:
@@ -99,11 +103,17 @@ def BuildingPermit(request):
         if request.method == 'POST':
             form = BuildingPermitForm(request.POST)
             if form.is_valid():
-                instance = form.save(commit=False)
-                instance.res_id = userid
-                instance.save()
-                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
-                return redirect('service_portal')
+                try:
+                    docs = buildingpermit.objects.filter(res_id=userid)
+                    if docs.get(status=1):
+                        messages.error(request, 'You still have pending request in Building Permit')
+                        return redirect('service_portal')
+                except buildingpermit.DoesNotExist:
+                    instance = form.save(commit=False)
+                    instance.res_id = userid
+                    instance.save()
+                    messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
+                    return redirect('service_portal')
 
         context={'form':form}
         return render(request, "UsersideTemplate/building_permit.html", context)
@@ -119,11 +129,17 @@ def BusinessPermit(request):
         if request.method == 'POST':
             form = BusinessPermitForm(request.POST)
             if form.is_valid():
-                instance = form.save(commit=False)
-                instance.res_id = userid
-                instance.save()
-                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
-                return redirect('service_portal')
+                try:
+                    docs = businesspermit.objects.filter(res_id=userid)
+                    if docs.get(status=1):
+                        messages.error(request, 'You still have pending request in Business Permit')
+                        return redirect('service_portal')
+                except businesspermit.DoesNotExist:
+                    instance = form.save(commit=False)
+                    instance.res_id = userid
+                    instance.save()
+                    messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
+                    return redirect('service_portal')
         context={'form':form}
         return render(request, "UsersideTemplate/business_permit.html", context)
     else:
@@ -138,11 +154,17 @@ def ResidencyCertificate(request):
         if request.method == 'POST':
             form = ResidencyCertificateForm(request.POST)
             if form.is_valid():
-                instance = form.save(commit=False)
-                instance.res_id = userid
-                instance.save()
-                messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
-                return redirect('service_portal')
+                try:
+                    docs = rescert.objects.filter(res_id=userid)
+                    if docs.get(status=1):
+                        messages.error(request, 'You still have pending request in Resident Certificate')
+                        return redirect('service_portal')
+                except rescert.DoesNotExist:
+                    instance = form.save(commit=False)
+                    instance.res_id = userid
+                    instance.save()
+                    messages.success(request, 'Your request has been submitted. You can see your request status at Document Status')
+                    return redirect('service_portal')
         context={'form':form}
         return render(request, 'UsersideTemplate/residency_certificate.html', context)
     else:
