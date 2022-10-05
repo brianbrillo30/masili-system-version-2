@@ -23,6 +23,8 @@ from apps.ClearanceManagement.forms import*
 
 from django.core.paginator import Paginator
 
+from project.utils import render_to_pdf
+
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
 sound_folder = os.path.join(current_path, 'sound/')
@@ -336,5 +338,15 @@ def profile_building_permit(request, id):
 def profile_residency_certificate(request, id):
     context = {'residency_certificate_list':ResidencyCertificate.objects.filter(res_id = id)}
     return render(request, 'ResidentManagement/DocumentList/residency_certificate.html', context)
+
+def print_data (request, id):
+    template_name = "ResidentManagement/info-pdf.html"
+    profile = User.objects.get(pk=id)
+    return render_to_pdf(
+        template_name,
+        {
+            'profile': profile,
+        }
+    )
 
 

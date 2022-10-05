@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Data</title>
+</head>
+<style>
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    .p1 {
+        font-family: "Times New Roman", Times, serif;
+    }
+    .p2 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    table {
+        line-height: normal;
+    }
+
+    .border_underline{
+        border-bottom: 1px solid rgb(0, 0, 0); 
+    }
+
+    .border_topline{
+        border-top: 1px solid rgb(0, 0, 0); 
+    }
+</style>
+
+<body>
+    <table width="100%" cellpadding="0" border="1" bordercolor="red">
+        <tr>
+            <td align="center" >
+                <img src="static/img/masili_logo.png" alt="" width="80">
+            </td>
+    
+            <td align="center">
+                <div class="remove_space">
+                    <p class="p1" style="font-size: 16px;"><b>Republic of the Philippines</b></p>
+                    <p class="p1" style="font-size: 14px;">Province of Laguna</p>
+                    <p class="p1" style="font-size: 14px;">City of Calamba</p>
+                    <p class="p2" style="font-size: 14px;"><b>BARANGAY MASILI</b></p>
+                    <p class="p2" style="color: red; font-size: 10px;">049-502-9459</p>
+                </div>
+            </td>
+    
+            <td align="center">
+                <img src="static/img/Calamba,_Laguna_Seal.svg.png" alt="" width="80">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <br><br><br><br><br>
+                <p class="p2" style="font-size: 16px;"><b><i>OFFICE OF THE BARANGAY CHAIRMAN</i></b></p>
+                <hr width="80%" style="margin-top:0;">
+                <p class="p2" style="font-size: 16px;"><b><i>RESIDENT DETAILS</i></b></p>
+                <br><br><br><br><br><br><br>
+            </td> 
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <td ALIGN="right" width="25%">
+                            <img src="media/{{profile.residentsinfo.image}}" alt="" width="100">
+                        </td>
+            
+                        <td colspan="2" width="75%" style="margin-left: 5px; ">
+                            <p class="p2" style="font-size: 14px;"><b>Name: </b>{{profile.residentsinfo.firstname}} {{profile.residentsinfo.middlename|make_list|first}}. {{profile.residentsinfo.lastname}} {{profile.residentsinfo.suffix}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Resident ID: </b>{{profile.residentsinfo.res_id}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Sex: </b>{{profile.residentsinfo.sex}}</p>
+                            <br>
+                            <p class="p2" style="font-size: 14px;"><b>Occupation: </b>{{profile.residentsinfo.occupation}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+      </table>
+
+</body>
+</html>

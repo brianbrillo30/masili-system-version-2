@@ -18,6 +18,7 @@ urlpatterns = [
     path('view_profile/<hashid:id>/',view_profile, name='view_profile'),
     path('edit_profile/<hashid:id>/',edit_profile,name='edit_profile'),
     path('delete_profile/<hashid:id>/',delete_profile,name='delete_profile'),
+    path('print_data/<hashid:id>/', print_data, name='print_data'),
 
     # Resident document
     path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
