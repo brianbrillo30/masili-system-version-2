@@ -5,8 +5,9 @@
 <div class="container">
     <form method="POST">
         {% csrf_token %}
-        <label><b>Email: </b></label>
-        {{ form.email }}
+        <label><b>Username: </b></label>
+        {{ form.username }}
+        <br>
         <br>
         <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Submit</button>
         <a href="{% url 'profile'%}" class="btn-theme -btn2 col-12 col-md-5">Cancel</a>

@@ -156,16 +156,35 @@ def profile(request):
 def changeEmail(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            form = UpdateUserForm(request.POST, instance=request.user)
+            form = UpdateEmailForm(request.POST, instance=request.user)
 
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your email has been updated')
                 return redirect('profile')
         else:
-            form = UpdateUserForm(instance=request.user)
+            form = UpdateEmailForm(instance=request.user)
             context = {'form': form}
         return render(request, 'UsersideTemplate/change_email.html', context)
+    else:
+        return redirect('loginPage')
+
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+def changeUsername(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = UpdateUsernameForm(request.POST, instance=request.user)
+
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your username has been updated')
+                return redirect('profile')
+        else:
+            form = UpdateUsernameForm(instance=request.user)
+            context = {'form': form}
+        return render(request, 'UsersideTemplate/change_username.html', context)
     else:
         return redirect('loginPage')
 

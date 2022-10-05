@@ -13,6 +13,7 @@ urlpatterns = [
     path ('ServicePortal/', servicesPortal, name='service_portal'),
     path ('Profile/', profile, name='profile'),
     path ('Change Email/', changeEmail, name='changeEmail'),
+    path ('Change Username/', changeUsername, name='changeUsername'),
     path ('User Logout/', userLogout, name='userLogout'),
     path ('BarangayClearance/', barangay_clearance, name='barangay_clearance'),
     path ('indigency/', indigency, name='indigency'),

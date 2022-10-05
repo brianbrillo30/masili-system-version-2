@@ -127,19 +127,9 @@ hr.h-color{
     display:none;
 }  
 
-.form-element-upload-2 input {
-    display:none;
-}  
-
 .form-element-upload img{
     height: 208px;
     width: 208px;
-    object-fit:cover;
-}
-
-.form-element-upload-2 img{
-    height: 208px;
-    width: 470px;
     object-fit:cover;
 }
 
@@ -156,6 +146,20 @@ hr.h-color{
     font-weight:600;
 }
 
+.form-element-upload span {
+    font-size:40px;
+}
+
+.form-element-upload-2 input {
+    display:none;
+}  
+
+.form-element-upload-2 img{
+    height: 208px;
+    width: 470px;
+    object-fit:cover;
+}
+
 .form-element-upload-2 div{
     position:relative;
     height:40px;
@@ -167,9 +171,6 @@ hr.h-color{
     font-size:13px;
     color:#f5f5f5;
     font-weight:600;
-}
-.form-element-upload span {
-    font-size:40px;
 }
 
 .form-element-upload-2 span {
