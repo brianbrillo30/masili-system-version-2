@@ -18,7 +18,7 @@ class ProfileForm(forms.ModelForm):
 
 
 
-        singParentChoices= (('0','-Select-'),('1', 'Yes'),('2', 'No'),)
+        singParentChoices= (('0','-Select-'),('Yes', 'Yes'),('No', 'No'),)
 
         widgets = {
             'image' : forms.FileInput(attrs={'class':'form-control', 'id':'file', 'accept':'image/*'}),
