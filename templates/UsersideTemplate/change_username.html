@@ -5,13 +5,33 @@
 <div class="container">
     <form method="POST">
         {% csrf_token %}
-        <label><b>Username: </b></label>
-        {{ form.username }}
-        <br>
-        <br>
-        <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Submit</button>
-        <a href="{% url 'profile'%}" class="btn-theme -btn2 col-12 col-md-5">Cancel</a>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 my-auto">
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 class="lead"><b>Add your new username here</b></h1>
+                            </div>
+                            <div class="col-12">
+                                <div>
+                                    <label><b>Username: </b></label>
+                                    {{ form.username }}
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <a href="{% url 'profile'%}" type="button" class="btn-theme -btn1 col-12 col-md-3 text-center">Cancel</a>
+                                &nbsp;&nbsp;
+                                <button type="submit" class="btn-theme -btn2 col-12 col-md-5 px-2">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 
 {% endblock content %}
+

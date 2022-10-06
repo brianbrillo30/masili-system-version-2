@@ -148,14 +148,20 @@ $(document).ready(function () {
 
 $(document).ready( function () {
   $('#doc_track').DataTable({
-    aaSorting: [[3, 'asc']],
+    aaSorting: [[2, 'desc']],
     filterDropDown:({
       columns: [
         {
             idx: 1,
-            title: "All",
+            title: "All Document",
             autoSize: true
             
+        },
+        {
+          idx: 5,
+          title: "All Status",
+          autoSize: true
+          
         }
       ],
       bootstrap: false,

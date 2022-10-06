@@ -82,11 +82,14 @@ class UserPasswordResetForm(PasswordResetForm):
         }))
 
 class UpdateUsernameForm(forms.ModelForm):
-    username = forms.TextInput(attrs={'class':'form-control'})
 
     class Meta:
         model = User
         fields = ('username',)
+
+        widgets = {
+            'username' : forms.TextInput(attrs={'class':'form-control'})
+        }
 
 class UpdateEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
