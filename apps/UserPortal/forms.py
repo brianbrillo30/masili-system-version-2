@@ -1,7 +1,11 @@
+from tkinter import Widget
 from django import forms
 from .models import *
-from django.contrib.auth.forms import PasswordResetForm, UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+
 class CleranceForm(forms.ModelForm):
     class Meta:
         model = clearance
@@ -70,18 +74,13 @@ class ResidencyCertificateForm(forms.ModelForm):
         }
 
 
-class UserPasswordResetForm(PasswordResetForm):
-    def __init__(self, *args, **kwargs):
-        super(UserPasswordResetForm, self).__init__(*args, **kwargs)
+class CaptchaPasswordChangeForm(PasswordChangeForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
-        'class': 'form-control ',
-        'placeholder': 'Input',
-        'type': 'email',
-        'name': 'email'
-        }))
 
 class UpdateUsernameForm(forms.ModelForm):
+
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
     class Meta:
         model = User
@@ -93,6 +92,7 @@ class UpdateUsernameForm(forms.ModelForm):
 
 class UpdateEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
     class Meta:
         model = User

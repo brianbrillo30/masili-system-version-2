@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 
-from .forms import UserPasswordResetForm
+from .forms import CaptchaPasswordResetForm, UserPasswordResetForm
 
 urlpatterns = [
     path ('Login/', views.loginPage, name='loginPage'),
@@ -16,7 +16,7 @@ urlpatterns = [
         name="password_reset_done"),
     
     path('reset/<uidb64>/<token>/', 
-        auth_views.PasswordResetConfirmView.as_view(template_name="PasswordReset/password_reset_form.html"), 
+        auth_views.PasswordResetConfirmView.as_view(template_name="PasswordReset/password_reset_form.html", form_class=CaptchaPasswordResetForm), 
         name="password_reset_confirm"),
     
     path('reset_password_complete/', 
