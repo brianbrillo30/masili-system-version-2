@@ -1,4 +1,3 @@
-from tkinter import Widget
 from django import forms
 from .models import *
 from django.contrib.auth.forms import PasswordChangeForm
@@ -78,6 +77,7 @@ class CaptchaPasswordChangeForm(PasswordChangeForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
 
+
 class UpdateUsernameForm(forms.ModelForm):
 
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
@@ -86,9 +86,7 @@ class UpdateUsernameForm(forms.ModelForm):
         model = User
         fields = ('username',)
 
-        widgets = {
-            'username' : forms.TextInput(attrs={'class':'form-control'})
-        }
+
 
 class UpdateEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))

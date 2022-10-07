@@ -9,6 +9,8 @@ class UserPasswordResetForm(PasswordResetForm):
 
     email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
         'class':'form-control form-control-sm', 'placeholder':'Email'}))
+        
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
 class CaptchaPasswordResetForm(SetPasswordForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())

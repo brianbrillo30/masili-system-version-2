@@ -8,16 +8,18 @@
         {% csrf_token %}
         <div class="row d-flex justify-content-center">
             <div class="col-lg-6 my-auto">
-                <div id="msg" class="col-12 px-5 fade-page">
-                    {% for message in messages %}  
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    </div>
-                    {% endfor %}
-                </div>
                 <div class="card border-0 shadow">
                     <div class="card-body">
                         <div class="row">
+
+                            <div id="msg" class="col-12 fade-page">
+                                {% for message in messages %}  
+                                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            
                             <div class="col-12">
                                 <h1 class="lead"><b>Add your new username here</b></h1>
                             </div>
@@ -28,11 +30,7 @@
                                 <br>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-<<<<<<< HEAD
-                                <a href="{% url 'profile'%}" type="button" class="btn-theme -btn1 col-6 col-md-3 text-center">Cancel</a>
-=======
                                 <a href="{% url 'profile'%}" class="btn-theme -btn1 col-12 col-md-3 text-center">Cancel</a>
->>>>>>> 60eef9b9fd676eff24a75b39adacbc85b65c37d9
                                 &nbsp;&nbsp;
                                 <button type="submit" class="btn-theme -btn2 col-6 col-md-5 px-2">Submit</button>
                             </div>

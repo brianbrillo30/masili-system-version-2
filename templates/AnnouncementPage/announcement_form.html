@@ -45,27 +45,6 @@
 
 <script>
 
-<<<<<<< HEAD
-function previewBeforeUpload(id){
-    document.querySelector("#"+id).addEventListener("change",function(e){
-        
-        if(e.target.files.length == 0){
-            return;
-        }
-
-        let file = e.target.files[0];
-        let url = URL.createObjectURL(file);   
-        document.querySelector("#"+id+"-preview img").src = url;
-    });
-}
-previewBeforeUpload("file-2");
-
-</script>
-
-<style>
-  .form-element-upload-2 span {
-      font-size:40px;
-=======
   function previewBeforeUpload(id){
       document.querySelector("#"+id).addEventListener("change",function(e){
           
@@ -77,7 +56,6 @@ previewBeforeUpload("file-2");
           let url = URL.createObjectURL(file);   
           document.querySelector("#"+id+"-preview img").src = url;
       });
->>>>>>> 60eef9b9fd676eff24a75b39adacbc85b65c37d9
   }
   previewBeforeUpload("file-2");
   
@@ -113,25 +91,3 @@ previewBeforeUpload("file-2");
   </style>
 
 
-<<<<<<< HEAD
-  .form-element-upload-2 img{
-      height: 465px;
-      width: 465px;
-      object-fit:cover;
-  }
-
-  .form-element-upload-2 div{
-      position:relative;
-      height:40px;
-      margin-top:-40px;
-      min-width:40px;
-      background:rgba(0,0,0,0.5);
-      text-align:center;
-      line-height:30px;
-      font-size:13px;
-      color:#f5f5f5;
-      font-weight:600;
-  }
-</style>
-=======
->>>>>>> 60eef9b9fd676eff24a75b39adacbc85b65c37d9
