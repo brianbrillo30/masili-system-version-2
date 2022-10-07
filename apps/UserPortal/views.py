@@ -10,7 +10,7 @@ from apps.AnnouncementManagement.models import Announcement
 from .forms import *
 from .models import clearance as clr,CertificateOfIndigency as coi,BuildingPermit as buildingpermit, BusinessPermit as businesspermit, ResidencyCertificate as rescert
 
-from django.contrib.auth.forms import UserChangeForm
+
 
 
 
@@ -191,9 +191,16 @@ def changeEmail(request):
                 form.save()
                 messages.success(request, 'Your email has been updated')
                 return redirect('profile')
-        else:
-            form = UpdateEmailForm(instance=request.user)
-            context = {'form': form}
+            else:
+                for key, error in list(form.errors.items()):
+                    if key == 'captcha' and error[0] == 'This field is required.':
+                        messages.error(request, "You must pass the reCAPTCHA test")
+                        continue
+                
+                    messages.error(request, error) 
+
+        form = UpdateEmailForm(instance=request.user)
+        context = {'form': form}
         return render(request, 'UsersideTemplate/change_email.html', context)
     else:
         return redirect('loginPage')
@@ -210,12 +217,20 @@ def changeUsername(request):
                 form.save()
                 messages.success(request, 'Your username has been updated')
                 return redirect('profile')
-        else:
-            form = UpdateUsernameForm(instance=request.user)
-            context = {'form': form}
+            else:
+                for key, error in list(form.errors.items()):
+                    if key == 'captcha' and error[0] == 'This field is required.':
+                        messages.error(request, "You must pass the reCAPTCHA test")
+                        continue
+                
+                    messages.error(request, error) 
+
+        form = UpdateUsernameForm(instance=request.user)
+        context = {'form': form}
         return render(request, 'UsersideTemplate/change_username.html', context)
     else:
         return redirect('loginPage')
+
 
 def announce(request):
     announce_list = Announcement.objects.all()

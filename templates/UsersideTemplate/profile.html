@@ -7,9 +7,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto py-4">
+            <div id="msg" class="col-12 px-5 fade-page">
             {% for message in messages %}  
-            <p id="msg" style="color: green">{{ message }}</p>
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            </div>
             {% endfor %}
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h1>My Details</h1>
@@ -27,7 +31,7 @@
                             </tr>
                             <tr>
                                 <th>Fullname</th>
-                                <td>{{userinfo.residentsinfo.firstname}} {{userinfo.residentsinfo.lastname}}</td>
+                                <td>{{userinfo.residentsinfo.firstname}} {{userinfo.residentsinfo.middlename}} {{userinfo.residentsinfo.lastname}} {{userinfo.residentsinfo.suffix}}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
