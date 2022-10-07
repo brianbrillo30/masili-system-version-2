@@ -257,3 +257,5 @@ def document_status(request):
     }
     return render(request, 'UsersideTemplate/doc_status.html', context)
     
+
+
