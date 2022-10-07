@@ -70,3 +70,18 @@ def generate_clearance (request, id):
         return redirect('loginPage')
 
 
+
+def delete_clearance(request, id):
+    if request.user.is_authenticated:
+        clearance = clerance_list.objects.get(pk=id)
+        
+        context = {'clearance':clearance}
+        if request.method == 'POST':
+            clearance.delete()
+            return HttpResponse(status=204, headers={'HX-Trigger': 'clearancelistUpdate'})
+        return render(request, 'ClearanceManagement/delete_clearance.html', context)
+
+    else:
+        return redirect('loginPage')
+
+
