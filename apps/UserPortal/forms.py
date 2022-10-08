@@ -4,6 +4,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
+from django.utils.translation import gettext_lazy as _
 
 class CleranceForm(forms.ModelForm):
     class Meta:
@@ -74,23 +75,25 @@ class ResidencyCertificateForm(forms.ModelForm):
 
 
 class CaptchaPasswordChangeForm(PasswordChangeForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField(error_messages={'required': _("You forgot to answer captcha, you're not a robot, right?")})
 
 
 
 class UpdateUsernameForm(forms.ModelForm):
 
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
         fields = ('username',)
 
 
-
 class UpdateEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
