@@ -107,6 +107,12 @@ hr.h-color{
     
 }
 
+
+.side-sub-menu a{
+    color: #fff;
+    font-size: 17px;   
+}
+
 @media(max-width: 767px){
     #side_nav{
         margin-left: -300px;

@@ -72,6 +72,7 @@ $(document).ready(function() {
           filter_default_label: "All",
           filter_container_id: "gender",
           data: ["Male", "Female"],
+          filter_match_mode : "exact",
           style_class: 'form-select',
           filter_reset_button_text: false
 
