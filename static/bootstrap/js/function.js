@@ -59,27 +59,34 @@ function openRequest(evt, documentType) {
   
 $(document).ready(function() {
     var table = $('#residents').DataTable({
-
-      filterDropDown:({
-        columns: [
-          {
-            idx: 3,
-							title: "Select Gender",
-              autoSize: true
-              
-          },{
-            title: "Select Purok",
-            idx: 4,
-          }
-        ],
-        bootstrap: false,
-        label: "Filter Table"
-      }),
-      aaSorting: [[4, 'asc']],
       "dom": '<"panel panel-default"<"panel-heading"<"row"<"col-md-6"l><"col-md-6 text-right"f>>>t<"panel-footer"<"row"<"col-md-6"i><"col-md-6 text-right"p>>>>',
 
-      buttons: buttonConfigResident
-    });table.buttons().container().appendTo($('#test'));
+      buttons: buttonConfigResident,
+      stateSave: true
+    });
+    table.buttons().container().appendTo($('#test'));
+
+    yadcf.init(table, [
+      {
+          column_number : 3, 
+          filter_default_label: "All",
+          filter_container_id: "gender",
+          data: ["Male", "Female"],
+          style_class: 'form-select',
+          filter_reset_button_text: false
+
+      },
+      {
+        column_number : 4, 
+        filter_default_label: "All",
+        filter_container_id: "purok",
+        filter_match_mode : "exact",
+        data: ["Purok I", "Purok II", "Purok III", "Purok IV", "Purok V", "Purok VI"],
+        style_class: 'form-select',
+        filter_reset_button_text: false
+
+    }
+    ]);
 });
 
 var buttonConfig = [];

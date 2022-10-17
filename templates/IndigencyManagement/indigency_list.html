@@ -1,4 +1,16 @@
 <div class="table-responsive fade-load">
+
+    <div class="py-2">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label class="col-form-label">Select Status</label>
+            </div>
+            <div class="col-auto">
+                <div id="status"></div>
+            </div>
+          </div>
+    </div>
+
     <table id="indigency" class="table table-striped table-bordered align-middle mb-0 shadow-sm">
         <thead>
             <tr>
@@ -47,35 +59,27 @@
 
 <script>
     $(document).ready(function() {
-      $('#indigency').DataTable({
-        filterDropDown:({
-          columns: [
+        var table = $('#indigency').DataTable({
+        stateSave: true
+        });
+
+        yadcf.init(table, [
             {
-                idx: 5,
-                title: "Select Status",
-                autoSize: true
-                
+            column_number : 5, 
+            filter_default_label: "All",
+            filter_container_id: "status",
+            data: ["Pending", "Ready", "Released"],
+            style_class: 'form-select',
+            filter_reset_button_text: false
             }
-          ],
-                bootstrap: false,
-                label: "Filter Status"
-        })
-      });
+        ]);
     });
-    </script>
+</script>
     
-    <style>
-        .fade-load {
-            animation: fadeInAnimation ease 0.3s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-        }
-    
-        .indigency_filterSelect{
-            width: auto;
-            display:inline-block;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
+<style>
+    .fade-load {
+        animation: fadeInAnimation ease 0.3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
-    </style>
+</style>

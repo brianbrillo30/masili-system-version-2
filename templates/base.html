@@ -12,8 +12,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.bootstrap5.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/jquery.dataTables.yadcf.css' %}">
     
-
+    
     <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/jquery.dataTables.js' %}" ></script>
     <script src="{% static 'bootstrap/js/dataTables.bootstrap5.min.js' %}" ></script>
@@ -23,6 +24,8 @@
     <script src="{% static 'bootstrap/js/pdfmake.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/vfs_fonts.js' %}" ></script>
     <script src="{% static 'bootstrap/js/datatables.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/jquery.dataTables.yadcf.js' %}" ></script>
+    
 
 
     <title>Barangay Masili</title>
@@ -49,7 +52,20 @@
 
             <ul class="list-unstyled px-2">
                 <li class=""><a href="{% url 'dashboard' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
-                <li class=""><a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-address-card"></i> Residents</a></li>
+
+                <li class="">
+                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="las la-address-card"></i> Residents <b><i class="las la-angle-down float-end px-2"></i></b>
+                    </a>
+
+                    <ul class="list-unstyled px-2 collapse" id="collapseExample">
+                        <li>
+                            <a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block">List of Residents</a>
+                        </li>
+                    </ul>
+
+                </li>
+
                 <li class=""><a href="{% url 'announcementPage' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-bullhorn fs-5"></i> Announcements</a></li>
                 <hr class="h-color mx-3">
                 <li class=""><a href="{% url 'clearance'%}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Barangay Clearance</a></li>
@@ -122,6 +138,29 @@
 
     $('.close-btn').on('click' , function(){
         $('.sidebar').removeClass('active');
+    });
+
+    // bootstrap colapse
+    $(document).ready(function () {
+        $(".collapse").on("shown.bs.collapse", function () {
+            localStorage.setItem("coll_" + this.id, true);
+            console.log('SHOW ' + this.id);
+        });
+
+        $(".collapse").on("hidden.bs.collapse", function () {
+            localStorage.removeItem("coll_" + this.id);
+            console.log('HIDE' + this.id);
+        });
+        
+        $(".collapse").each(function () {
+            console.log('EACH ' + this.id);
+            if (localStorage.getItem("coll_" + this.id) === "true") {
+                $(this).collapse("show");
+            }
+            else {
+                $(this).collapse("hide");
+            }
+        });
     });
 </script> 
 </body>

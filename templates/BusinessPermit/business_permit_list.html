@@ -1,4 +1,16 @@
 <div class="table-responsive fade-load">
+
+    <div class="py-2">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label class="col-form-label">Select Status</label>
+            </div>
+            <div class="col-auto">
+                <div id="status"></div>
+            </div>
+          </div>
+    </div>
+    
     <table id="business" class="table table-striped table-bordered align-middle mb-0 shadow-sm">
         <thead>
             <tr>
@@ -51,20 +63,20 @@
 
 <script>
     $(document).ready(function() {
-      $('#business').DataTable({
-        filterDropDown:({
-          columns: [
-            {
-                idx: 6,
-                title: "Select Status",
-                autoSize: true
-                
-            }
-          ],
-                bootstrap: false,
-                label: "Filter Status"
-        })
+      var table = $('#business').DataTable({
+        stateSave: true
       });
+
+      yadcf.init(table, [
+            {
+            column_number : 6, 
+            filter_default_label: "All",
+            filter_container_id: "status",
+            data: ["Pending", "Ready", "Released"],
+            style_class: 'form-select',
+            filter_reset_button_text: false
+            }
+        ]);
     });
     </script>
     
@@ -74,12 +86,4 @@
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
         }
-    
-        .business_filterSelect{
-            width: auto;
-            display:inline-block;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
-    }
     </style>
