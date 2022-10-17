@@ -54,12 +54,12 @@
                 <li class=""><a href="{% url 'dashboard' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
 
                 <div class="side-sub-menu">
-                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseResident" aria-expanded="false" aria-controls="collapseResident">
                         <i class="las la-address-card"></i> Residents <b><i class="las la-angle-down float-end px-2"></i></b>
                     </a>
 
                     <div class="ps-3">
-                        <ul class="list-unstyled px-2 collapse" id="collapseExample">
+                        <ul class="list-unstyled px-2 collapse" id="collapseResident">
                             <li class="">
                                 <a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block">List of Residents</a>
                             </li>
@@ -81,7 +81,43 @@
                 <hr class="h-color mx-3">
                 <li class=""><a href="{% url 'adminProfile' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user fs-5"></i> Profile </a></li>
                 <hr class="h-color mx-3">
-                <li class=""><a href="{% url 'reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Reports </a></li>
+                
+
+                <div class="side-sub-menu">
+                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseReports" aria-expanded="false" aria-controls="collapseReports">
+                        <i class="las la-calendar-week fs-5"></i> Reports <b><i class="las la-angle-down float-end px-2"></i></b>
+                    </a>
+
+                    <div class="ps-3">
+                        <ul class="list-unstyled px-2 collapse" id="collapseReports">
+                            <li class="">
+                                <li class=""><a href="{% url 'reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-archive fs-5"></i> Issued Documents </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'clearance_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-signature fs-5"></i> Issued Clearance </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'indigency_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-invoice fs-5"></i> Issued Indigency </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'business_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-invoice-dollar fs-5"></i> Issued Business Permit </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'building_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-image fs-5"></i> Issued Building Permit </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'residency_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="lar la-id-badge fs-5"></i> Issued Residency </a></li>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                
             </ul>
             
         </div>
