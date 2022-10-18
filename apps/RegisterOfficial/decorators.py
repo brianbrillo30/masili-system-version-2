@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 
 
-def admin_only(view_func):
+def superadmin_only(view_func):
     def wrapper_function(request, *args, **kwargs):
         group = None
         if request.user.groups.exists():
@@ -12,11 +12,11 @@ def admin_only(view_func):
         
             return redirect('service_portal')
 
-        if group == 'superadmin':
-        
-            return redirect('add_official_account')
-
         if group == 'admin':
+        
+            return redirect('dashboard')
+
+        if group == 'superadmin':
             return view_func(request, *args, **kwargs)
 
     return wrapper_function

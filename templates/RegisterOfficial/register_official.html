@@ -1,5 +1,43 @@
 {% extends "../base.html" %}
+{% load crispy_forms_tags %} 
 {% load static %}
 {% block content %}
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center vertical-center">
+        <div class="col-lg-6 col-md-10 col-12">
+            <div id="msg" class="col-12 px-5 fade-page">
+                {% for message in messages %}  
+                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="card border-0 shadow p-3 mb-5 bg-body rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="col-12">
+                            {{form|crispy}}
+                            <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 1){
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
+
 
 {% endblock content %}

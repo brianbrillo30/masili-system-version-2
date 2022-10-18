@@ -16,7 +16,7 @@ def loginPage(request):
         username = request.POST['username']
         password = request.POST['password']
             
-        user = authenticate(request, username = username, password = password )
+        user = authenticate(request, username = username, password = password)
 
         if not user:
             messages.error(request, 'Invalid username or password !')
