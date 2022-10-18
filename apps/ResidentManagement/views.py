@@ -1,4 +1,5 @@
 from audioop import reverse
+from tokenize import group
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import *
 from .forms import *
@@ -41,6 +42,31 @@ def resident_list(request):
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
         return redirect('loginPage')
+
+
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
+def pwd(request):
+    if request.user.is_authenticated:
+        context = {'pwd_list' : User.objects.filter(residentsinfo__status=2).order_by('id')}
+        return render(request, "ResidentManagement/pwd_resident.html", context)
+    else:
+        return redirect('loginPage')
+
+
+
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
+def senior(request):
+    if request.user.is_authenticated:
+        context = {'senior_list' : User.objects.filter(residentsinfo__status=3).order_by('id')}
+        return render(request, "ResidentManagement/senior_resident.html", context)
+    else:
+        return redirect('loginPage')
+
 
 
 def adminLogout(request):

@@ -28,7 +28,7 @@ def reports(request):
     else:
         return redirect('loginPage')
 
-
+@admin_only
 def clearance_reports(request):
     if request.user.is_authenticated:
         clearance_list = clearance.objects.filter(status=3)
@@ -39,7 +39,7 @@ def clearance_reports(request):
     else:
         return redirect('loginPage')
 
-
+@admin_only
 def indigency_reports(request):
     if request.user.is_authenticated:
         indigency_list = CertificateOfIndigency.objects.filter(status=3)
@@ -50,6 +50,7 @@ def indigency_reports(request):
     else:
         return redirect('loginPage')
 
+@admin_only
 def business_reports(request):
     if request.user.is_authenticated:
         business_list = BusinessPermit.objects.filter(status=3)
@@ -60,7 +61,7 @@ def business_reports(request):
     else:
         return redirect('loginPage')
 
-
+@admin_only
 def building_reports(request):
     if request.user.is_authenticated:
         building_list = BuildingPermit.objects.filter(status=3)
@@ -71,7 +72,7 @@ def building_reports(request):
     else:
         return redirect('loginPage')
 
-
+@admin_only
 def residency_reports(request):
     if request.user.is_authenticated:
         residency_list = ResidencyCertificate.objects.filter(status=3)

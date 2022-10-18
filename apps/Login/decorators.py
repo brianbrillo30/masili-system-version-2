@@ -12,6 +12,9 @@ def unauthenticated_user(view_func):
                 
             if group == 'resident':
                 return redirect('service_portal')
+
+            if group == 'superadmin':
+                return redirect('add_official_account')
             
             if group == 'admin':
                 return redirect('resident_list')

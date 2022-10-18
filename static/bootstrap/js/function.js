@@ -87,6 +87,7 @@ $(document).ready(function() {
         filter_reset_button_text: false
 
     }
+  
     ]);
 });
 // End Resident Table List
