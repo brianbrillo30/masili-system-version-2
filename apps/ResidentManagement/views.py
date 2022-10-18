@@ -37,7 +37,7 @@ sound = os.path.join(sound_folder, 'beep.wav')
 @admin_only
 def resident_list(request):
     if request.user.is_authenticated:
-        context = {'resident_list' : User.objects.filter(is_superuser=0).order_by('id')}
+        context = {'resident_list' : User.objects.filter(groups__name__in=['resident']).order_by('id')}
         return render(request, "ResidentManagement/residents_list.html", context)
     else:
         return redirect('loginPage')

@@ -12,7 +12,28 @@
 
         <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6 py-2">
+                    <div class="row g-3 align-items-center pt-2">
+                        <div class="col-auto">
+                          <label class="col-form-label">Minimum date:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" id="min" name="min">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                          <label class="col-form-label">Maximum date:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control form-control-sm" id="max" name="max">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 py-2">
                     <div id="test" style="float:right" ></div>
                 </div>
                 <div class="col-lg-12">
@@ -37,7 +58,7 @@
                                     <td>{{residency_list.res_id}}</td>
                                     <td>{{residency_list.document_type}}</td>
                                     <td>{{residency_list.date_requested}}</td>
-                                    <td>{{residency_list.date_released}}</td>
+                                    <td>{{residency_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{residency_list.transaction_id}}</td>
                                     <td>{{residency_list.status}}</td>
                                     <td class="text-center">

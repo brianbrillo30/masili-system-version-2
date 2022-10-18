@@ -107,11 +107,38 @@ hr.h-color{
     
 }
 
-
 .side-sub-menu a{
     color: #fff;
     font-size: 17px;   
 }
+
+.accordion-button{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.accordion-button.collapsed {
+    color: #db0000;
+    background-color: #000000;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #3b3b3b;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.accordion-button:after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.sub-content{
+    background-color: #202020;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 
 @media(max-width: 767px){
     #side_nav{
@@ -370,23 +397,6 @@ hr.h-color{
   }
 #dtHorizontal th, td {
     white-space: nowrap;
-}
-
-.residents_filterSelect{
-    width: auto;
-    display:inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-
-.report_table_filterSelect{
-    width: 15%;
-    position: relative;
-    display:inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 10px;
 }
 
 .doc_track_filterSelect{

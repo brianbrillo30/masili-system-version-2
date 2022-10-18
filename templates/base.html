@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.bootstrap5.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/jquery.dataTables.yadcf.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.dateTime.min.css' %}">
     
     
     <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
@@ -25,6 +26,8 @@
     <script src="{% static 'bootstrap/js/vfs_fonts.js' %}" ></script>
     <script src="{% static 'bootstrap/js/datatables.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/jquery.dataTables.yadcf.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/moment.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/dataTables.dateTime.min.js' %}" ></script>
     
 
 
@@ -53,12 +56,14 @@
             <ul class="list-unstyled px-2">
                 <li class=""><a href="{% url 'dashboard' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
 
-                <div class="side-sub-menu">
-                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseResident" aria-expanded="false" aria-controls="collapseResident">
-                        <i class="las la-address-card"></i> Residents <b><i class="las la-angle-down float-end px-2"></i></b>
-                    </a>
+                <div class="side-sub-menu py-2">
+                    <div class="accordion-button px-3 py-2" data-bs-toggle="collapse" href="#collapseResident" aria-expanded="false" aria-controls="collapseResident">
+                        <a class="text-decoration-none d-block">
+                            <i class="las la-address-card"></i> Residents
+                        </a>
+                    </div>
 
-                    <div class="ps-3">
+                    <div class="ps-3 sub-content">
                         <ul class="list-unstyled px-2 collapse" id="collapseResident">
                             <li class="">
                                 <a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block">List of Residents</a>
@@ -69,6 +74,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
 
                 
@@ -85,12 +91,15 @@
                 
 
                 <div class="side-sub-menu">
-                    <a class="text-decoration-none px-3 py-2 d-block" data-bs-toggle="collapse" href="#collapseReports" aria-expanded="false" aria-controls="collapseReports">
-                        <i class="las la-calendar-week fs-5"></i> Reports <b><i class="las la-angle-down float-end px-2"></i></b>
-                    </a>
+                    
+                    <div class="accordion-button px-3 py-2" data-bs-toggle="collapse" href="#collapseReports" aria-expanded="false" aria-controls="collapseReports">
+                        <a class="text-decoration-none d-block">
+                            <i class="las la-calendar-week fs-5"></i> Reports
+                        </a>
+                    </div>
 
-                    <div class="ps-3">
-                        <ul class="list-unstyled px-2 collapse" id="collapseReports">
+                    <div class="ps-3 sub-content">
+                        <ul class="list-unstyled px-2 py-2 collapse" id="collapseReports">
                             <li class="">
                                 <li class=""><a href="{% url 'reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-archive fs-5"></i> Issued Documents </a></li>
                             </li>
@@ -167,6 +176,7 @@
 <script src="{% static 'bootstrap/js/dialog.js' %}" ></script>
 
 <script src="{% static 'bootstrap/js/function.js' %}" ></script>
+<script src="{% static 'bootstrap/js/issued_document_datatable.js' %}" ></script>
 
 <script>
     $(function(){
