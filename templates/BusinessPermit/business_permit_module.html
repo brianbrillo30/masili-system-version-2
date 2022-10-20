@@ -7,29 +7,13 @@
     }
 </style>
 <div class="container-fluid bg-white rounded fade-page min-size">
-    <div class="row p-3 g-0">
 
-        <div class="col-lg-6 col-md-4 col-12">
-            <h4 class="text-muted">Business Permit</h4>
+    <div class="row">
+        <div class="col-12 business-header-bg rounded-top">
+            <h4 class="text-white py-4 px-3"><i class="las la-file-contract fs-3"></i> Business Permit</h4>
         </div>
-
-        <div class="col-lg-6 col-md-8 col-12">
-            <div class="float-end">
-                <a type="button" class="btn bg-warning bg-gradient" href="">
-                    <i class="las la-user-plus fs-4" style="vertical-align: middle;"></i>
-                    <span class="mt-5" style="vertical-align: middle;">Add Certificate</span>
-                </a>
-                &nbsp;
-                &nbsp;
-                <button type="button" class="btn btn-primary bg-gradient">
-                    <i class="las la-file-csv fs-4" style="vertical-align: middle;"></i>
-                    <span class="mt-5" style="vertical-align: middle;">Export CSV</span>
-                </button>
-            </div>
-        </div>
-
-        <hr class="my-3">
-        
+    </div>
+    <div class="row p-3 g-0">        
         <div class="col-lg-12">
             <div class="fade-page" hx-trigger="load, BusinessPermitlistUpdate from:body" hx-get="{% url 'business_permit_list' %}" hx-target="this">
                 <center>

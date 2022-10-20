@@ -60,7 +60,7 @@
                                     <td>{{business_list.date_requested}}</td>
                                     <td>{{business_list.paid_or_date_issued|date:"Y-m-d"}}</td>
                                     <td>{{business_list.transaction_id}}</td>
-                                    <td>{{business_list.status}}</td>
+                                    <td><span>{{business_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_business_permit' business_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>

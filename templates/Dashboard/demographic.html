@@ -8,158 +8,160 @@
     padding-bottom: 5%;
 }
 </style>
-<div class="container-fluid fade-page">
-    <div class="row">
-
-
-        <div class="col-12 py-2 rounded">
-            <div class="example1">
-                <div class="row rounded">
-                    <div class="col-lg-7 col-md-12 my-auto px-5">
-                        <h1 class="display-6 text-white" style="font-weight: 400;">Dashboard</h1>
-                        <p class="lead text-white px-1"><b>Welcome Back!</b></p>
-                    </div>
+<section>
+    <div class="container-fluid fade-page">
+        <div class="row">
     
-                    <div class="col-lg-5 col-md-12">
-                        <a class="text-white float-end px-5" style="text-decoration: none; font-size: 10px;" href="https://www.freepik.com/free-vector/diverse-crowd-people-different-ages-races_7732608.htm">Image by pch.vector</a>
-                        <img src="{% static 'img/race.svg' %}" class="img-fluid" style="max-height: 300px; min-height: 120px;">
-                        
-                    </div>
-
-                    <div class=" col-12 position relative">
-                        <div class="position-absolute bottom-0 end-0">
+    
+            <div class="col-12 py-2 rounded">
+                <div class="example1">
+                    <div class="row rounded">
+                        <div class="col-lg-7 col-md-12 my-auto px-5">
+                            <h1 class="display-6 text-white" style="font-weight: 400;">Dashboard</h1>
+                            <p class="lead text-white px-1"><b>Welcome Back!</b></p>
+                        </div>
+        
+                        <div class="col-lg-5 col-md-12">
+                            <a class="text-white float-end px-5" style="text-decoration: none; font-size: 10px;" href="https://www.freepik.com/free-vector/diverse-crowd-people-different-ages-races_7732608.htm">Image by pch.vector</a>
+                            <img src="{% static 'img/race.svg' %}" class="img-fluid" style="max-height: 300px; min-height: 120px;">
                             
+                        </div>
+    
+                        <div class=" col-12 position relative">
+                            <div class="position-absolute bottom-0 end-0">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        
-
-        <div class="col" style="margin-top: -4em;">
-            <div class="row px-4">
-                <div class="col-lg-4 col-md-12">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="resident">
-                            <div class="card-header">
-                                <h5 class="card-title">Registered Residents</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cResident}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="col-lg-4 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="male">
-                            <div class="card-header">
-                                <h5 class="card-title">Male</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cMale}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    
             
-                <div class="col-lg-4 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="f">
-                            <div class="card-header">
-                                <h5 class="card-title">Female</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cFemale}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="col-lg-4">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="yes">
-                            <div class="card-header">
-                                <h5 class="card-title">Single Parent</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cYes}}</h3>
+    
+            <div class="col" style="margin-top: -4em;">
+                <div class="row px-4">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="resident">
+                                <div class="card-header">
+                                    <h5 class="card-title">Registered Residents</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cResident}}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        
-                <div class="col-lg-4">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="pwd">
-                            <div class="card-header">
-                                <h5 class="card-title">PWD</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cPwd}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="senior">
-                            <div class="card-header">
-                                <h5 class="card-title">Senior</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cSenior}}</h3>
+            
+                    <div class="col-lg-4 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="male">
+                                <div class="card-header">
+                                    <h5 class="card-title">Male</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cMale}}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- <h4>Civil Status</h4> -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="married">
-                            <div class="card-header">
-                                <h5 class="card-title">Married</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cMarried}}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="single">
-                            <div class="card-header">
-                                <h5 class="card-title">Single</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cSingle}}</h3>
+                
+                    <div class="col-lg-4 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="f">
+                                <div class="card-header">
+                                    <h5 class="card-title">Female</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cFemale}}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="divorced">
-                            <div class="card-header">
-                                <h5 class="card-title">Divorced</h5>
-                            </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cDivorced}}</h3>
+            
+                    <div class="col-lg-4">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="yes">
+                                <div class="card-header">
+                                    <h5 class="card-title">Single Parent</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cYes}}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="col-md">
-                        <div class="card text-center text-white mb-3 border-0 shadow" id="widowed">
-                            <div class="card-header">
-                                <h5 class="card-title">Widowed</h5>
+            
+                    <div class="col-lg-4">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="pwd">
+                                <div class="card-header">
+                                    <h5 class="card-title">PWD</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cPwd}}</h3>
+                                </div>
                             </div>
-                            <div clas="card-body">
-                                <h3 class="card-title">{{cWidowed}}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="senior">
+                                <div class="card-header">
+                                    <h5 class="card-title">Senior</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cSenior}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <h4>Civil Status</h4> -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="married">
+                                <div class="card-header">
+                                    <h5 class="card-title">Married</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cMarried}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="single">
+                                <div class="card-header">
+                                    <h5 class="card-title">Single</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cSingle}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="divorced">
+                                <div class="card-header">
+                                    <h5 class="card-title">Divorced</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cDivorced}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="col-md">
+                            <div class="card text-center text-white mb-3 border-0 shadow" id="widowed">
+                                <div class="card-header">
+                                    <h5 class="card-title">Widowed</h5>
+                                </div>
+                                <div clas="card-body">
+                                    <h3 class="card-title">{{cWidowed}}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -167,7 +169,82 @@
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<section>
+    <div class="container-fluid">
+        <div class="row px-4 py-5">
+            <div class="col-lg-8">
+                <!-- Jumbotron -->
+                <div class="p-4 shadow-4 rounded-3 bg-white">
+                    <div>
+                        <h2>List of Residents</h2>
+                    </div>
+                    <hr class="my-2" />
+                    <div>
+                        <div class="table-responsive">
+                            <table id="dashboard-table" class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Resident ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Sex</th>
+                                        <th scope="col">Classification</th>
+                                        <th scope="col">Purok</th>
+                                        <th scope="col">Contact No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for resident in resident_list|slice:":5" %}
+                                    <tr>
+                                        <td>{{resident.residentsinfo.res_id}}</td>
+                                        <td>{{resident.residentsinfo.firstname}} {{resident.residentsinfo.middlename|make_list|first}}. {{resident.residentsinfo.lastname}} {{resident.residentsinfo.suffix}}</td>
+                                        <td><span>{{resident.residentsinfo.sex}}</span></td>
+                                        <td>{{resident.residentsinfo.status}}</td>
+                                        <td>{{resident.residentsinfo.purok}}</td>
+                                        <td>{{resident.residentsinfo.phone}}</td>
+                                      </tr>
+                                    {% endfor %}
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                    <hr class="my-2" />
+
+                    <div class="d-flex justify-content-center">
+                        <a type="button" class="btn btn-outline-secondary" href="{% url 'resident_list' %}">
+                            <i class="las la-eye fs-4" style="vertical-align: middle;"></i>
+                            <span class="mt-5" style="vertical-align: middle;">View All</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Jumbotron -->
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Jumbotron -->
+                <div class="p-4 shadow-4 rounded-3 bg-white">
+                    <div>
+                        <h2>Masili</h2>
+                    </div>
+                
+                    <hr class="my-2"/>
+                
+                    <div>
+                        <!--Google map-->
+                        <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 400px">
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9200.27538250287!2d121.20604870750162!3d14.18075793337452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd613926c4267f%3A0x62fd88e8affa6ac1!2sMasili%2C%20Real%2C%20Calamba%2C%20Laguna!5e0!3m2!1sen!2sph!4v1663532435301!5m2!1sen!2sph" 
+                            width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>  
+                        <!--Google Maps-->  
+                    </div>
+                </div>
+                <!-- Jumbotron -->
+            </div>
+        </div>
+    </div>
+</section>
 
 
 {% endblock content %}

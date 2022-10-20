@@ -62,7 +62,7 @@
                                     <td>{{clearance.date_requested}}</td>
                                     <td>{{clearance.date_released|date:"Y-m-d"}}</td>
                                     <td>{{clearance.transaction_id}}</td>
-                                    <td>{{clearance.status}}</td>
+                                    <td><span>{{clearance.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_clearance' clearance.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
