@@ -61,3 +61,14 @@ class ProfileForm(forms.ModelForm):
         self.fields['status'].empty_label = "Select"
         self.fields['suffix'].required = False
 
+
+class EditUserAccountForm(forms.ModelForm):
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'email'
+        )
+

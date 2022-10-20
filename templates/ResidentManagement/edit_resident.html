@@ -1,4 +1,5 @@
 {% extends "../base.html" %}
+{% load crispy_forms_tags %} 
 {% load static %}
 {% block content %}
 
@@ -176,7 +177,13 @@
             <!-- End of Resident Detail Tab -->
 
             <div class="tab-pane fade" id="account" role="tabpanel">
-
+                <form method="POST">
+                {% csrf_token %}
+                {{form2|crispy}}
+                <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Update</button>
+                &nbsp;&nbsp;
+                <a href="{% url 'officialList'%}" type="button" class="btn-theme -btn1 col-6 col-md-3 text-center">Cancel</a>
+                </form>
             </div>
         </div>
     </div>

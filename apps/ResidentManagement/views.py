@@ -273,10 +273,18 @@ def add_profile(request):
 def edit_profile(request, id):
     if request.user.is_authenticated:
         profile = ResidentsInfo.objects.get(user=id)
+        profile2 = User.objects.get(id=id)
+        form2 = EditUserAccountForm(instance=profile2)
         form = ProfileForm(instance=profile)
 
         if request.method == 'POST':
             form = ProfileForm(request.POST,request.FILES,instance=profile)
+            form2 = EditUserAccountForm(request.POST,instance=profile2)
+            if form2.is_valid():
+                form2.save()
+                return redirect('resident_list')
+
+                
             img = request.POST.get('image')
             firstname = request.POST.get('firstname')
             lastname = request.POST.get('lastname')
@@ -289,9 +297,9 @@ def edit_profile(request, id):
                     userupdate.save()
                 
                 form.save()
-                
                 return redirect('resident_list')
-        context={'form':form, 'prev_img':profile.image}
+
+        context={'form':form, 'form2':form2, 'prev_img':profile.image}
         return render(request,'ResidentManagement/edit_resident.html',context)
     else:
         return redirect('loginPage')
