@@ -13,4 +13,5 @@ urlpatterns = [
     path('building_permit_list/', building_permit_list, name='building_permit_list'),
     path('building_permit_list/<int:id>', edit_building_permit, name='edit_building_permit'),
     path('generate_building_permit/<hashid:id>', generate_building_permit, name='generate_building_permit'),
+    path('delete_building_permit/<hashid:id>', delete_building_permit, name="delete_building_permit"),
 ]
