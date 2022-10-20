@@ -12,4 +12,5 @@ urlpatterns = [
     path('business_permit_list/',business_permit_list,name='business_permit_list'),
     path('businessPermit/<int:id>', edit_business_permit, name='edit_business_permit'),
     path('generate_business_permit/<hashid:id>', generate_business_permit, name='generate_business_permit'),
+    path('delete_business_permit/<hashid:id>', delete_business_permit, name="delete_business_permit"),
 ]

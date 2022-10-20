@@ -5,7 +5,8 @@ from project.utils import render_to_pdf
 from .decorators import admin_only
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
-
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
@@ -64,6 +65,29 @@ def generate_building_permit(request, id):
             },
         ) 
     else:
-        return redirect('loginPage')  
+        return redirect('loginPage')
+
+
+def delete_building_permit(request, id):
+    if request.user.is_authenticated:
+        building_permit = BuildingPermit.objects.get(pk=id)
+        
+        context = {'building_permit':building_permit}
+        if request.method == 'POST':
+
+            email_msg = request.POST.get('reason_masage')
+
+            subject = 'Reasons For Denying your Request'
+            message = email_msg
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [building_permit.res_id.user.email]
+            send_mail( subject, message, email_from, recipient_list )
+
+            building_permit.delete()
+            return HttpResponse(status=204, headers={'HX-Trigger': 'BuildingPermitList'})
+        return render(request, 'BuildingPermit/delete_building_permit.html', context)
+
+    else:
+        return redirect('loginPage')
 
     
