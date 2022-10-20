@@ -34,14 +34,18 @@
                 <td>{{ indigency.transaction_id}}</td>
                 <td><span class="">{{ indigency.status}}</span></td>
                 <td class="text-center">
-                    <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_indigency' indigency.id %}" hx-target="#dialog">
-                        <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
-                    </button>
-            
                     <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_indigency' indigency.id %}">
                         <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
                         <span style="vertical-align: middle;">Generate</span>
                     </a>
+
+                    <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_indigency' indigency.id %}" hx-target="#dialog">
+                        <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
+                    </button>
+
+                    <button class="btn btn-danger bg-gradient" hx-get="{% url 'delete_indigency' indigency.id %}" hx-target="#dialog">
+                        <i class="las la-trash-alt fs-4" style="vertical-align: middle;"></i>
+                    </button>
                     
                 </td>
             </tr>
