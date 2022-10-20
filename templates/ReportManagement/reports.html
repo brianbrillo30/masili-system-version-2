@@ -83,7 +83,7 @@
                                     <td>{{clearance.date_requested}}</td>
                                     <td>{{clearance.date_released|date:"Y-m-d"}}</td>
                                     <td>{{clearance.transaction_id}}</td>
-                                    <td>{{clearance.status}}</td>
+                                    <td><span>{{clearance.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_clearance' clearance.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
@@ -102,7 +102,7 @@
                                     <td>{{indigency_list.date_requested}}</td>
                                     <td>{{indigency_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{indigency_list.transaction_id}}</td>
-                                    <td>{{indigency_list.status}}</td>
+                                    <td><span>{{indigency_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_indigency' indigency_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
@@ -121,7 +121,7 @@
                                     <td>{{business_list.date_requested}}</td>
                                     <td>{{business_list.paid_or_date_issued|date:"Y-m-d"}}</td>
                                     <td>{{business_list.transaction_id}}</td>
-                                    <td>{{business_list.status}}</td>
+                                    <td><span>{{business_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_business_permit' business_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
@@ -141,7 +141,7 @@
                                     <td>{{building_list.date_requested}}</td>
                                     <td>{{building_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{building_list.transaction_id}}</td>
-                                    <td>{{building_list.status}}</td>
+                                    <td><span>{{building_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_building_permit' building_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
@@ -160,7 +160,7 @@
                                     <td>{{residency_list.date_requested}}</td>
                                     <td>{{residency_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{residency_list.transaction_id}}</td>
-                                    <td>{{residency_list.status}}</td>
+                                    <td><span>{{residency_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_indigency' residency_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
@@ -202,14 +202,5 @@
 
     </div>
 </div>
-<script>
-$('#report_table')
-  .find('td')
-    .each(function () {
-        if ($(this).html() == 'Released') {
-            $(this).addClass('text-success');
-        }
-});
-</script>
 {% endblock content %}
 

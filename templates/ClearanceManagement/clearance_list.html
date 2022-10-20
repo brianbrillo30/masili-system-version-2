@@ -1,4 +1,4 @@
-<div class="table-responsive fade-load">
+<div class="table-responsive fade-load ">
     <div class="py-2">
         <div class="row g-3 align-items-center">
             <div class="col-auto">
@@ -9,11 +9,11 @@
             </div>
           </div>
     </div>
-    <table id="clearance" class="table table-striped table-bordered align-middle mb-0 shadow-sm">
+    <table id="clearance" class="table table-striped-columns table-bordered align-middle mb-0 shadow-sm">
         <thead>
             <tr>
-                <th>#</th>
-                <th scope="col">Resident</th>
+                <th>Resident ID</th>
+                <th scope="col">Resident's Name</th>
                 <th scope="col">Date Requested</th>
                 <th scope="col">Date Released</th>
                 <th scope="col">Transaction ID</th>
@@ -24,13 +24,13 @@
         
         <tbody>
             {% for clearance in clearance_list %}
-            <tr>
-                <td>#</td>
+            <tr class="table-text">
+                <td class="text-center">{{ clearance.res_id.res_id }}</td>
                 <td>{{ clearance.res_id }}</td>
                 <td>{{ clearance.date_requested }}</td>
                 <td>{{ clearance.date_released}}</td>
                 <td>{{ clearance.transaction_id}}</td>
-                <td>{{ clearance.status}}</td>
+                <td><span class="">{{ clearance.status }}</span></td>
                 <td class="text-center">
 
                     <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_clearance' clearance.id %}">
@@ -81,6 +81,22 @@ $(document).ready(function() {
         }
     ]);
 });
+
+
+$('#clearance')
+  .find('span')
+    .each(function () {
+      if ($(this).html() == 'Released') {
+        $(this).addClass('released-status');
+      }
+      if ($(this).html() == 'Ready') {
+        $(this).addClass('ready-status');
+      }
+      if ($(this).html() == 'Pending') {
+        $(this).addClass('pending-status');
+      }
+});
+
 </script>
 
 <style>

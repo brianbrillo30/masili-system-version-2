@@ -11,10 +11,10 @@
           </div>
     </div>
 
-    <table id="building" class="table table-striped table-bordered align-middle mb-0 shadow-sm fade-page">
+    <table id="building" class="table table-striped-columns table-bordered align-middle mb-0 shadow-sm fade-page">
         <thead>
             <tr>
-                <th>#</th>
+                <th>Resident ID</th>
                 <th scope="col">Requestor</th>
                 <th scope="col">Proposed Construction</th>
                 <th scope="col">Total Area</th>
@@ -27,14 +27,14 @@
         
         <tbody>
             {% for building_permit in building_permit_list %}
-            <tr>
-                <td></td>
+            <tr class="table-text">
+                <td class="text-center">{{ building_permit.res_id.res_id }}</td>
                 <td>{{ building_permit.res_id }}</td>
                 <td>{{ building_permit.proposed_construction }}</td>
                 <td>{{ building_permit.total_area}}</td>
                 <td>{{ building_permit.location}}</td>
                 <td>{{ building_permit.owner}}</td>
-                <td>{{ building_permit.status}}</td>
+                <td><span class="">{{ building_permit.status}}</span></td>
                 <td class="text-center">
                     <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_building_permit' building_permit.id %}" hx-target="#dialog">
                         <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
@@ -61,22 +61,36 @@
 </div>
 
 <script>
-$(document).ready(function() {
-  var table = $('#building').DataTable({
-    stateSave: true
+    $(document).ready(function() {
+    var table = $('#building').DataTable({
+        stateSave: true
+        });
+
+        yadcf.init(table, [
+            {
+                column_number : 6, 
+                filter_default_label: "All",
+                filter_container_id: "status",
+                data: ["Pending", "Ready", "Released"],
+                style_class: 'form-select',
+                filter_reset_button_text: false
+            }
+        ]);
     });
 
-    yadcf.init(table, [
-        {
-            column_number : 6, 
-            filter_default_label: "All",
-            filter_container_id: "status",
-            data: ["Pending", "Ready", "Released"],
-            style_class: 'form-select',
-            filter_reset_button_text: false
+    $('#building')
+    .find('span')
+        .each(function () {
+        if ($(this).html() == 'Released') {
+            $(this).addClass('released-status');
         }
-    ]);
-});
+        if ($(this).html() == 'Ready') {
+            $(this).addClass('ready-status');
+        }
+        if ($(this).html() == 'Pending') {
+            $(this).addClass('pending-status');
+        }
+    });
 </script>
 
 <style>

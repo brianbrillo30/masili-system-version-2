@@ -60,7 +60,7 @@
                                     <td>{{residency_list.date_requested}}</td>
                                     <td>{{residency_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{residency_list.transaction_id}}</td>
-                                    <td>{{residency_list.status}}</td>
+                                    <td><span>{{residency_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_indigency' residency_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>

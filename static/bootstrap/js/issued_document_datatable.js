@@ -114,3 +114,12 @@ $(document).ready(function () {
 
 });
 // issued Documents End
+
+
+$('#report_table')
+.find('span')
+    .each(function () {
+    if ($(this).html() == 'Released') {
+        $(this).addClass('released-status');
+    }
+});

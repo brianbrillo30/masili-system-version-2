@@ -54,6 +54,11 @@
 
 <body class="bg-white fade-page">
 
+      <div id="loading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
 
         {% block content %}
         {% endblock content %}
@@ -142,5 +147,19 @@
           })
           });
       </script>
+
+      <script>
+
+        document.onreadystatechange = function() {
+            if (document.readyState !== "complete") {
+                document.querySelector("body").style.visibility = "hidden";
+                document.querySelector("#loading").style.visibility = "visible";
+            } else {
+                document.querySelector("#loading").style.display = "none";
+                document.querySelector("body").style.visibility = "visible";
+            }
+        };
+      </script>
+
 </body>
 </html>

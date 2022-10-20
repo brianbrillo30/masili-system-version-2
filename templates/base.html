@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/font.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.bootstrap5.min.css' %}">
@@ -35,6 +36,13 @@
 </head>
 
 <body>
+
+    <div id="loading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
             <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
@@ -66,7 +74,7 @@
                     </div>
 
                     <div class="ps-3 sub-content">
-                        <ul class="list-unstyled px-2 collapse" id="collapseResident">
+                        <ul class="list-unstyled px-2 py-2 collapse" id="collapseResident">
                             <li class="">
                                 <a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block">List of Residents</a>
                             </li>
@@ -142,7 +150,7 @@
         </div>
 
         <div class="content">
-            <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light nav-bottom">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2"><i class="las la-bars fs-5"></i></button>
@@ -226,5 +234,18 @@
 
     
 </script> 
+
+<script>
+
+    document.onreadystatechange = function() {
+        if (document.readyState !== "complete") {
+            document.querySelector("body").style.visibility = "hidden";
+            document.querySelector("#loading").style.visibility = "visible";
+        } else {
+            document.querySelector("#loading").style.display = "none";
+            document.querySelector("body").style.visibility = "visible";
+        }
+    };
+</script>
 </body>
 </html>

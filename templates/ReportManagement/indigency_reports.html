@@ -62,7 +62,7 @@
                                     <td>{{indigency_list.date_requested}}</td>
                                     <td>{{indigency_list.date_released|date:"Y-m-d"}}</td>
                                     <td>{{indigency_list.transaction_id}}</td>
-                                    <td>{{indigency_list.status}}</td>
+                                    <td><span>{{indigency_list.status}}</span></td>
                                     <td class="text-center">
                                         <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_indigency' indigency_list.id %}">
                                             <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>

@@ -90,6 +90,26 @@ $(document).ready(function() {
   
     ]);
 });
+
+$('span').each(function(){
+  $(this).html(
+       $(this).html()
+      .replace(
+             /(?<!-)(\Male\b)(?!([^<]+)?>)(?!-)/, 
+            '<span class="male-style"><i class="las la-male"></i>Male</span>'
+       )
+   );
+});
+
+$('span').each(function(){
+  $(this).html(
+       $(this).html()
+      .replace(
+             /(?<!-)(\Female\b)(?!([^<]+)?>)(?!-)/, 
+            '<span class="female-style"><i class="las la-female"></i>Female</span>'
+       )
+   );
+});
 // End Resident Table List
 
 

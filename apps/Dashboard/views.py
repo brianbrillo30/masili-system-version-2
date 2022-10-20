@@ -3,6 +3,7 @@ from apps.ResidentManagement.models import ResidentsInfo
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
 from .decorators import admin_only
+from django.contrib.auth.models import User as user
 # Create your views here.
 
 
@@ -26,10 +27,21 @@ def dashboard(request):
 
         cResident = ResidentsInfo.objects.all().count
                 
-        context = {'cResident': cResident,'cMale': cMale, 'cFemale': cFemale, 'cMarried': cMarried, 'cSingle': cSingle, 
-        'cDivorced': cDivorced, 'cWidowed': cWidowed, 'cYes': cYes, 'cPwd': cPwd, 'cSenior': cSenior}
+        context = {
+            'cResident': cResident,
+            'cMale': cMale, 
+            'cFemale': cFemale, 
+            'cMarried': cMarried, 
+            'cSingle': cSingle, 
+            'cDivorced': cDivorced,
+            'cWidowed': cWidowed,
+            'cYes': cYes,
+            'cPwd': cPwd,
+            'cSenior': cSenior,
+            'resident_list' : user.objects.filter(groups__name__in=['resident']).order_by('id')
+            }
                 
-        return render(request, 'Dashboard/demographic.html', context )
+        return render(request, "Dashboard/demographic.html", context)
 
     else:
         return redirect('loginPage')
