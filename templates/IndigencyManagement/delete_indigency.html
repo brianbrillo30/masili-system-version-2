@@ -1,0 +1,25 @@
+<form hx-post="{{ request.path }}" class="modal-content">
+    {% csrf_token %}
+    <div class="modal-header">
+      <h5 class="modal-title">Are you sure you want to delete this?</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <p><b>Requested By: </b> {{ indigency.res_id }}</p>
+                <p><b>Date Requested: </b> {{ indigency.date_requested }}</p>
+                <p><b>Transaction ID: </b> {{ indigency.transaction_id }}</p>
+            </div>
+
+            <div class="col-12 my-2">
+                <label for="exampleFormControlTextarea1" class="form-label">Reason For Deleting:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reason_masage" required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" data-bs-dismiss="modal">No</button>
+      <button class="btn btn-danger" type="submit">Yes</button>
+    </div>
+</form>
+

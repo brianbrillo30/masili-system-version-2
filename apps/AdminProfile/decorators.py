@@ -12,6 +12,10 @@ def admin_only(view_func):
         
             return redirect('service_portal')
 
+        if group == 'superadmin':
+        
+            return redirect('add_official_account')
+
         if group == 'admin':
             return view_func(request, *args, **kwargs)
 

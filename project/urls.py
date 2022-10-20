@@ -15,6 +15,9 @@ urlpatterns = [
     path('Masili/',include('apps.ResidencyCertificate.urls')),
     path('Masili/',include('apps.AnnouncementManagement.urls')),
     path('Masili/',include('apps.ReportManagement.urls')),
+    path('Masili/',include('apps.RegisterOfficial.urls')),
+    path('Masili/',include('apps.OfficialList.urls')),
+    path('Masili/',include('apps.LoggedReports.urls')),
     path('Barangay Masili/',include('apps.Login.urls')),
     path('Barangay Masili/',include('apps.UserPortal.urls')),
 ]

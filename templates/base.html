@@ -9,11 +9,15 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'nav-tab.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'line-awesome/css/line-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-datepicker.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.bootstrap5.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/jquery.dataTables.yadcf.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/dataTables.dateTime.min.css' %}">
     
-
+    
     <script src="{% static 'bootstrap/js/jquery.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/jquery.dataTables.js' %}" ></script>
     <script src="{% static 'bootstrap/js/dataTables.bootstrap5.min.js' %}" ></script>
@@ -23,12 +27,23 @@
     <script src="{% static 'bootstrap/js/pdfmake.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/vfs_fonts.js' %}" ></script>
     <script src="{% static 'bootstrap/js/datatables.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/jquery.dataTables.yadcf.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/moment.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/dataTables.dateTime.min.js' %}" ></script>
+    
 
 
     <title>Barangay Masili</title>
 </head>
 
 <body>
+
+    <div id="loading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
             <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
@@ -48,8 +63,41 @@
             </div>
 
             <ul class="list-unstyled px-2">
+
+                {% if request.user.groups.all.0.name == 'admin' %}
                 <li class=""><a href="{% url 'dashboard' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
-                <li class=""><a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-address-card"></i> Residents</a></li>
+
+                <div class="side-sub-menu py-2">
+                    <div class="accordion-button px-3 py-2" data-bs-toggle="collapse" href="#collapseResident" aria-expanded="false" aria-controls="collapseResident">
+                        <a class="text-decoration-none d-block">
+                            <i class="las la-address-card"></i> Residents
+                        </a>
+                    </div>
+
+                    <div class="ps-3 sub-content">
+                        <ul class="list-unstyled px-2 py-2 collapse" id="collapseResident">
+                            <li class="">
+                                <a href="{% url 'resident_list' %}" class="text-decoration-none px-3 py-2 d-block">List of Residents</a>
+                            </li>
+
+                            <li class="">
+                                <a href="{% url 'pwd' %}" class="text-decoration-none px-3 py-2 d-block">PWD</a>
+                            </li>
+
+                            <li class="">
+                                <a href="{% url 'senior' %}" class="text-decoration-none px-3 py-2 d-block">Senior Citizen</a>
+                            </li>
+
+                            <li class="">
+                                <a href="{% url 'single' %}" class="text-decoration-none px-3 py-2 d-block">Single Parent</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                
                 <li class=""><a href="{% url 'announcementPage' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-bullhorn fs-5"></i> Announcements</a></li>
                 <hr class="h-color mx-3">
                 <li class=""><a href="{% url 'clearance'%}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Barangay Clearance</a></li>
@@ -60,13 +108,58 @@
                 <hr class="h-color mx-3">
                 <li class=""><a href="{% url 'adminProfile' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user fs-5"></i> Profile </a></li>
                 <hr class="h-color mx-3">
-                <li class=""><a href="{% url 'reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Reports </a></li>
+                
+
+                <div class="side-sub-menu">
+                    
+                    <div class="accordion-button px-3 py-2" data-bs-toggle="collapse" href="#collapseReports" aria-expanded="false" aria-controls="collapseReports">
+                        <a class="text-decoration-none d-block">
+                            <i class="las la-calendar-week fs-5"></i> Reports
+                        </a>
+                    </div>
+
+                    <div class="ps-3 sub-content">
+                        <ul class="list-unstyled px-2 py-2 collapse" id="collapseReports">
+                            <li class="">
+                                <li class=""><a href="{% url 'reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-archive fs-5"></i> Issued Documents </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'clearance_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-signature fs-5"></i> Issued Clearance </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'indigency_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-invoice fs-5"></i> Issued Indigency </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'business_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-invoice-dollar fs-5"></i> Issued Business Permit </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'building_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-image fs-5"></i> Issued Building Permit </a></li>
+                            </li>
+
+                            <li class="">
+                                <li class=""><a href="{% url 'residency_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="lar la-id-badge fs-5"></i> Issued Residency </a></li>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <li class=""><a href="{% url 'add_official_account' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-plus fs-5"></i> Add Official Account</a></li>
+
+                <li class=""><a href="{% url 'officialList' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-circle fs-5"></i> Official Account List</a></li>
+
+                <li class=""><a href="{% url 'logged_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-clipboard fs-5"></i> Logged Reports</a></li>
+                {% endif %}
             </ul>
             
         </div>
 
         <div class="content">
-            <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <nav class="navbar navbar-expand-md navbar-light bg-light nav-bottom">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2"><i class="las la-bars fs-5"></i></button>
@@ -79,7 +172,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Welcome {{user.first_name}} {{user.last_name}}</a>
+                        <a class="nav-link active" aria-current="page" href="#">Welcome {{user.first_name}}</a>
                         </li>
                         
                         <li class="nav-item">
@@ -107,13 +200,14 @@
 <script src="{% static 'bootstrap/js/dialog.js' %}" ></script>
 
 <script src="{% static 'bootstrap/js/function.js' %}" ></script>
+<script src="{% static 'bootstrap/js/issued_document_datatable.js' %}" ></script>
 
 <script>
     $(function(){
         $('.sidebar ul li a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active');
         $('.sidebar ul li a').click(function(){
             $(this).parent().addClass('active').siblings().removeClass('active')    
-    })
+        })
     });
 
     $('.open-btn').on('click' , function(){
@@ -123,6 +217,44 @@
     $('.close-btn').on('click' , function(){
         $('.sidebar').removeClass('active');
     });
+
+    // bootstrap colapse
+    $(document).ready(function () {
+        $(".collapse").on("shown.bs.collapse", function () {
+            localStorage.setItem("coll_" + this.id, true);
+            console.log('SHOW ' + this.id);
+        });
+
+        $(".collapse").on("hidden.bs.collapse", function () {
+            localStorage.removeItem("coll_" + this.id);
+            console.log('HIDE' + this.id);
+        });
+        
+        $(".collapse").each(function () {
+            console.log('EACH ' + this.id);
+            if (localStorage.getItem("coll_" + this.id) === "true") {
+                $(this).collapse("show");
+            }
+            else {
+                $(this).collapse("hide");
+            }
+        });
+    });
+
+    
 </script> 
+
+<script>
+
+    document.onreadystatechange = function() {
+        if (document.readyState !== "complete") {
+            document.querySelector("body").style.visibility = "hidden";
+            document.querySelector("#loading").style.visibility = "visible";
+        } else {
+            document.querySelector("#loading").style.display = "none";
+            document.querySelector("body").style.visibility = "visible";
+        }
+    };
+</script>
 </body>
 </html>

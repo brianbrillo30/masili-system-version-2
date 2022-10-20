@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.humanize',
+    'apps.RegisterOfficial',
+    'apps.OfficialList',
+    'apps.LoggedReports',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +153,10 @@ EMAIL_HOST_PASSWORD = 'mqlxjdpsgmirlnxz'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+
+RECAPTCHA_PUBLIC_KEY = '6LfiGGAiAAAAAFqonG2L6LFsSHDhpOv6eLQBX72F'
+RECAPTCHA_PRIVATE_KEY = '6LfiGGAiAAAAAJKvjrrYVe4ioa0oXIcLQ5L-KeAx'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 
 from django.contrib.messages import constants as messages

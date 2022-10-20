@@ -5,6 +5,8 @@ from project.utils import render_to_pdf
 from .decorators import admin_only
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -77,6 +79,15 @@ def delete_clearance(request, id):
         
         context = {'clearance':clearance}
         if request.method == 'POST':
+
+            email_msg = request.POST.get('reason_masage')
+
+            subject = 'Reasons For Denying your Request'
+            message = email_msg
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [clearance.res_id.user.email]
+            send_mail( subject, message, email_from, recipient_list )
+
             clearance.delete()
             return HttpResponse(status=204, headers={'HX-Trigger': 'clearancelistUpdate'})
         return render(request, 'ClearanceManagement/delete_clearance.html', context)

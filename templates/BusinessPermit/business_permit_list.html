@@ -1,9 +1,21 @@
 <div class="table-responsive fade-load">
-    <table id="business" class="table table-striped table-bordered align-middle mb-0 shadow-sm">
+
+    <div class="py-2">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label class="col-form-label">Select Status</label>
+            </div>
+            <div class="col-auto">
+                <div id="status"></div>
+            </div>
+          </div>
+    </div>
+    
+    <table id="business" class="table table-striped-columns table-bordered align-middle mb-0 shadow-sm">
         <thead>
             <tr>
-                <th>#</th>
-                <th scope="col">Resident</th>
+                <th>Resident ID</th>
+                <th scope="col">Resident's Name</th>
                 <th scope="col">Business Name</th>
                 <th scope="col">Business Address</th>
                 <th scope="col">Type of Business</th>
@@ -15,14 +27,14 @@
         
         <tbody>
             {% for business_permit in business_permit_list %}
-            <tr>
-                <td></td>
+            <tr class="table-text">
+                <td class="text-center">{{ business_permit.res_id.res_id }}</td>
                 <td>{{ business_permit.res_id }}</td>
                 <td>{{ business_permit.business_name }}</td>
                 <td>{{ business_permit.location}}</td>
                 <td>{{ business_permit.business_nature}}</td>
                 <td>{{ business_permit.previous_or}}</td>
-                <td>{{ business_permit.status}}</td>
+                <td><span class="">{{ business_permit.status}}</span></td>
                 <td class="text-center">
                     <button class="btn btn-primary bg-gradient" hx-get="{% url 'edit_business_permit' business_permit.id %}" hx-target="#dialog">
                         <i class="las la-pen fs-4" style="vertical-align: middle;"></i>
@@ -51,35 +63,41 @@
 
 <script>
     $(document).ready(function() {
-      $('#business').DataTable({
-        filterDropDown:({
-          columns: [
-            {
-                idx: 6,
-                title: "Select Status",
-                autoSize: true
-                
-            }
-          ],
-                bootstrap: false,
-                label: "Filter Status"
-        })
+      var table = $('#business').DataTable({
+        stateSave: true
       });
+
+      yadcf.init(table, [
+            {
+            column_number : 6, 
+            filter_default_label: "All",
+            filter_container_id: "status",
+            data: ["Pending", "Ready", "Released"],
+            style_class: 'form-select',
+            filter_reset_button_text: false
+            }
+        ]);
     });
-    </script>
-    
-    <style>
-        .fade-load {
-            animation: fadeInAnimation ease 0.3s;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
+
+    $('#business')
+    .find('span')
+        .each(function () {
+        if ($(this).html() == 'Released') {
+            $(this).addClass('released-status');
         }
+        if ($(this).html() == 'Ready') {
+            $(this).addClass('ready-status');
+        }
+        if ($(this).html() == 'Pending') {
+            $(this).addClass('pending-status');
+        }
+    });
+</script>
     
-        .business_filterSelect{
-            width: auto;
-            display:inline-block;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 10px;
+<style>
+    .fade-load {
+        animation: fadeInAnimation ease 0.3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
     }
-    </style>
+</style>

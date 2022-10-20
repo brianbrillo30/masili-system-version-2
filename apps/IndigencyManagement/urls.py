@@ -12,4 +12,5 @@ urlpatterns = [
     path('indigency/', indigency_list, name='indigency_list'),
     path('indigency/<int:id>', edit_indigency, name='edit_indigency'),
     path('generate_indigency/<hashid:id>', generate_indigency, name='generate_indigency'),
+    path('delete_indigency/<hashid:id>', delete_indigency, name="delete_indigency"),
 ]

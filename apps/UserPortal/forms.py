@@ -1,7 +1,11 @@
 from django import forms
 from .models import *
-from django.contrib.auth.forms import PasswordResetForm, UserChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+from django.utils.translation import gettext_lazy as _
+
 class CleranceForm(forms.ModelForm):
     class Meta:
         model = clearance
@@ -70,29 +74,26 @@ class ResidencyCertificateForm(forms.ModelForm):
         }
 
 
-class UserPasswordResetForm(PasswordResetForm):
-    def __init__(self, *args, **kwargs):
-        super(UserPasswordResetForm, self).__init__(*args, **kwargs)
+class CaptchaPasswordChangeForm(PasswordChangeForm):
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField(error_messages={'required': _("You forgot to answer captcha, you're not a robot, right?")})
 
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
-        'class': 'form-control ',
-        'placeholder': 'Input',
-        'type': 'email',
-        'name': 'email'
-        }))
+
 
 class UpdateUsernameForm(forms.ModelForm):
+
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
         fields = ('username',)
 
-        widgets = {
-            'username' : forms.TextInput(attrs={'class':'form-control'})
-        }
 
 class UpdateEmailForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class':'form-control'}))
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User

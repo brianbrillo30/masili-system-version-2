@@ -77,6 +77,10 @@ body{
   }
 
 /* sidebar */
+
+.nav-bottom{
+    border-bottom: 7px solid #F98724;
+}
 #side_nav{
     background: #000;
     min-width: 300px;
@@ -103,9 +107,45 @@ hr.h-color{
 }
 .sidebar li a{
     color: #fff;
-    font-size: 17px;
-    
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Nunito', sans-serif;
 }
+
+.side-sub-menu a{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Nunito', sans-serif;
+}
+
+.accordion-button{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.accordion-button.collapsed {
+    color: #db0000;
+    background-color: #000000;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #3b3b3b;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.accordion-button:after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+.sub-content{
+    background-color: #202020;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 
 @media(max-width: 767px){
     #side_nav{
@@ -366,23 +406,6 @@ hr.h-color{
     white-space: nowrap;
 }
 
-.residents_filterSelect{
-    width: auto;
-    display:inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-
-.report_table_filterSelect{
-    width: 15%;
-    position: relative;
-    display:inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-}
-
 .doc_track_filterSelect{
     width: 15%;
     display:inline-block;
@@ -402,4 +425,115 @@ table.table-fit thead th, table.table-fit tfoot th {
 }
 table.table-fit tbody td, table.table-fit tfoot td {
     width: auto !important;
+}
+
+.table-text{
+    font-weight: 500 ;
+    font-size: 15px;
+}
+
+.table-striped-columns td:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+.clearance-header-bg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(53,53,164,1) 0%, rgba(100,175,247,1) 100%);
+}
+
+.indigency-header-bg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,127,80,1) 0%, rgba(255,110,105,1) 100%);
+}
+
+.business-header-bg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(242,168,19,1) 0%, rgba(255,207,11,1) 100%);
+}
+
+.building-header-bg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(189,12,81,1) 0%, rgba(121,3,163,1) 100%);
+}
+
+.residency-header-bg{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(12,179,189,1) 0%, rgba(104,204,52,1) 100%);
+}
+
+
+/* Spinner Page Loader */
+#loading {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 100;
+  }
+
+
+.pending-status {
+    padding: 0;
+    border-radius: 4px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background: #6c757d;
+    
+}
+
+.ready-status {
+    padding: 0;
+    border-radius: 4px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background:  #007bff;
+    
+}
+
+.released-status {
+    padding: 0;
+    border-radius: 4px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background: #28a745;
+    
+}
+
+.male-style {
+    padding: 0;
+    border-radius: 4px;
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background: #28b9dd;
+    
+}
+
+.female-style {
+    padding: 0;
+    border-radius: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background: #d63960;
+    
 }
