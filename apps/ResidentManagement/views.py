@@ -75,7 +75,7 @@ def senior(request):
 def single(request):
     if request.user.is_authenticated:
         context = {'single_list' : User.objects.filter(residentsinfo__single_parent='Yes').order_by('id')}
-        return render(request, "ResidentManagement/senior_resident.html", context)
+        return render(request, "ResidentManagement/single_list.html", context)
     else:
         return redirect('loginPage')
 
