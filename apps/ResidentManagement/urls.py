@@ -15,6 +15,7 @@ urlpatterns = [
     path('Resident Details/', details, name= 'details'),
     path('PWD/', pwd, name= 'pwd'),
     path('Senior Citizen/', senior, name= 'senior'),
+    path('Single Parent/', single, name= 'single'),
 
     path('add_profile/',add_profile,name='add_profile'),
     path('view_profile/<hashid:id>/',view_profile, name='view_profile'),

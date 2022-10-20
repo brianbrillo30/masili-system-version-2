@@ -79,6 +79,10 @@
                                 <a href="{% url 'senior' %}" class="text-decoration-none px-3 py-2 d-block">Senior Citizen</a>
                             </li>
 
+                            <li class="">
+                                <a href="{% url 'single' %}" class="text-decoration-none px-3 py-2 d-block">Single Parent</a>
+                            </li>
+
                         </ul>
                     </div>
 
@@ -136,6 +140,10 @@
                 </div>
                 {% else %}
                 <li class=""><a href="{% url 'add_official_account' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-plus fs-5"></i> Add Official Account</a></li>
+
+                <li class=""><a href="{% url 'officialList' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-circle fs-5"></i> Official Account List</a></li>
+
+                <li class=""><a href="{% url 'logged_reports' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-clipboard fs-5"></i> Logged Reports</a></li>
                 {% endif %}
             </ul>
             

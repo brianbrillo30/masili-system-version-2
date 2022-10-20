@@ -69,6 +69,18 @@ def senior(request):
 
 
 
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+@admin_only
+def single(request):
+    if request.user.is_authenticated:
+        context = {'single_list' : User.objects.filter(residentsinfo__single_parent='Yes').order_by('id')}
+        return render(request, "ResidentManagement/senior_resident.html", context)
+    else:
+        return redirect('loginPage')
+
+
+
 def adminLogout(request):
     logout(request)
     messages.success(request, 'Succefull logout')

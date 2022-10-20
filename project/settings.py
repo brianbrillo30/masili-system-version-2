@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django.contrib.humanize',
     'apps.RegisterOfficial',
+    'apps.OfficialList',
+    'apps.LoggedReports',
     'captcha',
 ]
 
