@@ -7,6 +7,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-12 mx-auto py-4">
+            <div id="msg" class="col-12 fade-page">
+                {% for message in messages %}  
+                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                </div>
+                {% endfor %}
+            </div>
             <div class="card">
                 <div class="card-header">
                     <h1>My Details</h1>
@@ -41,11 +48,21 @@
                         </tbody>
                     </table>
                     <a href="{% url 'password_change' %}" class="btn-theme -btn2 col-12 col-md-5">Change Password</a>
+                    <a href="{% url 'changeUsernameAdmin' %}" class="btn-theme -btn2 col-12 col-md-5">Change Username</a>
+                    <br>
+                    <br>
+                    <a href="{% url 'changeEmailAdmin' %}" class="btn-theme -btn2 col-12 col-md-5">Change Email</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
 {% endblock content %}
