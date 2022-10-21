@@ -178,11 +178,18 @@
 
             <div class="tab-pane fade" id="account" role="tabpanel">
                 <form method="POST">
-                {% csrf_token %}
-                {{form2|crispy}}
-                <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Update</button>
-                &nbsp;&nbsp;
-                <a href="{% url 'officialList'%}" type="button" class="btn-theme -btn1 col-6 col-md-3 text-center">Cancel</a>
+                <div class="row p-5">
+                    <div class="col-12">
+                        {% csrf_token %}
+                        {{form2|crispy}}
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-end">
+                        <a href="{% url 'officialList'%}" type="button" class="btn-theme -btn1 col-6 col-md-3 text-center">Cancel</a>
+                        &nbsp;&nbsp;
+                        <button type="submit" class="btn-theme -btn2 col-12 col-md-5">Update</button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

@@ -5,6 +5,8 @@ from project.utils import render_to_pdf
 from .decorators import admin_only
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -65,3 +67,26 @@ def generate_resident_certificate(request, id):
         )
     else:
         return redirect('loginPage') 
+
+
+def delete_resident_certificate_request(request, id):
+    if request.user.is_authenticated:
+        residency_certificate = ResidencyCertificate.objects.get(pk=id)
+        
+        context = {'residency_certificate':residency_certificate}
+        if request.method == 'POST':
+
+            email_msg = request.POST.get('reason_masage')
+
+            subject = 'Reasons For Denying your Request'
+            message = email_msg
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [residency_certificate.res_id.user.email]
+            send_mail( subject, message, email_from, recipient_list )
+
+            residency_certificate.delete()
+            return HttpResponse(status=204, headers={'HX-Trigger': 'ResidencyList'})
+        return render(request, 'ResidencyCertificate/delete_resident_certificate.html', context)
+
+    else:
+        return redirect('loginPage')
