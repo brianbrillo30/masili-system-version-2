@@ -37,20 +37,22 @@
             </div>
     
             
-    
+            
             <div class="col" style="margin-top: -4em;">
                 <div class="row px-4">
                     <div class="col-lg-4 col-md-12">
-                        <div class="col-md">
-                            <div class="card text-center text-white mb-3 border-0 shadow" id="resident">
-                                <div class="card-header">
-                                    <h5 class="card-title">Registered Residents</h5>
-                                </div>
-                                <div clas="card-body">
-                                    <h3 class="card-title">{{cResident}}</h3>
+                        <a href="{% url 'resident_list' %}" style="text-decoration: none;">
+                            <div class="col-md">
+                                <div class="card text-center text-white mb-3 border-0 shadow" id="resident">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Registered Residents</h5>
+                                    </div>
+                                    <div clas="card-body">
+                                        <h3 class="card-title">{{cResident}}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
             
                     <div class="col-lg-4 col-md-6">
@@ -80,41 +82,47 @@
                     </div>
             
                     <div class="col-lg-4">
-                        <div class="col-md">
-                            <div class="card text-center text-white mb-3 border-0 shadow" id="yes">
-                                <div class="card-header">
-                                    <h5 class="card-title">Single Parent</h5>
-                                </div>
-                                <div clas="card-body">
-                                    <h3 class="card-title">{{cYes}}</h3>
+                        <a href="{% url 'single' %}" style="text-decoration: none;">
+                            <div class="col-md">
+                                <div class="card text-center text-white mb-3 border-0 shadow" id="yes">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Single Parent</h5>
+                                    </div>
+                                    <div clas="card-body">
+                                        <h3 class="card-title">{{cYes}}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
             
                     <div class="col-lg-4">
-                        <div class="col-md">
-                            <div class="card text-center text-white mb-3 border-0 shadow" id="pwd">
-                                <div class="card-header">
-                                    <h5 class="card-title">PWD</h5>
-                                </div>
-                                <div clas="card-body">
-                                    <h3 class="card-title">{{cPwd}}</h3>
+                        <a href="{% url 'pwd' %}" style="text-decoration: none;">
+                            <div class="col-md">
+                                <div class="card text-center text-white mb-3 border-0 shadow" id="pwd">
+                                    <div class="card-header">
+                                        <h5 class="card-title">PWD</h5>
+                                    </div>
+                                    <div clas="card-body">
+                                        <h3 class="card-title">{{cPwd}}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-lg-4">
-                        <div class="col-md">
-                            <div class="card text-center text-white mb-3 border-0 shadow" id="senior">
-                                <div class="card-header">
-                                    <h5 class="card-title">Senior</h5>
-                                </div>
-                                <div clas="card-body">
-                                    <h3 class="card-title">{{cSenior}}</h3>
+                        <a href="{% url 'senior' %}" style="text-decoration: none;">
+                            <div class="col-md">
+                                <div class="card text-center text-white mb-3 border-0 shadow" id="senior">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Senior</h5>
+                                    </div>
+                                    <div clas="card-body">
+                                        <h3 class="card-title">{{cSenior}}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <!-- <h4>Civil Status</h4> -->
                     <div class="col-lg-3 col-md-6">

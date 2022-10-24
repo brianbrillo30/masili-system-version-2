@@ -114,25 +114,44 @@ $('span').each(function(){
 
 
 $(document).ready( function () {
-  $('#doc_track').DataTable({
-    aaSorting: [[2, 'desc']],
-    filterDropDown:({
-      columns: [
-        {
-            idx: 1,
-            title: "All Document",
-            autoSize: true
-            
-        },
-        {
-          idx: 5,
-          title: "All Status",
-          autoSize: true
-          
-        }
-      ],
-      bootstrap: false,
-      label: "Filter Document"
-    })
+  var table = $('#doc_track').DataTable({
+    aaSorting: [[2, 'desc']]
   });
-} );
+
+  $('#doc_track')
+  .find('span')
+    .each(function () {
+      if ($(this).html() == 'Released') {
+        $(this).addClass('released-status');
+      }
+      if ($(this).html() == 'Ready') {
+        $(this).addClass('ready-status');
+      }
+      if ($(this).html() == 'Pending') {
+        $(this).addClass('pending-status');
+      }
+  });
+
+  yadcf.init(table, [
+    {
+        column_number : 1, 
+        filter_default_label: "All Document",
+        filter_container_id: "docu_type",
+        data: ["Barangay Clearance", "Certificate of Indigency", "Business Permit", "Building Permit", "Certificate of Residency"],
+        filter_match_mode : "exact",
+        style_class: 'form-select',
+        filter_reset_button_text: false
+
+    },
+
+    {
+      column_number : 5, 
+      filter_default_label: "All",
+      filter_container_id: "status",
+      data: ["Pending", "Ready", "Released"],
+      style_class: 'form-select',
+      filter_reset_button_text: false
+
+    }
+]);
+});
