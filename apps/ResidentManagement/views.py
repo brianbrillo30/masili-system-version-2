@@ -19,12 +19,14 @@ from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate
+from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate, DocumentStatus
 from apps.ClearanceManagement.forms import*
 
 from django.core.paginator import Paginator
 
 from project.utils import render_to_pdf
+
+import datetime
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -395,4 +397,30 @@ def print_data (request, id):
         }
     )
 
+
+# Process Document
+
+def process_barangay_clearance(request, id):
+    if request.user.is_authenticated:
+        form = ProcessClearanceForm
+        profile = User.objects.get(residentsinfo__pk=id)
+
+        userid = ResidentsInfo.objects.get(id=id)
+
+        status = DocumentStatus.objects.get(pk=3)
+
+        if request.method == 'POST':
+            form = ProcessClearanceForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.date_released = datetime.date.today()
+                instance.save()
+                return redirect('resident_list')
+
+        context = {'profile': profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_clearance.html', context)
+    else:
+        return redirect('loginPage')
 

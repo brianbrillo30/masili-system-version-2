@@ -8,6 +8,7 @@
             <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <a class="nav-link active" id="nav-info-tab" data-bs-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Resident Info</a>
             <a class="nav-link" id="nav-requested-document-tab" data-bs-toggle="tab" href="#nav-requested-document" role="tab" aria-controls="nav-requested-document" aria-selected="false">Requested Document</a>
+            <a class="nav-link" id="nav-generate-document-tab" data-bs-toggle="tab" href="#nav-generate-document" role="tab" aria-controls="nav-generate-document" aria-selected="false">Generate a Dcoument</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -199,6 +200,89 @@
                     </div>
                 </div>
             </div>
+
+            <!-- AVAILABLE DOCUMENT -->
+            <div class="tab-pane fade" id="nav-generate-document" role="tabpanel" aria-labelledby="nav-generate-document-tab">
+                <div class="row px-5">
+                    <div class="col-12 d-flex justify-content-center pt-5" style="color: #355389;">
+                        <h3>GENERATE A DOCUMENT</h3>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center pb-4">
+                        <p>Available barangay document for requisition</p>
+                    </div>
+            
+                    <div id="msg" class="col-12 px-5 fade-page">
+                        {% for message in messages %}  
+                        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+            
+                    <div class="col-lg-4 col-md-6 col-12 py-3">
+                        <div class="card p-3 w-100 h-100 shadow-sm">
+                            <center>
+                            <img class="card-img-top" src="{% static 'img/icon_bclerance.png' %}" style="width: 100px; height: 100px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Barangay Clearance</h5>
+                                    <a type="button" class="btn btn-warning" href="{% url 'process_barangay_clearance' profile.residentsinfo.id %}">Proceed</a>
+                                </div>
+                            </center>  
+                        </div>
+                    </div>
+            
+                    <div class="col-lg-4 col-md-6 col-12 py-3 ">
+                        <div class="card p-3 w-100 h-100 shadow-sm">
+                            <center>
+                            <img class="card-img-top" src="{% static 'img/icon_cindigency.png' %}" style="width: 100px; height: 100px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Certificate Of Indigency</h5>
+                                    <a type="button" class="btn btn-warning" href="{% url 'indigency' %}">Proceed</a>
+                                </div>
+                            </center>  
+                        </div>
+                    </div>
+            
+                    <div class="col-lg-4 col-md-6 col-12 py-3">
+                        <div class="card p-3 w-100 h-100 shadow-sm">
+                            <center>
+                            <img class="card-img-top" src="{% static 'img/icon_businesspermit.png' %}" style="width: 100px; height: 100px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Barangay Business Permit</h5>
+                                    <a type="button" class="btn btn-warning" href="{% url 'BusinessPermit' %}">Proceed</a>
+                                </div>
+                            </center>  
+                        </div>
+                    </div>
+            
+                    <div class="col-lg-4 col-md-6 col-12 py-3">
+                        <div class="card p-3 w-100 h-100 shadow-sm">
+                            <center>
+                            <img class="card-img-top" src="{% static 'img/icon_cindigency.png' %}" style="width: 100px; height: 100px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Building Permit</h5>
+                                    <a type="button" class="btn btn-warning" href="{% url 'BuildingPermit' %}">Proceed</a>
+                                </div>
+                            </center>  
+                        </div>
+                    </div>
+            
+                    <div class="col-lg-4 col-md-6 col-12 py-3">
+                        <div class="card p-3 w-100 h-100 shadow-sm">
+                            <center>
+                            <img class="card-img-top" src="{% static 'img/icon_rescert.png' %}" style="width: 100px; height: 100px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Resident Certificate</h5>
+                                    <a type="button" class="btn btn-warning" href="{% url 'ResidencyCertificate' %}">Proceed</a>
+                                </div>
+                            </center>  
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
         </div>
     </div>
 

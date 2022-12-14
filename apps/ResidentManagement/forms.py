@@ -2,6 +2,7 @@ from dataclasses import field
 from pyexpat import model
 from django import forms
 from .models import *
+from apps.UserPortal.models import *
 
 from django.contrib.auth.models import User
 
@@ -71,4 +72,18 @@ class EditUserAccountForm(forms.ModelForm):
             'username',
             'email'
         )
+
+class ProcessClearanceForm(forms.ModelForm):
+    class Meta:
+        model = clearance
+        fields = ('age', 'purpose','community_tax_num', 'community_tax_date_issued')
+
+        widgets = {
+
+            'age' : forms.NumberInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'community_tax_num' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'community_tax_date_issued' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            
+        }
 
