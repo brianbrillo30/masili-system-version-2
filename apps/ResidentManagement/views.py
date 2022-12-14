@@ -26,6 +26,8 @@ from django.core.paginator import Paginator
 
 from project.utils import render_to_pdf
 
+from django.urls import reverse
+
 import datetime
 
 last_face = 'no_face'
@@ -417,10 +419,17 @@ def process_barangay_clearance(request, id):
                 instance.status = status
                 instance.date_released = datetime.date.today()
                 instance.save()
-                return redirect('resident_list')
+                # return redirect('success_clearance')
+                return redirect(reverse('success_clearance', kwargs={'user_id': id}))
 
         context = {'profile': profile, 'form':form}
         return render (request, 'ResidentManagement/ProcessDocument/process_clearance.html', context)
     else:
         return redirect('loginPage')
+
+def success_clearance(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'clearance':clearance_list.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_clearance.html', context)
 

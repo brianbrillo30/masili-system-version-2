@@ -32,6 +32,7 @@ urlpatterns = [
     
     #Process Document
     path('process_barangay_clearance/<hashid:id>/', process_barangay_clearance, name ='process_barangay_clearance'),
+    path('success_clearance/<hashid:user_id>/', success_clearance, name ='success_clearance'),
     
 
 
