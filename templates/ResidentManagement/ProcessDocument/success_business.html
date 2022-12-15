@@ -1,0 +1,70 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %}
+<section class="vh-100">
+    <div class="container-fluid bg-white rounded">
+        <div class="row p-5">
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <p class="lead"><b>Business Permit has been successfully created; the document can be viewed in the <a href="{% url 'view_profile' profile.id %}"> resident's profile</a> or in the <a href="{% url 'business_permit_module'%}">list of Business Permit requests</a>.</b></p>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <p class="lead"><b>Or you can now print the document:</b></p>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered align-middle mb-0 shadow-sm p-3 mb-5 bg-body fade-page">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th scope="col">Resident</th>
+                                <th scope="col">Business Name</th>
+                                <th scope="col">Business Address</th>
+                                <th scope="col">Type of Business</th>
+                                <th scope="col">OR NUMBER</th>
+                                <th scope="col">Status</th>
+                                <th scope="col " class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {% for BusinessPermit in BusinessPermit %}
+
+                            <tr>
+                                <td></td>
+                                <td>{{ BusinessPermit.res_id }}</td>
+                                <td>{{ BusinessPermit.business_name }}</td>
+                                <td>{{ BusinessPermit.location}}</td>
+                                <td>{{ BusinessPermit.business_nature}}</td>
+                                <td>{{ BusinessPermit.previous_or}}</td>
+                                <td>{{ BusinessPermit.status}}</td>
+                                <td class="text-center">
+                                    <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_business_permit' BusinessPermit.id %}">
+                                        <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
+                                        <span style="vertical-align: middle;">Generate</span>
+                                    </a>
+                                    
+                                </td>
+                            </tr>
+                            
+                            {% empty %}
+                            
+                            <tr align="center">
+                                <td colspan="8">
+                                    <h6 class="text-muted p-4">CURRENTLY NO DATA AVAILABLE</h6>
+                                </td>
+                            </tr>
+                            
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

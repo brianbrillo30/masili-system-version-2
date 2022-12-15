@@ -1,0 +1,155 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <form action="." method="POST">
+    {% csrf_token %}
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <div class="col-lg-6 bg-white rounded">
+                    <div class="row py-2">
+                        <div class="col-12 d-flex justify-content-center" style="color: #355389;">
+                            <h3>BARANGAY BUSINESS PERMIT</h3>
+                        </div>
+    
+                        <div class="col-12 d-flex justify-content-center pb-3">
+                            <p>Fill-up the form and submit</p>
+                        </div>
+
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Requestors Name</p>
+                            <p class="lead"><b>{{profile.residentsinfo.firstname}} {{profile.residentsinfo.middlename|slice:"0:1"}}. {{profile.residentsinfo.lastname}}</b></p>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Business Name</p>
+                            {{ form.business_name }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Location</p>
+                            {{ form.location }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Classification/Nature of Business</p>
+                            {{ form.business_nature }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Name of Owner/Proprietor</p>
+                            {{ form.owner }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Capital Inviestment</p>
+                            {{ form.capital_investment }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Gross Sales or Receipts</p>
+                            {{ form.gross_sales }}
+                        </div>
+
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Residence Certificate No.</p>
+                            {{ form.residece_certificate_no }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Date Issued</p>
+                            <div class="input-group input-group-sm date">
+                                {{ form.date_released }}
+                                <span class="input-group-append">
+                                <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Issued At</p>
+                            {{ form.issued_at }}
+                        </div>
+
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Previous O.R</p>
+                            {{ form.previous_or }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Date Issued</p>
+                            <div class="input-group input-group-sm date">
+                                {{ form.date_issued }}
+                                <span class="input-group-append">
+                                <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Issued At</p>
+                            {{ form.previous_or_issued_at }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Amount Collect</p>
+                            {{ form.amount_collect }}
+                        </div>
+            
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Paid O.R. No.</p>
+                            {{ form.paid_or }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Date Issued</p>
+                            <div class="input-group input-group-sm date">
+                                {{ form.paid_or_date_issued }}
+                                <span class="input-group-append">
+                                <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Issued At</p>
+                            {{ form.paid_or_issued_at }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Amount Collected</p>
+                            {{ form.amount_colledted }}
+                        </div>
+
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+
+                        <div class="col-12 px-5 pt-5 d-flex justify-content-end">
+                            <a href="" class="btn-theme -btn1 col-12 col-md-3 text-center">Cancel</a>
+                            &nbsp;&nbsp;
+                            <input type="submit" class="btn-theme col-12 col-md-3 -btn2" value="Submit">
+                        </div>
+
+                    </div>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+    </form>
+ </div>
+
+{% endblock content %}

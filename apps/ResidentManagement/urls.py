@@ -33,9 +33,19 @@ urlpatterns = [
     #Process Document
     path('process_barangay_clearance/<hashid:id>/', process_barangay_clearance, name ='process_barangay_clearance'),
     path('success_clearance/<hashid:user_id>/', success_clearance, name ='success_clearance'),
+
+    path('process_indigency/<hashid:id>/', process_indigency, name ='process_indigency'),
+    path('success_indigency/<hashid:user_id>/', success_indigency, name ='success_indigency'),
+
+    path('process_BusinessPermit/<hashid:id>/', process_BusinessPermit, name ='process_BusinessPermit'),
+    path('success_business/<hashid:user_id>/', success_business, name ='success_business'),
+
+    path('process_BuildingPermit/<hashid:id>/', process_BuildingPermit, name ='process_BuildingPermit'),
+    path('success_building/<hashid:user_id>/', success_building, name ='success_building'),
+
+    path('process_ResidencyCertificate/<hashid:id>/', process_ResidencyCertificate, name ='process_ResidencyCertificate'),
+    path('success_residency/<hashid:user_id>/', success_residency, name ='success_residency'),
     
-
-
 
 
 ]

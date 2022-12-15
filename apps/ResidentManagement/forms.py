@@ -87,3 +87,75 @@ class ProcessClearanceForm(forms.ModelForm):
             
         }
 
+class ProcessIndigencyForm(forms.ModelForm):
+    class Meta:
+        model = CertificateOfIndigency
+        fields = ('age', 'purpose')
+
+        widgets = {
+
+            'age' : forms.NumberInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Age'}),
+            'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'purpose'}),
+            
+        }
+
+class ProcessBusinessPermitForm(forms.ModelForm):
+    class Meta:
+        model = BusinessPermit
+        fields = ('business_name', 'location', 'business_nature', 
+                    'capital_investment', 'gross_sales', 'residece_certificate_no', 'date_released', 'issued_at', 
+                    'previous_or', 'date_issued', 'previous_or_issued_at', 'amount_collect', 
+                    'paid_or', 'paid_or_date_issued', 'paid_or_issued_at', 'amount_colledted')      
+
+        widgets = {
+
+            'business_name' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'location' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'business_nature' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            
+            'capital_investment' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'gross_sales' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            
+            'residece_certificate_no' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'date_released' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'issued_at' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+
+            'previous_or' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'date_issued' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'previous_or_issued_at' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'amount_collect' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+
+            'paid_or' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'paid_or_date_issued' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'paid_or_issued_at' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'amount_colledted' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+        }
+
+class ProcessBuildingPermitForm(forms.ModelForm):
+    class Meta:
+        model = BuildingPermit
+        fields = ('proposed_construction', 'total_area', 'estimated_cost', 'location', 'contractor', 'prepared_by', 'paid_under_or', 'date_released', 'amount_paid')
+
+        widgets = {
+
+            'proposed_construction' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'total_area' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'estimated_cost' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'location' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'contractor' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+
+            'prepared_by' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+
+            'paid_under_or' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+            'date_released' : forms.DateInput(attrs={'class':'form-control form-control-sm', 'placeholder':'input'}),
+            'amount_paid' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+        }
+
+class ProcessResidencyCertificateForm(forms.ModelForm):
+    class Meta:
+        model = ResidencyCertificate
+        fields = ('purpose',)
+        
+        widgets = {
+            'purpose' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Input'}),
+        }

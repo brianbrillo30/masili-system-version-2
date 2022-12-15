@@ -1,0 +1,97 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <form action="." method="POST">
+    {% csrf_token %}
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <div class="col-lg-6 bg-white rounded">
+                    <div class="row py-2">
+                        <div class="col-12 d-flex justify-content-center" style="color: #355389;">
+                            <h3>BARANGAY BUILDING PERMIT</h3>
+                        </div>
+    
+                        <div class="col-12 d-flex justify-content-center pb-3">
+                            <p>Fill-up the form and submit</p>
+                        </div>
+
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Requestors Name</p>
+                            <p class="lead"><b>{{profile.residentsinfo.firstname}} {{profile.residentsinfo.middlename|slice:"0:1"}}. {{profile.residentsinfo.lastname}}</b></p>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Proposed Constrcution of</p>
+                            {{ form.proposed_construction }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">With Total Area of</p>
+                            {{ form.total_area }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Estimated Cost of</p>
+                            {{ form.estimated_cost }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Located at</p>
+                            {{ form.location }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Name of Contractor</p>
+                            {{ form.contractor }}
+                        </div>
+
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Prepared by:</p>
+                            {{ form.prepared_by }}
+                        </div>
+
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Paid under O.R. No.</p>
+                            {{ form.paid_under_or }}
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Date Issued</p>
+                            <div class="input-group input-group-sm date">
+                                {{ form.date_released }}
+                                <span class="input-group-append">
+                                <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Amount Paid</p>
+                            {{ form.amount_paid }}
+                        </div>
+
+                        <div class="col-12 px-5 pt-5 d-flex justify-content-end">
+                            <a href="" class="btn-theme -btn1 col-12 col-md-3 text-center">Cancel</a>
+                            &nbsp;&nbsp;
+                            <input type="submit" class="btn-theme col-12 col-md-3 -btn2" value="Submit">
+                        </div>
+
+                    </div>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+    </form>
+ </div>
+
+{% endblock content %}
