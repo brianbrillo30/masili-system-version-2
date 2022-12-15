@@ -2,24 +2,177 @@
 {% load static %}
 {% block content %}
 
-<div class="container bg-white">
+<div class="container px-5">
     <form action="." method="POST" enctype="multipart/form-data" autocomplete="off">
         {% csrf_token %}
-        <div class="row p-4">
-            <div class="col-12 mb-3">
+
+        <div class="row">
+            <div class="col-lg-12">
                 <p class="h4">Add Resident</p>
                 <p>Save Residents Record Here</p>
             </div>
-
             <hr>
+        </div>
 
-            <div class="col-lg-12 col-12 py-5">
-                
+        <div class="row bg-white rounded p-3">
+
+            <div class="col-12">
+                <p class="lead"><b>Resident's Fullname</b></p>
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Firstname</p>
+                {{ form.firstname }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Middlename</p>
+                {{ form.middlename }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Lastname</p>
+                {{ form.lastname }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Suffix</p>
+                {{ form.suffix }}
+            </div>
+
+        </div>
+
+        <div class="row pt-3">
+            <hr>
+        </div>
+
+        <div class="row bg-white rounded p-3">
+
+            <div class="col-12">
+                <p class="lead"><b>Resident's Personal Information</b></p>
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Sex</p>
+                {{ form.sex }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Birthdate</p>
+                <div class="input-group input-group-sm date" id="datepicker">
+                    {{ form.birthdate }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Birthplace</p>
+                {{ form.birthplace }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Civil Status</p>
+                {{ form.civil_status }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Citizenship</p>
+                {{ form.citizenship }}
+            </div>
+
+            <div class="col-lg-12 py-2">
+                <hr class="bg-primary">
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Occupation</p>
+                {{ form.occupation }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Educational Attainment</p>
+                {{ form.educ_attainment }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">is he/she a single parent?</p>
+                {{ form.single_parent }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Status</p>
+                {{ form.status }}
+            </div>
+
+        </div>
+
+        <div class="row pt-3">
+            <hr>
+        </div>
+
+        <div class="row bg-white rounded p-3">
+
+            <div class="col-12">
+                <p class="lead"><b>Resident's Address</b></p>
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">From Purok:</p>
+                {{ form.purok }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Recided in Masili Since</p>
+                <div class="input-group input-group-sm year">
+                    {{ form.years_resided }}
+                    <span class="input-group-append">
+                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 py-2">
+                <p class="h6 text-muted">Full Address</p>
+                {{ form.address }}
+            </div>
+
+        </div>
+
+        <div class="row pt-3">
+            <hr>
+        </div>
+
+        <div class="row bg-white rounded p-3">
+
+            <div class="col-12">
+                <p class="lead"><b>Resident's Contact Information</b></p>
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Phone Number</p>
+                {{ form.phone }}
+            </div>
+
+            <div class="col-lg-6 py-2">
+                <p class="h6 text-muted">Email Address</p>
+                <input name="email" type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Email" required>
+            </div>
+
+        </div>
+
+        <div class="row pt-3">
+            <hr>
+        </div>
+
+        <div class="row bg-white rounded p-3">
+            <div class="col-lg-3 col-md-6 col-12">
                 <div class="row ">
-                    <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-center mb-2">
-                        <label class="col-form-label">Upload Image (Click to browse)</label>
+                    <div class="col-lg-12 col-md-12 col-12 mb-2">
+                        <label class="col-form-label text-primary">Upload Image (Click to browse)</label>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-center mb-2">
+                    <div class="col-lg-12 col-md-12 col-12 mb-2">
                         <div class="form-element-upload"> 
                                     {{ form.image }}
                             <label for="file" id="file-preview">
@@ -31,115 +184,24 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
+            <div class="col-lg-9 col-md-6 py-5">
+                <div class="alert alert-warning" role="alert">
+                    Reminder That image should be the following:<br>
+                    &nbsp;&nbsp;• It must be a recently taken picture, not longer than six months. <br>
+                    &nbsp;&nbsp;• It must be a formal passport style front face photo. <br>
+
+                  </div>
+            </div>
+        </div>
+
+        <div class="row pt-3">
             <hr>
-            <div class="col-lg-10 mb-3">
-                <p class="h6">Name</p>
-                <div class="row">
-                    <div class="col-lg-3 pb-2">{{ form.firstname }}</div>
+        </div>
 
-                    <div class="col-lg-3 pb-2">{{ form.middlename }}</div>
-
-                    <div class="col-lg-3 pb-2">{{ form.lastname }}</div>
-
-                    <div class="col-lg-3 pb-2">{{ form.suffix }}</div>
-                </div>
-            </div>
-
-            <div class="col-lg-2 mb-3">
-                <p class="h6">Sex</p>
-                {{ form.sex }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Contact</p>
-                {{ form.phone }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Email</p>
-                <input name="email" type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Email" required>
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Birthdate</p>
-                <div class="input-group input-group-sm mb-3 date" id="datepicker">
-                    {{ form.birthdate }}
-                    <span class="input-group-append">
-                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Birthplace</p>
-                {{ form.birthplace }}
-            </div>
-
-            <div class="col-lg-2 mb-3">
-                <p class="h6">Civil Status</p>
-                {{ form.civil_status }}
-            </div>
-
-            <div class="col-lg-3 mb-3">
-                <p class="h6">Citizenship</p>
-                {{ form.citizenship }}
-            </div>
-
-            <div class="col-lg-4 mb-3">
-                <p class="h6">Purok</p>
-                {{ form.purok }}
-            </div>
-
-            <div class="col-lg-3 mb-3">
-                <p class="h6">Years Recided</p>
-                <div class="input-group input-group-sm mb-3 year">
-                    {{ form.years_resided }}
-                    <span class="input-group-append">
-                    <span class="input-group-text bg-white" id="inputGroup-sizing-sm"><i class="las la-calendar fs-5"></i></span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-lg-12 mb-3">
-                <p class="h6">Address</p>
-                {{ form.address }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Occupation</p>
-                {{ form.occupation }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Educational Attainment</p>
-                {{ form.educ_attainment }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Single Parent?</p>
-                {{ form.single_parent }}
-            </div>
-
-            <div class="col-lg-6 mb-3">
-                <p class="h6">Status</p>
-                {{ form.status }}
-            </div>
-
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <hr>
-
-            <br>
-            <br>
-
-            <div class="col-lg-12 col-md-12 col-12 ">
+        <div class="row bg-white rounded p-3">
+            <div class="col-lg-12">
                 <div class="float-end">
                     <a href="{% url 'resident_list' %}" type="button" class="btn bg-danger bg-gradient mt-2">
                         <i class="las la-times fs-4 text-white" style="vertical-align: middle;"></i>
@@ -153,14 +215,10 @@
                     </button>
                 </div>
             </div>
-
-            <br>
-            <br>
-            <br>
-            <br>
-
         </div>
     </form>
+
+    <br><br><br><br><br><br><br><br>
 </div>
 <script>
     let dateDropdown = document.getElementById('date-dropdown'); 
