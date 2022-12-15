@@ -258,4 +258,10 @@ def document_status(request):
     return render(request, 'UsersideTemplate/doc_status.html', context)
     
 
-
+@cache_control(no_cache=True,must_revalidate=True,no_store=True)
+@login_required(login_url="loginPage")
+def privacy(request):
+    if request.user.is_authenticated:
+        return render(request, 'UsersideTemplate/privacy.html')
+    else:
+        return redirect('loginPage')

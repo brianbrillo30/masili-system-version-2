@@ -12,6 +12,7 @@ urlpatterns = [
     path ('Announcement/', announce, name='announce'),
     path ('ServicePortal/', servicesPortal, name='service_portal'),
     path ('Profile/', profile, name='profile'),
+    path ('Privacy/', privacy, name='privacy'),
     path ('Change Email/', changeEmail, name='changeEmail'),
     path ('Change Username/', changeUsername, name='changeUsername'),
     path ('User Logout/', userLogout, name='userLogout'),
