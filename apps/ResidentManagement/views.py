@@ -19,12 +19,16 @@ from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
-from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate
+from apps.UserPortal.models import clearance as clearance_list, CertificateOfIndigency, BusinessPermit, BuildingPermit, ResidencyCertificate, DocumentStatus
 from apps.ClearanceManagement.forms import*
 
 from django.core.paginator import Paginator
 
 from project.utils import render_to_pdf
+
+from django.urls import reverse
+
+import datetime
 
 last_face = 'no_face'
 current_path = os.path.dirname(__file__)
@@ -396,3 +400,150 @@ def print_data (request, id):
     )
 
 
+# Process Document
+
+def process_barangay_clearance(request, id):
+    if request.user.is_authenticated:
+        form = ProcessClearanceForm
+        profile = User.objects.get(residentsinfo__pk=id)
+
+        userid = ResidentsInfo.objects.get(id=id)
+
+        status = DocumentStatus.objects.get(pk=3)
+
+        if request.method == 'POST':
+            form = ProcessClearanceForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.date_released = datetime.date.today()
+                instance.save()
+                return redirect(reverse('success_clearance', kwargs={'user_id': id}))
+
+        context = {'profile': profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_clearance.html', context)
+    else:
+        return redirect('loginPage')
+
+def success_clearance(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'clearance':clearance_list.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_clearance.html', context)
+
+
+def process_indigency (request, id):
+    if request.user.is_authenticated:
+        form = ProcessIndigencyForm
+        profile = User.objects.get(residentsinfo__pk=id)
+        userid = ResidentsInfo.objects.get(id=id)
+        status = DocumentStatus.objects.get(pk=3)
+
+        if request.method == 'POST':
+            form = ProcessIndigencyForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.date_released = datetime.date.today()
+                instance.save()
+                return redirect(reverse('success_indigency', kwargs={'user_id': id}))
+
+        context = {'profile': profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_indigency.html', context)
+    else:
+        return redirect('loginPage')
+
+def success_indigency(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'indigency':CertificateOfIndigency.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_indigency.html', context)
+
+def process_BusinessPermit (request, id):
+    if request.user.is_authenticated:
+        form = ProcessBusinessPermitForm
+        profile = User.objects.get(residentsinfo__pk=id)
+        userid = ResidentsInfo.objects.get(id=id)
+        status = DocumentStatus.objects.get(pk=3)
+        owner = userid.firstname + " " + userid.middlename + " " + userid.suffix + " " + userid.lastname
+
+        if request.method == 'POST':
+            form = ProcessBusinessPermitForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.owner = owner
+                instance.save()
+                return redirect(reverse('success_business', kwargs={'user_id': id}))
+        
+        context = {'profile':profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_BusinessPermit.html', context)
+    else:
+        return redirect('loginPage')
+
+def success_business(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'BusinessPermit':BusinessPermit.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_business.html', context)
+
+def process_BuildingPermit(request, id):
+    if request.user.is_authenticated:
+        form = ProcessBuildingPermitForm
+        profile = User.objects.get(residentsinfo__pk=id)
+        userid = ResidentsInfo.objects.get(id=id)
+        status = DocumentStatus.objects.get(pk=3)
+        owner = userid.firstname + " " + userid.middlename + " " + userid.suffix + " " + userid.lastname
+
+        if request.method == 'POST':
+            form = ProcessBuildingPermitForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.owner = owner
+                instance.save()
+                return redirect(reverse('success_building', kwargs={'user_id': id}))
+
+        context = {'profile':profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_BuildingPermit.html', context)
+    else:
+        return redirect('loginPage')
+
+
+def success_building(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'BuildingPermit':BuildingPermit.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_building.html', context)
+
+def process_ResidencyCertificate(request, id):
+    if request.user.is_authenticated:
+        form = ProcessResidencyCertificateForm
+        profile = User.objects.get(residentsinfo__pk=id)
+        userid = ResidentsInfo.objects.get(id=id)
+        status = DocumentStatus.objects.get(pk=3)
+
+        if request.method == 'POST':
+            form = ProcessResidencyCertificateForm(request.POST)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.res_id = userid
+                instance.status = status
+                instance.date_released = datetime.date.today()
+                instance.save()
+                return redirect(reverse('success_residency', kwargs={'user_id': id}))    
+
+        context = {'profile':profile, 'form':form}
+        return render (request, 'ResidentManagement/ProcessDocument/process_ResidencyCertificate.html', context)
+    else:
+        return redirect('loginPage')
+
+def success_residency(request, user_id):
+    profile = User.objects.get(residentsinfo__pk=user_id)
+
+    context = {'profile': profile, 'Residency':ResidencyCertificate.objects.filter(res_id = user_id).order_by('-id')[:1]}
+    return render (request, 'ResidentManagement/ProcessDocument/success_residency.html', context)

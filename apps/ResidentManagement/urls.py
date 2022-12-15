@@ -24,15 +24,28 @@ urlpatterns = [
     path('print_data/<hashid:id>/', print_data, name='print_data'),
 
     # Resident document
-    path('clearance/<int:id>/', profile_clearance, name ='profile_clearance'),
-    path('indigency/<int:id>/', profile_indigency, name ='profile_indigency'),
-    path('business-permit/<int:id>/', profile_business_permit, name ='profile_business_permit'),
-    path('building-permit/<int:id>/', profile_building_permit, name='profile_building_permit'),
-    path('residency-certificate/<int:id>/', profile_residency_certificate, name='profile_residency_certificate'),
+    path('clearance/<hashid:id>/', profile_clearance, name ='profile_clearance'),
+    path('indigency/<hashid:id>/', profile_indigency, name ='profile_indigency'),
+    path('business-permit/<hashid:id>/', profile_business_permit, name ='profile_business_permit'),
+    path('building-permit/<hashid:id>/', profile_building_permit, name='profile_building_permit'),
+    path('residency-certificate/<hashid:id>/', profile_residency_certificate, name='profile_residency_certificate'),
     
+    #Process Document
+    path('process_barangay_clearance/<hashid:id>/', process_barangay_clearance, name ='process_barangay_clearance'),
+    path('success_clearance/<hashid:user_id>/', success_clearance, name ='success_clearance'),
 
-    # path('clear_history/',clear_history,name='clear_history'),
-    # path('reset/',reset,name='reset'),
+    path('process_indigency/<hashid:id>/', process_indigency, name ='process_indigency'),
+    path('success_indigency/<hashid:user_id>/', success_indigency, name ='success_indigency'),
+
+    path('process_BusinessPermit/<hashid:id>/', process_BusinessPermit, name ='process_BusinessPermit'),
+    path('success_business/<hashid:user_id>/', success_business, name ='success_business'),
+
+    path('process_BuildingPermit/<hashid:id>/', process_BuildingPermit, name ='process_BuildingPermit'),
+    path('success_building/<hashid:user_id>/', success_building, name ='success_building'),
+
+    path('process_ResidencyCertificate/<hashid:id>/', process_ResidencyCertificate, name ='process_ResidencyCertificate'),
+    path('success_residency/<hashid:user_id>/', success_residency, name ='success_residency'),
+    
 
 
 ]

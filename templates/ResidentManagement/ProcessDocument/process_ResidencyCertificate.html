@@ -1,0 +1,56 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %}
+
+ <div class="container">
+    <form action="." method="POST">
+    {% csrf_token %}
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                <div class="col-lg-6 bg-white rounded">
+                    <div class="row py-2">
+                        <div class="col-12 d-flex justify-content-center" style="color: #355389;">
+                            <h3>CERTIFICATE OF RESIDENCY</h3>
+                        </div>
+    
+                        <div class="col-12 d-flex justify-content-center pb-3">
+                            <p>Fill-up the form and submit</p>
+                        </div>
+    
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="row">
+                                <div class="col-5">
+                                    <img src="/media/{{profile.residentsinfo.image}}" class="img-thumbnail" width="150">
+                                </div>
+                        
+                                <div class="col-7">
+                                    <div><p class="h6"><strong>Name:</strong> {{profile.residentsinfo.firstname}} {{profile.residentsinfo.middlename|slice:"0:1"}}. {{profile.residentsinfo.lastname}}</p></div>
+                                    <div><p class="h6"><strong>Resided in Masili Since:</strong> {{profile.residentsinfo.years_resided}}</p></div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-12 px-4">
+                            <hr>
+                        </div>
+    
+                        <div class="col-12 px-5 py-2">
+                            <p class="h6">Reason</p>
+                            {{form.purpose}}
+                        </div>
+
+                        <div class="col-12 px-5 pt-5 d-flex justify-content-end">
+                            <a href="" class="btn-theme -btn1 col-12 col-md-3 text-center">Cancel</a>
+                            &nbsp;&nbsp;
+                            <input type="submit" class="btn-theme col-12 col-md-3 -btn2" value="Submit">
+                        </div>
+
+                    </div>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+    </form>
+ </div>
+
+{% endblock content %}

@@ -1,0 +1,69 @@
+{% extends "../../base.html" %}
+{% load static %}
+{% block content %}
+<section class="vh-100">
+    <div class="container-fluid bg-white rounded">
+        <div class="row p-5">
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <p class="lead"><b>Building Permit has been successfully created; the document can be viewed in the <a href="{% url 'view_profile' profile.id %}"> resident's profile</a> or in the <a href="{% url 'building_permit_module'%}">list of Building Permit requests</a>.</b></p>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <p class="lead"><b>Or you can now print the document:</b></p>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center my-auto">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered align-middle mb-0 shadow-sm p-3 mb-5 bg-body fade-page">
+                        <thead>
+                            <tr>
+                                <th>Resident ID</th>
+                                <th scope="col">Requestor</th>
+                                <th scope="col">Proposed Construction</th>
+                                <th scope="col">Total Area</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Owner</th>
+                                <th scope="col">Status</th>
+                                <th scope="col " class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {% for BuildingPermit in BuildingPermit %}
+
+                            <tr class="table-text">
+                                <td class="text-center">{{ BuildingPermit.res_id.res_id }}</td>
+                                <td>{{ BuildingPermit.res_id }}</td>
+                                <td>{{ BuildingPermit.proposed_construction }}</td>
+                                <td>{{ BuildingPermit.total_area}}</td>
+                                <td>{{ BuildingPermit.location}}</td>
+                                <td>{{ BuildingPermit.owner}}</td>
+                                <td><span class="">{{ BuildingPermit.status}}</span></td>
+                                <td class="text-center">
+                                    <a target=”_blank” type="button" class="btn btn-secondary bg-gradient" href="{% url 'generate_building_permit' BuildingPermit.id %}">
+                                        <i class="las la-file-pdf fs-4" style="vertical-align: middle;"></i>
+                                        <span style="vertical-align: middle;">Generate</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            {% empty %}
+                            
+                            <tr align="center">
+                                <td colspan="8">
+                                    <h6 class="text-muted p-4">CURRENTLY NO DATA AVAILABLE</h6>
+                                </td>
+                            </tr>
+                            
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
