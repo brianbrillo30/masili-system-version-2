@@ -18,6 +18,7 @@ urlpatterns = [
     path('Masili/',include('apps.RegisterOfficial.urls')),
     path('Masili/',include('apps.OfficialList.urls')),
     path('Masili/',include('apps.LoggedReports.urls')),
+    path('Masili/',include('apps.RequestLogs.urls')),
     path('Barangay Masili/',include('apps.Login.urls')),
     path('Barangay Masili/',include('apps.UserPortal.urls')),
 ]

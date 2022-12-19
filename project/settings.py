@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.RegisterOfficial',
     'apps.OfficialList',
     'apps.LoggedReports',
+    'apps.RequestLogs',
     'captcha',
 ]
 
