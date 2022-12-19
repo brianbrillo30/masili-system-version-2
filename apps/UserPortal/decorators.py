@@ -10,7 +10,7 @@ def unauthenticated_user(view_func):
 
     return wrapper_func
 
-def user_only(view_func):
+def user_superAdmin(view_func):
     def wrapper_function(request, *args, **kwargs):
         group = None
         if request.user.groups.exists():
@@ -18,6 +18,10 @@ def user_only(view_func):
 
         if group == 'admin':
             return redirect('resident_list')
+
+        if group == 'superadmin':
+        
+            return view_func(request, *args, **kwargs)    
 
         if group == 'resident':
             return view_func(request, *args, **kwargs)

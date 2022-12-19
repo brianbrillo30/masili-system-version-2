@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import logout, authenticate
 from django.contrib import messages
+from .decorators import user_superAdmin
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
 
@@ -28,6 +29,7 @@ def contact(request):
 
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 @login_required(login_url="loginPage")
+@user_superAdmin
 def servicesPortal(request):
     if request.user.is_authenticated:
         return render(request, "UsersideTemplate/service_portal.html")
