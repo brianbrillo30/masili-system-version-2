@@ -63,8 +63,6 @@
             </div>
 
             <ul class="list-unstyled px-2">
-
-                {% if request.user.groups.all.0.name == 'admin' %}
                 <li class=""><a href="{% url 'dashboard' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-chart-area fs-5"></i> Dashboard</a></li>
 
                 <div class="side-sub-menu py-2">
@@ -100,6 +98,11 @@
                 
                 <li class=""><a href="{% url 'announcementPage' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-bullhorn fs-5"></i> Announcements</a></li>
                 <hr class="h-color mx-3">
+                {% if request.user.groups.all.0.name == 'superadmin' %}
+                <li class=""><a href="{% url 'add_official_account' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-plus fs-5"></i> Add Official Account</a></li>
+                <li class=""><a href="{% url 'officialList' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-circle fs-5"></i> Official Account List</a></li>
+                <hr class="h-color mx-3">
+                {% endif %}
                 <li class=""><a href="{% url 'clearance'%}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-alt fs-5"></i> Barangay Clearance</a></li>
                 <li class=""><a href="{% url 'indigency_request' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-feather-alt fs-5"></i> Certificate of Indigency</a></li>
                 <li class=""><a href="{% url 'business_permit_module' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-file-contract fs-5"></i> Barangay Business Permit</a></li>
@@ -147,12 +150,6 @@
                         </ul>
                     </div>
                 </div>
-                {% else %}
-                <li class=""><a href="{% url 'add_official_account' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-plus fs-5"></i> Add Official Account</a></li>
-
-                <li class=""><a href="{% url 'officialList' %}" class="text-decoration-none px-3 py-2 d-block"><i class="las la-user-circle fs-5"></i> Official Account List</a></li>
-
-                {% endif %}
             </ul>
             
         </div>
