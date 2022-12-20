@@ -84,4 +84,11 @@ class LastFace(models.Model):
         return self.last_face
 
 
+class DetectedFace(models.Model):
+    detected_face = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.detected_face
+
+
 

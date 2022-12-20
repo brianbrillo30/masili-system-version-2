@@ -111,6 +111,7 @@ def ajax(request):
 def scan(request):
     if request.user.is_authenticated:
         global last_face
+        global detected_face
 
         known_face_encodings = []
         known_face_names = []
@@ -156,17 +157,26 @@ def scan(request):
 
 
 
-                        if last_face != name:
+                        # if last_face != name:
                             
-                            # last_face = LastFace(last_face=name)
-                            last_face = LastFace.objects.all().last()
-                            if last_face == None:
-                                last_face = LastFace(last_face=name)
-                                last_face.save()
-                            else:
+                        #     # last_face = LastFace(last_face=name)
+                        #     last_face = LastFace.objects.all().last()
+                        #     if last_face == None:
+                        #         last_face = LastFace(last_face=name)
+                        #         last_face.save()
+                        #     else:
 
-                                last_face.last_face = name
-                                last_face.save()
+                        #         last_face.last_face = name
+                        #         last_face.save()
+                        #     last_face = name
+                        #     winsound.PlaySound(sound, winsound.SND_ASYNC)
+                            
+                        # else:
+                        #     pass
+
+                        if last_face != name:
+                            last_face = LastFace(last_face=name)
+                            last_face.save()
                             last_face = name
                             winsound.PlaySound(sound, winsound.SND_ASYNC)
                             
@@ -174,6 +184,8 @@ def scan(request):
                             pass
 
                     face_names.append(name)
+                    # detected_face = DetectedFace(detected_face="face-detected")
+                    # detected_face.save()
 
             process_this_frame = not process_this_frame
 
