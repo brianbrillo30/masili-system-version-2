@@ -1,4 +1,5 @@
 # BDRS: Web-based Barangay Document Requisition System with Face Recognition on Accessing Information for Barangay Masili, Calamba City, Laguna
+A Capstone porject Presented to the School of Computer Studies and Technology in Colegio de San Juan de Letran Calamba
 
 ### Code Requirements
 -
