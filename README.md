@@ -1,1 +1,1 @@
-CAPSTONE PROJECT
+# How to run this project on your system
