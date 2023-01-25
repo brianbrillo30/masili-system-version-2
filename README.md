@@ -1,1 +1,4 @@
-# How to run this project on your system
+# BDRS: Web-based Barangay Document Requisition System
+#with
+#Face Recognition on Accessing Information
+#for Barangay Masili, Calamba City, Laguna
