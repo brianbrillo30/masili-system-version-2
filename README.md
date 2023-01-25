@@ -15,3 +15,5 @@
 - In the terminal go back to the main project directory and type to the terminal (`python manage.py runserver`)
 - click this localhost link to open the landing page http://127.0.0.1:8000/Barangay%20Masili/Home/
 
+## Landing Page
+![image](https://user-images.githubusercontent.com/90493470/214590859-e098aae4-b5ef-4b35-a704-861b385df119.png)
