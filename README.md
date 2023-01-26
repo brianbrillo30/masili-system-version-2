@@ -6,7 +6,7 @@ A Capstone porject Presented to the School of Computer Studies and Technology in
 - In new terminal run the command (`virtualenv env`)
 - change directory to the env/script and type to the terminal (`activate`)
 
-### Code Requirements
+## Code Requirements
 -All python libraries is listed to the requirements.txt
 -open the main directory of the project that ran in virtual environment and type to the terminal (`pip install requirements.txt`) 
 -
