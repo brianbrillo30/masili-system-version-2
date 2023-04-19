@@ -6,10 +6,10 @@ A Capstone porject Presented to the School of Computer Studies and Technology in
 - In new terminal run the command (`virtualenv env`)
 - change directory to the env/script and type to the terminal (`activate`)
 
-### Code Requirements
--
--
--
+## Code Requirements
+- All python libraries is listed to the requirements.txt
+- open the main directory of the project that ran in virtual environment and type to the terminal (`pip install requirements.txt`)
+
 ### Import Database
 -From DB folder, import db_masili file in PgAdmin4. If you don't have PgAdmin 4 you can follow this link on how to install PgAdmin4 : https://www.guru99.com/download-install-postgresql.html
 - set the password to "admin"
